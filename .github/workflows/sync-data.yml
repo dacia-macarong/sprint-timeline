@@ -26,7 +26,8 @@ jobs:
         run: |
           python3 << 'EOF'
           import csv, json
-          from datetime import datetime, timezone
+          from datetime import datetime, timezone, timedelta
+          KST = timezone(timedelta(hours=9))
 
           with open('data.csv', encoding='utf-8') as f:
               rows = list(csv.reader(f))
@@ -60,7 +61,7 @@ jobs:
               })
 
           result = {
-              'updated': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'),
+              'updated': datetime.now(KST).strftime('%Y-%m-%d %H:%M KST'),
               'tasks': tasks,
           }
 
