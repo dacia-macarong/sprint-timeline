@@ -388,7 +388,7 @@ function renderChart(rawTasks) {
 
   // 배경
   ctx.fillStyle = '#0d1117';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, cssW, cssH);
 
   // 월 컬럼 + 주/일 격자
   const monthNames = ['1월','2월','3월','4월','5월','6월'];
@@ -400,7 +400,7 @@ function renderChart(rawTasks) {
     // 짝수 월 배경 음영
     if (m % 2 === 0) {
       ctx.fillStyle = 'rgba(255,255,255,0.018)';
-      ctx.fillRect(x, HEADER_H, nx - x, canvas.height - HEADER_H);
+      ctx.fillRect(x, HEADER_H, nx - x, cssH - HEADER_H);
     }
 
     // 월 이름 (굵게, 상단)
@@ -421,7 +421,7 @@ function renderChart(rawTasks) {
       if (dow === 1) {
         // 월요일 = 주 시작: 격자선 + 날짜 레이블
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(wx, HEADER_H - 8); ctx.lineTo(wx, canvas.height); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(wx, HEADER_H - 8); ctx.lineTo(wx, cssH); ctx.stroke();
         ctx.fillStyle = '#484f58';
         ctx.font = '11px -apple-system, sans-serif';
         ctx.fillText(`${day}`, wx + 2, 38);
@@ -429,23 +429,23 @@ function renderChart(rawTasks) {
         // 주말: 아주 연한 배경
         const nextX = wx + PPD;
         ctx.fillStyle = 'rgba(255,255,255,0.008)';
-        ctx.fillRect(wx, HEADER_H, PPD, canvas.height - HEADER_H);
+        ctx.fillRect(wx, HEADER_H, PPD, cssH - HEADER_H);
       }
     }
   }
   for (let m = 2; m <= 5; m++) {
     const x = dateToX(new Date(2026, m-1, 1));
     ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, cssH); ctx.stroke();
   }
   ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, HEADER_H); ctx.lineTo(canvas.width, HEADER_H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, HEADER_H); ctx.lineTo(cssW, HEADER_H); ctx.stroke();
 
   // 레이블 영역
   ctx.fillStyle = '#0d1117';
-  ctx.fillRect(0, 0, LABEL_W, canvas.height);
+  ctx.fillRect(0, 0, LABEL_W, cssH);
   ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(LABEL_W,0); ctx.lineTo(LABEL_W, canvas.height); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(LABEL_W,0); ctx.lineTo(LABEL_W, cssH); ctx.stroke();
   ctx.fillStyle = '#6e7681';
   ctx.font = '700 13px -apple-system, sans-serif';
   ctx.fillText('태스크', 12, 24);
@@ -463,9 +463,9 @@ function renderChart(rawTasks) {
     const barY   = rowMid - BAR_H / 2;
 
     ctx.fillStyle = i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)';
-    ctx.fillRect(0, y, canvas.width, ROW_H);
+    ctx.fillRect(0, y, cssW, ROW_H);
     ctx.strokeStyle = '#161b22'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, y+ROW_H); ctx.lineTo(canvas.width, y+ROW_H); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, y+ROW_H); ctx.lineTo(cssW, y+ROW_H); ctx.stroke();
 
     // 태스크명
     ctx.font = '15px -apple-system, sans-serif';
@@ -484,7 +484,7 @@ function renderChart(rawTasks) {
     if (dates.created) {
       const ed = dates.done || CHART_END;
       const x1 = dateToX(dates.created);
-      const x2 = Math.min(dateToX(ed), canvas.width - PAD_R);
+      const x2 = Math.min(dateToX(ed), cssW - PAD_R);
       ctx.fillStyle = '#21262d';
       roundRect(x1, rowMid-2, Math.max(x2-x1,4), 4, 2); ctx.fill();
     }
@@ -492,7 +492,7 @@ function renderChart(rawTasks) {
     // 단계 bar
     segments.forEach(seg => {
       const x1 = dateToX(seg.start);
-      const x2 = Math.min(dateToX(seg.end), canvas.width - PAD_R);
+      const x2 = Math.min(dateToX(seg.end), cssW - PAD_R);
       const w = Math.max(x2-x1, 3);
       const base = PHASES[seg.phase].color;
 
@@ -542,7 +542,7 @@ function renderChart(rawTasks) {
     if (inProgress && dates.created) {
       const lastD = [dates.dev_complete, dates.guide, dates.dev_review, dates.design_draft, dates.planning]
       .filter(d => d && d >= dates.created)[0] || dates.created;
-      const x = Math.min(dateToX(lastD), canvas.width - PAD_R - 40);
+      const x = Math.min(dateToX(lastD), cssW - PAD_R - 40);
       ctx.strokeStyle = '#3fb95088'; ctx.lineWidth = 2;
       ctx.setLineDash([5,5]);
       ctx.beginPath(); ctx.moveTo(x, rowMid); ctx.lineTo(x+48, rowMid); ctx.stroke();
@@ -592,7 +592,7 @@ function renderChart(rawTasks) {
 
   canvas.addEventListener('mousemove', e => {
     const r = canvas.getBoundingClientRect();
-    const my = (e.clientY - r.top) * (canvas.height / r.height);
+    const my = (e.clientY - r.top) * (cssH / r.height);
     const found = taskMeta.find(t => my >= t.y && my <= t.y + ROW_H);
     if (!found) { tooltip.style.display = 'none'; return; }
 
@@ -640,7 +640,7 @@ function renderChart(rawTasks) {
   canvas.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
   canvas.addEventListener('click', e => {
     const r = canvas.getBoundingClientRect();
-    const my = (e.clientY - r.top) * (canvas.height / r.height);
+    const my = (e.clientY - r.top) * (cssH / r.height);
     const found = taskMeta.find(t => my >= t.y && my <= t.y + ROW_H);
     if (found?.task.link) window.open(found.task.link, '_blank');
   });
