@@ -66,27 +66,36 @@
       font-size: 13px;
       margin-top: 16px;
     }
+    .criteria-toggle {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: #6e7681; cursor: pointer;
+      margin-bottom: 10px; user-select: none;
+    }
+    .criteria-toggle:hover { color: #8b949e; }
+    .criteria-toggle-icon { font-size: 10px; transition: transform 0.2s; display: inline-block; }
+    .criteria-toggle-icon.open { transform: rotate(90deg); }
     .criteria {
       background: #161b22;
       border: 1px solid #21262d;
       border-radius: 10px;
-      padding: 14px 18px;
+      padding: 16px 20px;
       margin-bottom: 20px;
-      font-size: 12px;
+      font-size: 13px;
       color: #8b949e;
-      display: grid;
+      display: none;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 32px;
+      gap: 12px 40px;
     }
-    .criteria-section { display: flex; flex-direction: column; gap: 5px; }
-    .criteria-title { font-size: 11px; font-weight: 700; color: #484f58; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
-    .criteria-row { display: flex; align-items: baseline; gap: 7px; }
-    .criteria-chip { width: 20px; height: 7px; border-radius: 3px; flex-shrink: 0; position: relative; top: -1px; }
-    .criteria-arrow { color: #30363d; font-size: 11px; }
-    .criteria-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; border: 1px solid #0d1117; }
+    .criteria.open { display: grid; }
+    .criteria-section { display: flex; flex-direction: column; gap: 7px; }
+    .criteria-title { font-size: 11px; font-weight: 700; color: #484f58; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .criteria-row { display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+    .criteria-chip { width: 22px; height: 9px; border-radius: 4px; flex-shrink: 0; }
+    .criteria-arrow { color: #30363d; font-size: 12px; }
+    .criteria-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 1.5px solid #0d1117; }
     .criteria-hatch {
-      width: 20px; height: 7px; border-radius: 3px; flex-shrink: 0; position: relative; top: -1px;
-      background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.12) 2px, rgba(255,255,255,0.12) 3px);
+      width: 22px; height: 9px; border-radius: 4px; flex-shrink: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.13) 2px, rgba(255,255,255,0.13) 3px);
       border: 1px solid rgba(255,255,255,0.08);
     }
   </style>
@@ -109,7 +118,11 @@
     <div class="legend-item"><div style="width:9px;height:9px;border-radius:50%;background:#7c3aed;border:1.5px solid #0d1117;flex-shrink:0"></div>가이드</div>
   </div>
 
-  <div class="criteria">
+  <div class="criteria-toggle" onclick="toggleCriteria()">
+    <span class="criteria-toggle-icon" id="criteria-icon">▶</span>
+    <span>측정 기준 보기</span>
+  </div>
+  <div class="criteria" id="criteria-box">
     <div class="criteria-section">
       <div class="criteria-title">단계 기준</div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#475569"></div><span>기획</span><span class="criteria-arrow">→</span><span>생성일 ~ 기획서 작성일</span></div>
@@ -555,7 +568,7 @@ function renderChart(rawTasks) {
       const activeDays = calcActiveDays(segments, task.name);
       ctx.font = '600 10px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`${activeDays}bd`, dateToX(dates.done)+6, rowMid+4);
+      ctx.fillText(`${activeDays}WD`, dateToX(dates.done)+6, rowMid+4);
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
@@ -574,7 +587,7 @@ function renderChart(rawTasks) {
     const { task, dates, inProgress } = found;
     const segSummary = found.segments.map(s => {
       const wdays = workingDays(s.start, s.end);
-      return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}영업일)</span></div>`;
+      return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}WD)</span></div>`;
     }).join('');
 
     let html = `<div class="tt-title">${task.name}</div>`;
@@ -594,9 +607,9 @@ function renderChart(rawTasks) {
         });
       }
       html += `<hr class="tt-divider">`;
-      html += `<div class="tt-row"><span class="tt-label">실 작업 영업일</span><span class="tt-val tt-leadtime">${activeDays}영업일</span></div>`;
+      html += `<div class="tt-row"><span class="tt-label">실 작업</span><span class="tt-val tt-leadtime">${activeDays} WD</span></div>`;
       if (totalDays !== activeDays) {
-        html += `<div class="tt-row"><span class="tt-label">전체 영업일</span><span class="tt-val" style="color:#6e7681">${totalDays}일 (공백 ${totalDays - activeDays}일)</span></div>`;
+        html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays} WD (공백 ${totalDays - activeDays} WD 포함)</span></div>`;
       }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
@@ -643,6 +656,14 @@ async function loadAndRender() {
       ${err.message}
     `;
   }
+}
+
+function toggleCriteria() {
+  const box  = document.getElementById('criteria-box');
+  const icon = document.getElementById('criteria-icon');
+  const open = box.classList.toggle('open');
+  icon.classList.toggle('open', open);
+  icon.textContent = open ? '▶' : '▶';
 }
 
 document.addEventListener('DOMContentLoaded', loadAndRender);
