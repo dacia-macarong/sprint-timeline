@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 15:06 KST",
+  "updated": "2026-05-28 15:16 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -48,7 +48,7 @@
       "owner": "Dacia",
       "created": "2026. 3. 24",
       "planning": "2026. 3. 31",
-      "design_start": "",
+      "design_start": "2026. 4. 8",
       "design_draft": "2026. 4. 14",
       "dev_review": "2026. 4. 15",
       "guide": "2026. 4. 16",
@@ -75,7 +75,7 @@
       "name": "온보딩 세그먼트 나누기 + 위젯개선 1차",
       "owner": "Dacia, Ken",
       "created": "2026. 4. 10",
-      "planning": "2026. 4. 10",
+      "planning": "2026. 4. 23",
       "design_start": "2026. 4. 23",
       "design_draft": "2026. 4. 29",
       "dev_review": "2026. 4. 30",
@@ -116,7 +116,7 @@
     {
       "name": "정비목록 - 정비리포트 점검내역 반영",
       "owner": "Ken",
-      "created": "",
+      "created": "2026. 1. 19",
       "planning": "",
       "design_start": "",
       "design_draft": "",
@@ -130,7 +130,7 @@
     {
       "name": "정비목록 상세 - 점검내역 반영",
       "owner": "Ken",
-      "created": "",
+      "created": "2026. 5. 4",
       "planning": "",
       "design_start": "",
       "design_draft": "",
@@ -139,12 +139,12 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": ""
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
     },
     {
       "name": "푸시 동의율 높이기",
       "owner": "Ken",
-      "created": "",
+      "created": "2026. 4. 30",
       "planning": "",
       "design_start": "",
       "design_draft": "",
@@ -153,7 +153,7 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": ""
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
     },
     {
       "name": "추가상품 쿠폰 반영",
