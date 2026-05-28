@@ -226,15 +226,31 @@ function getSegments(task) {
   return { segments: segs, dates };
 }
 
+// ── 실 작업 일수 계산 (겹치는 구간 병합 후 합산) ─────────────
+function calcActiveDays(segs) {
+  if (!segs.length) return 0;
+  const sorted = [...segs].sort((a, b) => a.start - b.start);
+  const merged = [{ start: sorted[0].start, end: sorted[0].end }];
+  for (let i = 1; i < sorted.length; i++) {
+    const last = merged[merged.length - 1];
+    if (sorted[i].start <= last.end) {
+      if (sorted[i].end > last.end) last.end = sorted[i].end;
+    } else {
+      merged.push({ start: sorted[i].start, end: sorted[i].end });
+    }
+  }
+  return merged.reduce((sum, s) => sum + Math.round((s.end - s.start) / 86400000), 0);
+}
+
 // ── 렌더링 ────────────────────────────────────────────────────
 const LABEL_W  = 188;
 const ROW_H    = 42;
 const BAR_H    = 20;
 const HEADER_H = 54;
-const PPD      = 7.2;
-const PAD_R    = 24;
-const CHART_START = new Date(2026, 1, 1);
-const CHART_END   = new Date(2026, 5, 15);
+const PPD      = 11;   // 픽셀/일 (넓게)
+const PAD_R    = 32;
+const CHART_START = new Date(2026, 1, 1);   // 2월 1일
+const CHART_END   = new Date(2026, 5, 1);   // 6월 1일 (5월 말까지)
 const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
 
 function dateToX(d) {
@@ -265,30 +281,53 @@ function renderChart(rawTasks) {
   ctx.fillStyle = '#0d1117';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // 월 컬럼 + 주 격자
+  // 월 컬럼 + 주/일 격자
   const monthNames = ['1월','2월','3월','4월','5월','6월'];
-  for (let m = 2; m <= 6; m++) {
-    const d = new Date(2026, m-1, 1);
-    const x = dateToX(d);
+  for (let m = 2; m <= 5; m++) {
+    const d  = new Date(2026, m-1, 1);
+    const x  = dateToX(d);
+    const nx = dateToX(new Date(2026, m, 1));
+
+    // 짝수 월 배경 음영
     if (m % 2 === 0) {
-      const nx = m < 6 ? dateToX(new Date(2026, m, 1)) : canvas.width;
-      ctx.fillStyle = 'rgba(255,255,255,0.015)';
-      ctx.fillRect(x, HEADER_H, nx-x, canvas.height-HEADER_H);
+      ctx.fillStyle = 'rgba(255,255,255,0.018)';
+      ctx.fillRect(x, HEADER_H, nx - x, canvas.height - HEADER_H);
     }
-    ctx.fillStyle = '#3d444d';
-    ctx.font = '700 11px -apple-system, sans-serif';
-    ctx.fillText(monthNames[m-1], x+6, 22);
+
+    // 월 이름 (굵게, 상단)
+    ctx.fillStyle = '#58a6ff';
+    ctx.font = '700 12px -apple-system, sans-serif';
+    ctx.fillText(monthNames[m-1], x + 5, 18);
+
+    // 주 단위 격자선 + 날짜 레이블
     const dim = new Date(2026, m, 0).getDate();
-    for (let w = 7; w < dim; w += 7) {
-      const wx = dateToX(new Date(2026, m-1, w));
-      ctx.strokeStyle = '#1c2128'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(wx, HEADER_H); ctx.lineTo(wx, canvas.height); ctx.stroke();
+    for (let day = 1; day <= dim; day++) {
+      const dd = new Date(2026, m-1, day);
+      if (dd >= CHART_END) break;
+      const wx = dateToX(dd);
+      const dow = dd.getDay(); // 0=일, 6=토
+
+      if (day === 1) continue; // 월 경계는 별도 처리
+
+      if (dow === 1) {
+        // 월요일 = 주 시작: 격자선 + 날짜 레이블
+        ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(wx, HEADER_H - 8); ctx.lineTo(wx, canvas.height); ctx.stroke();
+        ctx.fillStyle = '#484f58';
+        ctx.font = '10px -apple-system, sans-serif';
+        ctx.fillText(`${day}`, wx + 2, 34);
+      } else if (dow === 6 || dow === 0) {
+        // 주말: 아주 연한 배경
+        const nextX = wx + PPD;
+        ctx.fillStyle = 'rgba(255,255,255,0.008)';
+        ctx.fillRect(wx, HEADER_H, PPD, canvas.height - HEADER_H);
+      }
     }
   }
-  for (let m = 2; m <= 6; m++) {
+  for (let m = 2; m <= 5; m++) {
     const x = dateToX(new Date(2026, m-1, 1));
     ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
   }
   ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(0, HEADER_H); ctx.lineTo(canvas.width, HEADER_H); ctx.stroke();
@@ -393,12 +432,12 @@ function renderChart(rawTasks) {
       }
     });
 
-    // 리드타임 레이블
-    if (dates.done && dates.created) {
-      const ld = Math.round((dates.done - dates.created) / 86400000);
+    // 실 작업 일수 레이블 (빈 기간 제외)
+    if (dates.done) {
+      const activeDays = calcActiveDays(segments);
       ctx.font = '600 10px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`${ld}d`, dateToX(dates.done)+6, rowMid+4);
+      ctx.fillText(`${activeDays}d`, dateToX(dates.done)+6, rowMid+4);
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
@@ -424,10 +463,14 @@ function renderChart(rawTasks) {
     html += `<div class="tt-row"><span class="tt-label">담당</span><span class="tt-val">${task.owner}</span></div>`;
     html += `<div class="tt-row"><span class="tt-label">생성일</span><span class="tt-val">${fmtDate(dates.created)}</span></div>`;
     if (dates.done) {
-      const ld = Math.round((dates.done - dates.created) / 86400000);
+      const activeDays = calcActiveDays(found.segments);
+      const totalDays  = Math.round((dates.done - dates.created) / 86400000);
       html += `<div class="tt-row"><span class="tt-label">완료일</span><span class="tt-val">${fmtDate(dates.done)}</span></div>`;
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
-      html += `<div class="tt-row"><span class="tt-label">총 리드타임</span><span class="tt-val tt-leadtime">${ld}일</span></div>`;
+      html += `<div class="tt-row"><span class="tt-label">실 작업 기간</span><span class="tt-val tt-leadtime">${activeDays}일</span></div>`;
+      if (totalDays !== activeDays) {
+        html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays}일 (공백 ${totalDays - activeDays}일 포함)</span></div>`;
+      }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
       html += `<div class="tt-row"><span class="tt-label">상태</span><span class="tt-val tt-inprogress">진행중</span></div>`;
