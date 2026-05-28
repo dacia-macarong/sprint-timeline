@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 15:32 KST",
+  "updated": "2026-05-28 16:08 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -10,10 +10,10 @@
       "design_draft": "2026. 2. 12",
       "dev_review": "2026. 3. 27",
       "guide": "2026. 2. 24",
-      "dev_complete": "2026. 4. 8",
-      "qa_complete": "2026. 4. 10",
-      "done": "2026. 4. 14",
-      "link": "https://app.asana.com/0/1213968584562495/1213145806394041"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 8",
+      "done": "2026. 4. 10",
+      "link": "2026. 4. 14"
     },
     {
       "name": "신규 유저 내차할일",
@@ -24,10 +24,10 @@
       "design_draft": "2026. 3. 23",
       "dev_review": "2026. 3. 30",
       "guide": "2026. 3. 26",
-      "dev_complete": "2026. 4. 1",
-      "qa_complete": "2026. 4. 2",
-      "done": "2026. 4. 3",
-      "link": "https://app.asana.com/0/1213968584562495/1213698204116242"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 1",
+      "done": "2026. 4. 2",
+      "link": "2026. 4. 3"
     },
     {
       "name": "양호해요 ATF",
@@ -38,10 +38,10 @@
       "design_draft": "2026. 4. 3",
       "dev_review": "2026. 4. 6",
       "guide": "2026. 4. 7",
-      "dev_complete": "2026. 4. 10",
-      "qa_complete": "2026. 4. 15",
-      "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213351600399060"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 10",
+      "done": "2026. 4. 15",
+      "link": "2026. 4. 17"
     },
     {
       "name": "영수증 촬영",
@@ -52,10 +52,10 @@
       "design_draft": "2026. 4. 14",
       "dev_review": "2026. 4. 15",
       "guide": "2026. 4. 16",
-      "dev_complete": "2026. 4. 27",
-      "qa_complete": "2026. 4. 30",
-      "done": "2026. 5. 7",
-      "link": "https://app.asana.com/0/1213968584562495/1213594049662564"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 27",
+      "done": "2026. 4. 30",
+      "link": "2026. 5. 7"
     },
     {
       "name": "온보딩 개인화 정보 1차 개선",
@@ -66,10 +66,10 @@
       "design_draft": "2026. 4. 20",
       "dev_review": "2026. 4. 22",
       "guide": "2026. 4. 20",
-      "dev_complete": "2026. 4. 23",
-      "qa_complete": "2026. 4. 24",
-      "done": "2026. 4. 29",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214068267270244?focus=true"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 23",
+      "done": "2026. 4. 24",
+      "link": "2026. 4. 29"
     },
     {
       "name": "온보딩 세그먼트 나누기 + 위젯개선 1차",
@@ -80,10 +80,10 @@
       "design_draft": "2026. 4. 29",
       "dev_review": "2026. 4. 30",
       "guide": "2026. 5. 4",
-      "dev_complete": "2026. 5. 12",
-      "qa_complete": "2026. 5. 14",
-      "done": "2026. 5. 20",
-      "link": "https://app.asana.com/0/1213968584562495/1214027026280803"
+      "dev_complete": "",
+      "qa_complete": "2026. 5. 12",
+      "done": "2026. 5. 14",
+      "link": "2026. 5. 20"
     },
     {
       "name": "주간 미션",
@@ -94,10 +94,10 @@
       "design_draft": "2026. 3. 6",
       "dev_review": "2026. 3. 13",
       "guide": "2026. 3. 13",
-      "dev_complete": "2026. 3. 25",
-      "qa_complete": "2026. 3. 31",
-      "done": "2026. 4. 2",
-      "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
+      "dev_complete": "",
+      "qa_complete": "2026. 3. 25",
+      "done": "2026. 3. 31",
+      "link": "2026. 4. 2"
     },
     {
       "name": "내차 관리 점수 카드",
@@ -111,7 +111,7 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
+      "link": ""
     },
     {
       "name": "정비목록 - 정비리포트 점검내역 반영",
@@ -125,7 +125,7 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
+      "link": ""
     },
     {
       "name": "정비목록 상세 - 점검내역 반영",
@@ -139,21 +139,21 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
+      "link": ""
     },
     {
       "name": "푸시 동의율 높이기",
       "owner": "Ken",
       "created": "2026. 4. 30",
       "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review": "",
-      "guide": "",
-      "dev_complete": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
+      "design_start": "2026. 5. 4",
+      "design_draft": "2026. 5. 11",
+      "dev_review": "2026. 5. 14",
+      "guide": "2026. 5. 15",
+      "dev_complete": "2026. 5. 18",
+      "qa_complete": "2026. 5. 21",
+      "done": "2026. 5. 27",
+      "link": ""
     },
     {
       "name": "추가상품 쿠폰 반영",
@@ -164,10 +164,10 @@
       "design_draft": "",
       "dev_review": "",
       "guide": "",
-      "dev_complete": "2026. 4. 6",
-      "qa_complete": "2026. 4. 7",
-      "done": "2026. 4. 13",
-      "link": "https://app.asana.com/0/1213968584562495/1213893508541397"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 6",
+      "done": "2026. 4. 7",
+      "link": "2026. 4. 13"
     },
     {
       "name": "옵션상품 문구 추가",
@@ -178,10 +178,10 @@
       "design_draft": "2026. 4. 9",
       "dev_review": "2026. 4. 13",
       "guide": "2026. 4. 10",
-      "dev_complete": "2026. 4. 14",
-      "qa_complete": "2026. 4. 15",
-      "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213989148399593"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 14",
+      "done": "2026. 4. 15",
+      "link": "2026. 4. 17"
     },
     {
       "name": "현장결제 3차개선",
@@ -192,10 +192,10 @@
       "design_draft": "",
       "dev_review": "2026. 4. 10",
       "guide": "",
-      "dev_complete": "2026. 4. 14",
-      "qa_complete": "",
-      "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213949804942058"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 14",
+      "done": "",
+      "link": "2026. 4. 17"
     },
     {
       "name": "내차 판매 페이지",
@@ -208,8 +208,8 @@
       "guide": "",
       "dev_complete": "",
       "qa_complete": "",
-      "done": "2026. 4. 20",
-      "link": "https://app.asana.com/0/1213968584562495/1214033388210396"
+      "done": "",
+      "link": "2026. 4. 20"
     },
     {
       "name": "기록증명서 개선 1차",
@@ -220,10 +220,10 @@
       "design_draft": "2026. 3. 30",
       "dev_review": "",
       "guide": "2026. 3. 30",
-      "dev_complete": "2026. 4. 1",
-      "qa_complete": "2026. 4. 2",
-      "done": "2026. 4. 20",
-      "link": "https://app.asana.com/0/1213968584562495/1213698197523196"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 1",
+      "done": "2026. 4. 2",
+      "link": "2026. 4. 20"
     },
     {
       "name": "중고차 Phase1",
@@ -236,8 +236,8 @@
       "guide": "",
       "dev_complete": "",
       "qa_complete": "",
-      "done": "2026. 4. 20",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1213588114869461?focus=true"
+      "done": "",
+      "link": "2026. 4. 20"
     },
     {
       "name": "정비알림 알림톡 자동화",
@@ -248,10 +248,10 @@
       "design_draft": "",
       "dev_review": "2026. 4. 7",
       "guide": "",
-      "dev_complete": "2026. 4. 10",
-      "qa_complete": "",
-      "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213612364034585"
+      "dev_complete": "",
+      "qa_complete": "2026. 4. 10",
+      "done": "",
+      "link": "2026. 4. 17"
     },
     {
       "name": "iOS 푸시 수신 1차 개선",
@@ -262,10 +262,10 @@
       "design_draft": "",
       "dev_review": "2026. 5. 4",
       "guide": "",
-      "dev_complete": "2026. 5. 12",
+      "dev_complete": "",
       "qa_complete": "2026. 5. 12",
       "done": "2026. 5. 12",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214411248519038?focus=true"
+      "link": "2026. 5. 12"
     },
     {
       "name": "segment-phase2 (기존유저 적용)",
@@ -276,10 +276,10 @@
       "design_draft": "",
       "dev_review": "2026. 5. 12",
       "guide": "",
-      "dev_complete": "2026. 5. 19",
-      "qa_complete": "2026. 5. 20",
-      "done": "2026. 5. 21",
-      "link": "https://app.asana.com/0/1213968584562495/1214686598893471"
+      "dev_complete": "",
+      "qa_complete": "2026. 5. 19",
+      "done": "2026. 5. 20",
+      "link": "2026. 5. 21"
     },
     {
       "name": "segment 배치 개선 (null 없도록)",
@@ -290,10 +290,10 @@
       "design_draft": "",
       "dev_review": "2026. 5. 21",
       "guide": "",
-      "dev_complete": "2026. 5. 22",
+      "dev_complete": "",
       "qa_complete": "2026. 5. 22",
       "done": "2026. 5. 22",
-      "link": "https://app.asana.com/0/1213968584562495/1214987200405712"
+      "link": "2026. 5. 22"
     },
     {
       "name": "노출영역 세그먼트 필터",
@@ -304,10 +304,10 @@
       "design_draft": "",
       "dev_review": "2026. 5. 19",
       "guide": "",
-      "dev_complete": "2026. 5. 21",
+      "dev_complete": "",
       "qa_complete": "2026. 5. 21",
-      "done": "2026. 5. 27",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214792347002951?focus=true"
+      "done": "2026. 5. 21",
+      "link": "2026. 5. 27"
     },
     {
       "name": "내차 팔기 플로우",
@@ -320,8 +320,8 @@
       "guide": "",
       "dev_complete": "",
       "qa_complete": "",
-      "done": "2026. 5. 26",
-      "link": "https://app.asana.com/0/1213968584562495/1214879592868445"
+      "done": "",
+      "link": "2026. 5. 26"
     },
     {
       "name": "주간 미션에 마수동 미션 추가",
@@ -335,7 +335,7 @@
       "dev_complete": "",
       "qa_complete": "",
       "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214722707481670?focus=true"
+      "link": ""
     }
   ]
 }
