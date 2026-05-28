@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>플랫폼혁신팀 스프린트 타임라인 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      padding: 32px 36px 48px;
+      min-height: 100vh;
+    }
+    .page-header { margin-bottom: 28px; }
+    h1 { font-size: 20px; font-weight: 700; color: #f0f6fc; margin-bottom: 5px; letter-spacing: -0.3px; }
+    .subtitle { font-size: 13px; color: #6e7681; }
+    .legend {
+      display: flex; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;
+    }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #8b949e; }
+    .legend-chip { width: 24px; height: 10px; border-radius: 5px; }
+    #chart-wrapper { overflow-x: auto; padding-bottom: 8px; }
+    canvas { display: block; }
+    #tooltip {
+      position: fixed;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 12px;
+      line-height: 1.5;
+      pointer-events: none;
+      display: none;
+      z-index: 9999;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      min-width: 220px;
+    }
+    .tt-title { font-size: 13px; font-weight: 600; color: #f0f6fc; margin-bottom: 10px; }
+    .tt-row { display: flex; justify-content: space-between; gap: 24px; padding: 1.5px 0; }
+    .tt-label { color: #6e7681; white-space: nowrap; }
+    .tt-val { color: #e6edf3; font-weight: 500; }
+    .tt-divider { border: none; border-top: 1px solid #21262d; margin: 8px 0; }
+    .tt-leadtime { color: #58a6ff !important; font-weight: 600 !important; }
+    .tt-inprogress { color: #3fb950 !important; }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>플랫폼혁신팀 스프린트 타임라인 2026</h1>
+    <div class="subtitle">2026년 2월 — 5월 &middot; 총 21개 태스크 &middot; 행 클릭 시 Asana 태스크로 이동</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-chip" style="background:#475569"></div>기획</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#7c3aed"></div>디자인</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#ea580c"></div>개발</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#16a34a"></div>QA</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#0891b2"></div>배포</div>
+    <div class="legend-item" style="margin-left:8px; color:#6e7681; font-size:11px;">● 마일스톤</div>
+  </div>
+  <div id="chart-wrapper">
+    <canvas id="chart"></canvas>
+  </div>
+  <div id="tooltip"></div>
+
+<script>
+const PHASES = {
+  planning: { color: '#475569', label: '기획' },
+  design:   { color: '#7c3aed', label: '디자인' },
+  dev:      { color: '#ea580c', label: '개발' },
+  qa:       { color: '#16a34a', label: 'QA' },
+  release:  { color: '#0891b2', label: '배포' },
+};
+
+const rawTasks = [
+  { name: "내 차 정보 T2",            owner: "Dacia",       created: "2026. 2. 6",  planning: "2026. 2. 12", design_draft: "2026. 2. 12", dev_review: "2026. 3. 3",  guide: "2026. 2. 24", dev_complete: "2026. 4. 8",  qa_complete: "2026. 4. 10", done: "2026. 4. 14", link: "https://app.asana.com/0/1213968584562495/1213145806394041" },
+  { name: "홈 개선 → 양호해요 ATF",   owner: "Dacia",       created: "2026. 2. 19", planning: "2026. 3. 30", design_draft: "2026. 4. 3",  dev_review: "2026. 4. 6",  guide: "2026. 4. 7",  dev_complete: "2026. 4. 10", qa_complete: "2026. 4. 15", done: "2026. 4. 17", link: "https://app.asana.com/0/1213968584562495/1213351600399060" },
+  { name: "주간 미션",                 owner: "Ken",         created: "2026. 2. 27", planning: "2026. 2. 27", design_draft: "2026. 3. 6",  dev_review: "2026. 3. 13", guide: "2026. 3. 13", dev_complete: "2026. 3. 25", qa_complete: "2026. 3. 31", done: "2026. 4. 21", link: "https://app.asana.com/0/1213968584562495/1213463401432002" },
+  { name: "영수증 촬영",               owner: "Dacia",       created: "2026. 3. 10", planning: "2026. 3. 31", design_draft: "2026. 4. 14", dev_review: "2026. 4. 15", guide: "2026. 4. 16", dev_complete: "2026. 4. 27", qa_complete: "2026. 4. 30", done: "2026. 5. 7",  link: "https://app.asana.com/0/1213968584562495/1213594049662564" },
+  { name: "중고차 Phase1",             owner: "Ken",         created: "2026. 3. 10", planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "",            qa_complete: "",            done: "2026. 4. 20", link: "" },
+  { name: "정비알림 알림톡 자동화",    owner: "Dacia",       created: "2026. 3. 12", planning: "",           design_draft: "",            dev_review: "2026. 4. 10", guide: "",            dev_complete: "2026. 5. 6",  qa_complete: "",            done: "2026. 5. 6",  link: "https://app.asana.com/0/1213968584562495/1213612364034585" },
+  { name: "신규 유저 내차할일",        owner: "Dacia",       created: "2026. 3. 17", planning: "2026. 3. 18", design_draft: "2026. 3. 23", dev_review: "2026. 3. 30", guide: "2026. 3. 26", dev_complete: "2026. 4. 1",  qa_complete: "2026. 4. 2",  done: "2026. 4. 20", link: "" },
+  { name: "기록증명서 개선 1차",       owner: "Ken",         created: "2026. 3. 17", planning: "",           design_draft: "2026. 3. 30", dev_review: "",            guide: "2026. 3. 30", dev_complete: "2026. 4. 1",  qa_complete: "2026. 4. 2",  done: "2026. 4. 20", link: "https://app.asana.com/0/1213968584562495/1213698197523196" },
+  { name: "추가상품 쿠폰 반영",        owner: "Ken",         created: "2026. 4. 1",  planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "2026. 4. 6",  qa_complete: "2026. 4. 7",  done: "2026. 4. 13", link: "" },
+  { name: "옵션상품 문구 추가",        owner: "Ken",         created: "2026. 4. 9",  planning: "",           design_draft: "2026. 4. 9",  dev_review: "",            guide: "2026. 4. 10", dev_complete: "2026. 4. 14", qa_complete: "2026. 4. 15", done: "2026. 4. 17", link: "https://app.asana.com/0/1213968584562495/1213989148399593" },
+  { name: "현장결제 3차개선",          owner: "Harry",       created: "2026. 4. 7",  planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "2026. 4. 14", qa_complete: "",            done: "2026. 4. 17", link: "https://app.asana.com/0/1213968584562495/1213949804942058" },
+  { name: "온보딩 세그먼트",           owner: "Dacia, Ken",  created: "2026. 4. 10", planning: "2026. 4. 10", design_draft: "2026. 4. 30", dev_review: "2026. 4. 30", guide: "2026. 5. 4",  dev_complete: "2026. 5. 12", qa_complete: "2026. 5. 14", done: "2026. 5. 20", link: "https://app.asana.com/0/1213968584562495/1214027026280803" },
+  { name: "내차 판매 페이지",          owner: "Ken",         created: "2026. 4. 13", planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "",            qa_complete: "",            done: "2026. 4. 20", link: "https://app.asana.com/0/1213968584562495/1214033388210396" },
+  { name: "온보딩 개인화 개선 1차",    owner: "Dacia",       created: "2026. 4. 15", planning: "",           design_draft: "2026. 4. 20", dev_review: "2026. 4. 20", guide: "2026. 4. 20", dev_complete: "2026. 4. 22", qa_complete: "2026. 4. 24", done: "2026. 4. 30", link: "https://app.asana.com/0/1213968584562495/1214068267270244" },
+  { name: "iOS 푸시 수신 1차 개선",    owner: "Shunie",      created: "2026. 4. 30", planning: "2026. 4. 30", design_draft: "",            dev_review: "",            guide: "",            dev_complete: "2026. 5. 12", qa_complete: "2026. 5. 12", done: "2026. 5. 12", link: "" },
+  { name: "내차 관리 점수 카드",       owner: "Ken, Dacia",  created: "2026. 5. 4",  planning: "2026. 5. 12", design_draft: "2026. 5. 22", dev_review: "2026. 5. 27", guide: "2026. 5. 27", dev_complete: "",            qa_complete: "",            done: "",            link: "" },
+  { name: "segment-phase2 (기존유저 적용)", owner: "Mike",   created: "2026. 5. 11", planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "2026. 5. 19", qa_complete: "2026. 5. 20", done: "2026. 5. 21", link: "https://app.asana.com/0/1213968584562495/1214686598893471" },
+  { name: "주간미션 마수동 추가",      owner: "Ken",         created: "2026. 5. 12", planning: "",           design_draft: "2026. 5. 11", dev_review: "",            guide: "2026. 5. 11", dev_complete: "",            qa_complete: "",            done: "",            link: "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214722707481670" },
+  { name: "노출영역 세그먼트 필터",    owner: "Dacia",       created: "2026. 5. 15", planning: "",           design_draft: "",            dev_review: "2026. 5. 19", guide: "",            dev_complete: "2026. 5. 21", qa_complete: "",            done: "2026. 5. 27", link: "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214792347002951" },
+  { name: "내차 팔기 플로우",          owner: "Ken",         created: "2026. 5. 18", planning: "",           design_draft: "2026. 5. 22", dev_review: "",            guide: "",            dev_complete: "",            qa_complete: "",            done: "2026. 5. 26", link: "https://app.asana.com/0/1213968584562495/1214879592868445" },
+  { name: "segment 배치 개선 (null 없도록)", owner: "Mike", created: "2026. 5. 21", planning: "",           design_draft: "",            dev_review: "",            guide: "",            dev_complete: "2026. 5. 22", qa_complete: "2026. 5. 22", done: "2026. 5. 22", link: "https://app.asana.com/0/1213968584562495/1214987200405712" },
+];
+
+function parseDate(s) {
+  if (!s || !s.trim()) return null;
+  const p = s.replace(/\./g, ' ').trim().split(/\s+/).filter(Boolean);
+  if (p.length < 3) return null;
+  return new Date(+p[0], +p[1] - 1, +p[2]);
+}
+
+function fmtDate(d) {
+  if (!d) return '-';
+  return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+
+function getSegments(task) {
+  const d = {
+    created:      parseDate(task.created),
+    design_draft: parseDate(task.design_draft),
+    guide:        parseDate(task.guide),
+    dev_complete: parseDate(task.dev_complete),
+    qa_complete:  parseDate(task.qa_complete),
+    done:         parseDate(task.done),
+  };
+
+  const phaseFor = {
+    created:      'planning',
+    design_draft: 'design',
+    guide:        'dev',
+    dev_complete: 'qa',
+    qa_complete:  'release',
+  };
+
+  const keys = ['created', 'design_draft', 'guide', 'dev_complete', 'qa_complete', 'done'];
+  const points = keys.map(k => ({ key: k, d: d[k] })).filter(x => x.d);
+
+  // Keep only monotonically increasing dates
+  const mono = [];
+  for (const p of points) {
+    if (!mono.length || p.d >= mono[mono.length - 1].d) mono.push(p);
+  }
+
+  const segments = [];
+  for (let i = 0; i < mono.length - 1; i++) {
+    const phase = phaseFor[mono[i].key];
+    if (!phase) continue;
+    if (mono[i + 1].d > mono[i].d) {
+      segments.push({ start: mono[i].d, end: mono[i + 1].d, phase });
+    }
+  }
+  return { segments, dates: d };
+}
+
+// ── Layout constants ──────────────────────────────────────────
+const LABEL_W  = 188;
+const ROW_H    = 42;
+const BAR_H    = 20;
+const HEADER_H = 54;
+const PPD      = 7.2;      // pixels per day
+const PAD_R    = 24;
+
+const CHART_START = new Date(2026, 1, 1);   // Feb 1
+const CHART_END   = new Date(2026, 5, 15);  // Jun 15
+const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
+
+const canvas = document.getElementById('chart');
+canvas.width  = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
+canvas.height = HEADER_H + rawTasks.length * ROW_H + 12;
+const ctx = canvas.getContext('2d');
+
+function dateToX(d) {
+  return LABEL_W + (d - CHART_START) / 86400000 * PPD;
+}
+
+function roundRect(x, y, w, h, r) {
+  if (w < 1) w = 1;
+  r = Math.min(r, h / 2, w / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// ── Background ────────────────────────────────────────────────
+ctx.fillStyle = '#0d1117';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// ── Month columns ─────────────────────────────────────────────
+const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월'];
+for (let m = 2; m <= 6; m++) {
+  const d = new Date(2026, m - 1, 1);
+  const x = dateToX(d);
+  // Alternating column tint
+  if (m % 2 === 0) {
+    const nextX = m < 6 ? dateToX(new Date(2026, m, 1)) : canvas.width;
+    ctx.fillStyle = 'rgba(255,255,255,0.015)';
+    ctx.fillRect(x, HEADER_H, nextX - x, canvas.height - HEADER_H);
+  }
+  // Month label
+  ctx.fillStyle = '#3d444d';
+  ctx.font = '700 11px -apple-system, sans-serif';
+  ctx.fillText(monthNames[m - 1], x + 6, 22);
+  // Week marks within month
+  const daysInMonth = new Date(2026, m, 0).getDate();
+  for (let w = 7; w < daysInMonth; w += 7) {
+    const wx = dateToX(new Date(2026, m - 1, w));
+    ctx.strokeStyle = '#1c2128';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(wx, HEADER_H);
+    ctx.lineTo(wx, canvas.height);
+    ctx.stroke();
+  }
+}
+
+// ── Month separator lines ─────────────────────────────────────
+for (let m = 2; m <= 6; m++) {
+  const x = dateToX(new Date(2026, m - 1, 1));
+  ctx.strokeStyle = '#30363d';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(x, 0);
+  ctx.lineTo(x, canvas.height);
+  ctx.stroke();
+}
+
+// ── Header line ───────────────────────────────────────────────
+ctx.strokeStyle = '#30363d';
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(0, HEADER_H);
+ctx.lineTo(canvas.width, HEADER_H);
+ctx.stroke();
+
+// ── Label area bg ─────────────────────────────────────────────
+ctx.fillStyle = '#0d1117';
+ctx.fillRect(0, 0, LABEL_W, canvas.height);
+ctx.strokeStyle = '#21262d';
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(LABEL_W, 0);
+ctx.lineTo(LABEL_W, canvas.height);
+ctx.stroke();
+
+// ── "태스크" header label ─────────────────────────────────────
+ctx.fillStyle = '#6e7681';
+ctx.font = '700 11px -apple-system, sans-serif';
+ctx.fillText('태스크', 12, 22);
+
+// ── Draw tasks ────────────────────────────────────────────────
+const taskMeta = [];
+
+rawTasks.forEach((task, i) => {
+  const { segments, dates } = getSegments(task);
+  const inProgress = !dates.done;
+  const y      = HEADER_H + i * ROW_H;
+  const rowMid = y + ROW_H / 2;
+  const barY   = rowMid - BAR_H / 2;
+
+  // Row zebra
+  ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0)' : 'rgba(255,255,255,0.015)';
+  ctx.fillRect(0, y, canvas.width, ROW_H);
+
+  // Row divider
+  ctx.strokeStyle = '#161b22';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, y + ROW_H);
+  ctx.lineTo(canvas.width, y + ROW_H);
+  ctx.stroke();
+
+  // Task name
+  ctx.font = `${inProgress ? '400' : '400'} 12px -apple-system, sans-serif`;
+  ctx.fillStyle = inProgress ? '#8b949e' : '#c9d1d9';
+  let name = task.name;
+  while (ctx.measureText(name + '…').width > LABEL_W - 16 && name.length > 2) name = name.slice(0, -1);
+  if (name !== task.name) name += '…';
+  ctx.fillText(name, 12, rowMid + 4.5);
+
+  // Owner badge
+  const ownerColors = { Dacia: '#1f4e8c', Ken: '#1a4731', Mike: '#4a1942', Harry: '#5c2e00', Shunie: '#1e3a4a' };
+  const ownerColor = ownerColors[task.owner.split(',')[0].trim()] || '#1c2128';
+  ctx.fillStyle = ownerColor;
+  roundRect(12, rowMid + 9, 5, 5, 2);
+  ctx.fill();
+
+  // Baseline bar (full duration)
+  if (dates.created) {
+    const endD = dates.done || CHART_END;
+    const x1 = dateToX(dates.created);
+    const x2 = Math.min(dateToX(endD), canvas.width - PAD_R);
+    ctx.fillStyle = '#21262d';
+    roundRect(x1, rowMid - 2, Math.max(x2 - x1, 4), 4, 2);
+    ctx.fill();
+  }
+
+  // Phase segments
+  segments.forEach(seg => {
+    const x1 = dateToX(seg.start);
+    const x2 = Math.min(dateToX(seg.end), canvas.width - PAD_R);
+    const w = Math.max(x2 - x1, 3);
+    const base = PHASES[seg.phase].color;
+    ctx.fillStyle = inProgress ? base + 'aa' : base;
+    roundRect(x1, barY, w, BAR_H, 4);
+    ctx.fill();
+    // Subtle highlight
+    const grad = ctx.createLinearGradient(x1, barY, x1, barY + BAR_H);
+    grad.addColorStop(0, 'rgba(255,255,255,0.08)');
+    grad.addColorStop(1, 'rgba(0,0,0,0.0)');
+    ctx.fillStyle = grad;
+    roundRect(x1, barY, w, BAR_H, 4);
+    ctx.fill();
+  });
+
+  // In-progress dashed tail
+  if (inProgress && dates.created) {
+    const lastD = dates.dev_complete || dates.guide || dates.design_draft || dates.created;
+    const x = Math.min(dateToX(lastD), canvas.width - PAD_R - 40);
+    ctx.strokeStyle = '#3fb95088';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath();
+    ctx.moveTo(x, rowMid);
+    ctx.lineTo(x + 48, rowMid);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // Arrow head
+    ctx.fillStyle = '#3fb95088';
+    ctx.beginPath();
+    ctx.moveTo(x + 52, rowMid);
+    ctx.lineTo(x + 45, rowMid - 5);
+    ctx.lineTo(x + 45, rowMid + 5);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // Milestone dots
+  const milestones = [
+    { d: dates.design_draft, label: '시안' },
+    { d: dates.guide,        label: '가이드' },
+    { d: dates.dev_complete, label: '개발완료' },
+    { d: dates.qa_complete,  label: 'QA완료' },
+    { d: dates.done,         label: '완료' },
+  ].filter(m => m.d);
+
+  milestones.forEach(m => {
+    const x = dateToX(m.d);
+    ctx.fillStyle = '#f0f6fc';
+    ctx.strokeStyle = '#0d1117';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(x, rowMid, 3.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+  });
+
+  // Lead time label
+  if (dates.done && dates.created) {
+    const leadDays = Math.round((dates.done - dates.created) / 86400000);
+    const x2 = dateToX(dates.done);
+    ctx.font = '600 10px -apple-system, sans-serif';
+    ctx.fillStyle = '#58a6ff';
+    ctx.fillText(`${leadDays}d`, x2 + 6, rowMid + 4);
+  }
+
+  taskMeta.push({ task, dates, segments, y, inProgress });
+});
+
+// ── Tooltip ───────────────────────────────────────────────────
+const tooltip = document.getElementById('tooltip');
+
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  const scaleY = canvas.height / r.height;
+  const my = (e.clientY - r.top) * scaleY;
+
+  const found = taskMeta.find(t => my >= t.y && my <= t.y + ROW_H);
+  if (!found) { tooltip.style.display = 'none'; return; }
+
+  const { task, dates, inProgress } = found;
+  const phaseLabels = {
+    planning: '기획',
+    design:   '디자인',
+    dev:      '개발',
+    qa:       'QA',
+    release:  '배포',
+  };
+  const segSummary = found.segments.map(s => {
+    const days = Math.round((s.end - s.start) / 86400000);
+    return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${days}일)</span></div>`;
+  }).join('');
+
+  let html = `<div class="tt-title">${task.name}</div>`;
+  html += `<div class="tt-row"><span class="tt-label">담당</span><span class="tt-val">${task.owner}</span></div>`;
+  html += `<div class="tt-row"><span class="tt-label">생성일</span><span class="tt-val">${fmtDate(dates.created)}</span></div>`;
+  if (dates.done) {
+    const ld = Math.round((dates.done - dates.created) / 86400000);
+    html += `<div class="tt-row"><span class="tt-label">완료일</span><span class="tt-val">${fmtDate(dates.done)}</span></div>`;
+    html += `<hr class="tt-divider">`;
+    html += segSummary;
+    html += `<hr class="tt-divider">`;
+    html += `<div class="tt-row"><span class="tt-label">총 리드타임</span><span class="tt-val tt-leadtime">${ld}일</span></div>`;
+  } else {
+    html += `<hr class="tt-divider">`;
+    html += segSummary;
+    html += `<hr class="tt-divider">`;
+    html += `<div class="tt-row"><span class="tt-label">상태</span><span class="tt-val tt-inprogress">진행중</span></div>`;
+  }
+
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
+  let tx = e.clientX + 18, ty = e.clientY - 30;
+  if (tx + 260 > window.innerWidth)  tx = e.clientX - 278;
+  if (ty + tooltip.offsetHeight > window.innerHeight) ty = e.clientY - tooltip.offsetHeight - 8;
+  if (ty < 8) ty = 8;
+  tooltip.style.left = tx + 'px';
+  tooltip.style.top  = ty + 'px';
+});
+
+canvas.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+
+canvas.addEventListener('click', e => {
+  const r = canvas.getBoundingClientRect();
+  const my = (e.clientY - r.top) * (canvas.height / r.height);
+  const found = taskMeta.find(t => my >= t.y && my <= t.y + ROW_H);
+  if (found && found.task.link) window.open(found.task.link, '_blank');
+});
+
+canvas.style.cursor = 'pointer';
+</script>
+</body>
+</html>
