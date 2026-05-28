@@ -43,10 +43,13 @@ jobs:
               return row[idx].strip() if len(row) > idx else ''
 
           tasks = []
+          section = 0
           for row in rows[header_idx + 1:]:
               if not row or not row[0].strip():
+                  section += 1   # 빈 행 = 섹션 구분
                   continue
               tasks.append({
+                  'section':      section,
                   'name':         g(row, 0),
                   'owner':        g(row, 1),
                   'created':      g(row, 2),

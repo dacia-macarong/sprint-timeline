@@ -493,7 +493,8 @@ function renderChart(rawTasks) {
     const barY   = rowMid - BAR_H / 2;
 
     // 섹션별 배경 + 얼룩무늬
-    const secBg = sectionBg[task.section % sectionBg.length];
+    const secIdx = (task.section ?? 0) % sectionBg.length;
+    const secBg  = sectionBg[secIdx] || 'transparent';
     ctx.fillStyle = taskIdx % 2 === 0 ? secBg : 'rgba(255,255,255,0.015)';
     ctx.fillRect(0, y, canvas.width, ROW_H);
     ctx.strokeStyle = '#161b22'; ctx.lineWidth = 1;
