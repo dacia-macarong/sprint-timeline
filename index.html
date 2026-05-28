@@ -262,20 +262,22 @@ function getSegments(task) {
   const segs = [];
   const endOfChart = new Date(2026, 5, 15);
 
-  // ── 기획: 생성일 → 기획서 작성일 ───────────────────────────
-  // 기획서 없으면 생성일 이후 첫 마일스톤(시안완료, 개발검토 등)까지
+  // ── 기획: 생성일 → 기획완료 ────────────────────────────────
+  // 기획완료(기획서 작성)가 생성일보다 이후면 그 날짜까지
+  // 없거나 같은 날이면 시안시작/개발검토 등 이후 단계일까지
   if (pl && pl > c) {
     segs.push({ start: c, end: pl, phase: 'planning' });
-  } else if (!pl) {
+  } else {
     const firstMilestone = [ds, dd, dr, g, dc, dn]
       .filter(d => d && d > c)
       .sort((a, b) => a - b)[0];
     if (firstMilestone) segs.push({ start: c, end: firstMilestone, phase: 'planning' });
   }
 
-  // ── 디자인: 시안시작(또는 기획서/시안완료) → 가이드 완료 ─────
-  // 시안시작이 있으면 그걸 시작점으로 → 기획~시안시작 사이 공백 자연 생성
-  const designStart = ds || pl || dd;
+  // ── 디자인: 시안시작(또는 시안완료) → 가이드 완료 ───────────
+  // planning > created 이면 시안시작 or planning or 시안완료 순 사용
+  // planning 이 없거나 같은 날이면 pl 제외 (기획과 겹침 방지)
+  const designStart = (pl && pl > c) ? (ds || pl || dd) : (ds || dd);
   if (designStart && g && g > designStart) {
     segs.push({ start: designStart, end: g, phase: 'design' });
   }
