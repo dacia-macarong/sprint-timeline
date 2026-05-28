@@ -51,13 +51,14 @@ jobs:
                   'owner':        g(row, 1),
                   'created':      g(row, 2),
                   'planning':     g(row, 3),
-                  'design_draft': g(row, 4),
-                  'dev_review':   g(row, 5),
-                  'guide':        g(row, 6),
-                  'dev_complete': g(row, 7),
-                  'qa_complete':  g(row, 8),
-                  'done':         g(row, 9),
-                  'link':         g(row, 10),
+                  'design_start': g(row, 4),
+                  'design_draft': g(row, 5),
+                  'dev_review':   g(row, 6),
+                  'guide':        g(row, 7),
+                  'dev_complete': g(row, 8),
+                  'qa_complete':  g(row, 9),
+                  'done':         g(row, 10),
+                  'link':         g(row, 11),
               })
 
           result = {
