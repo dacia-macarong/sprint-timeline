@@ -110,41 +110,76 @@ function fmtDate(d) {
 }
 
 function getSegments(task) {
-  const d = {
-    created:      parseDate(task.created),
-    design_draft: parseDate(task.design_draft),
-    guide:        parseDate(task.guide),
-    dev_complete: parseDate(task.dev_complete),
-    qa_complete:  parseDate(task.qa_complete),
-    done:         parseDate(task.done),
-  };
+  const c  = parseDate(task.created);
+  const dd = parseDate(task.design_draft);   // 시안완료
+  const dr = parseDate(task.dev_review);     // 개발검토
+  const g  = parseDate(task.guide);          // 가이드완료
+  const dc = parseDate(task.dev_complete);
+  const qa = parseDate(task.qa_complete);
+  const dn = parseDate(task.done);
+  const dates = { created: c, design_draft: dd, dev_review: dr, guide: g,
+                  dev_complete: dc, qa_complete: qa, done: dn };
 
-  const phaseFor = {
-    created:      'planning',
-    design_draft: 'design',
-    guide:        'dev',
-    dev_complete: 'qa',
-    qa_complete:  'release',
-  };
+  if (!c) return { segments: [], dates };
 
-  const keys = ['created', 'design_draft', 'guide', 'dev_complete', 'qa_complete', 'done'];
-  const points = keys.map(k => ({ key: k, d: d[k] })).filter(x => x.d);
+  const segs = [];
+  const endOfChart = new Date(2026, 5, 15);
 
-  // Keep only monotonically increasing dates
-  const mono = [];
-  for (const p of points) {
-    if (!mono.length || p.d >= mono[mono.length - 1].d) mono.push(p);
+  // 개발 실제 시작 = 가이드완료 vs 개발검토 중 늦은 날짜
+  // (두 마일스톤이 모두 갖춰져야 실제 개발 착수)
+  const devStart = (g && dr) ? (g >= dr ? g : dr) : (g || dr || null);
+
+  // ── 기획 ──────────────────────────────────────────────────────
+  // created → 시안완료 (없으면 devStart, 그것도 없으면 생략)
+  const planEnd = dd || (devStart && !dd ? devStart : null);
+  if (planEnd && planEnd > c) {
+    segs.push({ start: c, end: planEnd, phase: 'planning' });
   }
 
-  const segments = [];
-  for (let i = 0; i < mono.length - 1; i++) {
-    const phase = phaseFor[mono[i].key];
-    if (!phase) continue;
-    if (mono[i + 1].d > mono[i].d) {
-      segments.push({ start: mono[i].d, end: mono[i + 1].d, phase });
+  // ── 디자인 ────────────────────────────────────────────────────
+  // 시안완료 → devStart (devStart > 시안완료일 때만)
+  // devStart도 dc도 없으면 done/endOfChart까지
+  if (dd) {
+    if (devStart && devStart > dd) {
+      segs.push({ start: dd, end: devStart, phase: 'design' });
+    } else if (!devStart && !dc) {
+      const designEnd = dn || endOfChart;
+      if (designEnd > dd) segs.push({ start: dd, end: designEnd, phase: 'design' });
+    }
+    // devStart <= dd 이거나 (no devStart + dc 있음) → 개발 bar가 dd부터 시작해서 커버
+  }
+
+  // ── 개발 ──────────────────────────────────────────────────────
+  // devStart → dev_complete (devStart 없으면 시안완료, 그것도 없으면 created)
+  if (dc) {
+    const devActualStart = (devStart && devStart < dc) ? devStart
+                         : (dd && dd < dc) ? dd
+                         : c;
+    if (devActualStart < dc) {
+      segs.push({ start: devActualStart, end: dc, phase: 'dev' });
     }
   }
-  return { segments, dates: d };
+
+  // ── QA ────────────────────────────────────────────────────────
+  // dev_complete → qa_complete (qa 없으면 done까지)
+  if (dc) {
+    const qaEnd = qa || (dn && dn > dc ? dn : null);
+    if (qaEnd && qaEnd > dc) segs.push({ start: dc, end: qaEnd, phase: 'qa' });
+  }
+
+  // ── 배포 ──────────────────────────────────────────────────────
+  // qa_complete → done
+  if (qa && dn && dn > qa) {
+    segs.push({ start: qa, end: dn, phase: 'release' });
+  }
+
+  // ── Fallback: 마일스톤 없는 태스크 ──────────────────────────
+  if (segs.length === 0) {
+    segs.push({ start: c, end: dn || endOfChart, phase: 'planning' });
+  }
+
+  segs.sort((a, b) => a.start - b.start);
+  return { segments: segs, dates };
 }
 
 // ── Layout constants ──────────────────────────────────────────
@@ -317,7 +352,7 @@ rawTasks.forEach((task, i) => {
 
   // In-progress dashed tail
   if (inProgress && dates.created) {
-    const lastD = dates.dev_complete || dates.guide || dates.design_draft || dates.created;
+    const lastD = dates.dev_complete || dates.guide || dates.dev_review || dates.design_draft || dates.created;
     const x = Math.min(dateToX(lastD), canvas.width - PAD_R - 40);
     ctx.strokeStyle = '#3fb95088';
     ctx.lineWidth = 2;
@@ -340,6 +375,7 @@ rawTasks.forEach((task, i) => {
   // Milestone dots
   const milestones = [
     { d: dates.design_draft, label: '시안' },
+    { d: dates.dev_review,   label: '개발검토' },
     { d: dates.guide,        label: '가이드' },
     { d: dates.dev_complete, label: '개발완료' },
     { d: dates.qa_complete,  label: 'QA완료' },
