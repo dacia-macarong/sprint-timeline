@@ -261,7 +261,15 @@ function getSegments(task) {
   const endOfChart = new Date(2026, 5, 15);
 
   // ── 기획: 생성일 → 기획서 작성일 ───────────────────────────
-  if (pl && pl > c) segs.push({ start: c, end: pl, phase: 'planning' });
+  // 기획서 없으면 생성일 이후 첫 마일스톤(시안완료, 개발검토 등)까지
+  if (pl && pl > c) {
+    segs.push({ start: c, end: pl, phase: 'planning' });
+  } else if (!pl) {
+    const firstMilestone = [dd, dr, g, dc, dn]
+      .filter(d => d && d > c)
+      .sort((a, b) => a - b)[0];
+    if (firstMilestone) segs.push({ start: c, end: firstMilestone, phase: 'planning' });
+  }
 
   // ── 디자인: 기획서 작성일 → 가이드 완료 ─────────────────────
   // (기획서 없으면 시안완료를 시작점으로 사용)
@@ -281,13 +289,6 @@ function getSegments(task) {
 
   // ── 배포: devQA 완료 → 태스크 완료 ──────────────────────────
   if (qa && dn && dn > qa) segs.push({ start: qa, end: dn, phase: 'release' });
-
-  // ── 기획 폴백: 기획서 없는 태스크에서 첫 bar 이전 기간을 기획으로 채움
-  if (!pl && segs.length > 0) {
-    segs.sort((a, b) => a.start - b.start);
-    const firstStart = segs[0].start;
-    if (firstStart > c) segs.unshift({ start: c, end: firstStart, phase: 'planning' });
-  }
 
   // ── 순수 폴백: 마일스톤이 전혀 없는 태스크
   if (segs.length === 0) segs.push({ start: c, end: dn || endOfChart, phase: 'planning' });
