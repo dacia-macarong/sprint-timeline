@@ -242,7 +242,19 @@ function getSegments(task) {
   return { segments: segs, dates };
 }
 
-// ── 실 작업 일수 계산 (겹치는 구간 병합 + 수동 조정 반영) ────
+// ── 영업일 카운트 (주말 제외) ────────────────────────────────
+function workingDays(start, end) {
+  let count = 0;
+  const d = new Date(start);
+  while (d < end) {
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6) count++;
+    d.setDate(d.getDate() + 1);
+  }
+  return count;
+}
+
+// ── 실 작업 영업일 계산 (겹치는 구간 병합 + 브레이크 제거) ──
 function calcActiveDays(segs, taskName) {
   if (!segs.length) return 0;
   const sorted = [...segs].sort((a, b) => a.start - b.start);
@@ -255,11 +267,21 @@ function calcActiveDays(segs, taskName) {
       merged.push({ start: sorted[i].start, end: sorted[i].end });
     }
   }
-  let total = merged.reduce((sum, s) => sum + Math.round((s.end - s.start) / 86400000), 0);
+  let total = merged.reduce((sum, s) => sum + workingDays(s.start, s.end), 0);
 
-  // 수동 조정 적용
+  // 브레이크(중단 구간) 영업일 차감
   const adjs = taskName ? (ADJUSTMENTS[taskName] || []) : [];
-  adjs.forEach(a => { total += a.days; });
+  adjs.forEach(a => {
+    if (a.breaks) {
+      a.breaks.forEach(br => {
+        const bStart = parseDate(br.from);
+        const bEnd   = parseDate(br.to);
+        if (bStart && bEnd) total -= workingDays(bStart, bEnd);
+      });
+    } else if (a.days) {
+      total += a.days;
+    }
+  });
 
   return Math.max(0, total);
 }
@@ -492,7 +514,7 @@ function renderChart(rawTasks) {
       const activeDays = calcActiveDays(segments, task.name);
       ctx.font = '600 10px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`${activeDays}d`, dateToX(dates.done)+6, rowMid+4);
+      ctx.fillText(`${activeDays}bd`, dateToX(dates.done)+6, rowMid+4);
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
@@ -510,8 +532,8 @@ function renderChart(rawTasks) {
 
     const { task, dates, inProgress } = found;
     const segSummary = found.segments.map(s => {
-      const days = Math.round((s.end - s.start) / 86400000);
-      return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${days}일)</span></div>`;
+      const wdays = workingDays(s.start, s.end);
+      return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}영업일)</span></div>`;
     }).join('');
 
     let html = `<div class="tt-title">${task.name}</div>`;
@@ -520,7 +542,7 @@ function renderChart(rawTasks) {
     if (dates.done) {
       const adjs      = ADJUSTMENTS[task.name] || [];
       const activeDays = calcActiveDays(found.segments, task.name);
-      const totalDays  = Math.round((dates.done - dates.created) / 86400000);
+      const totalDays  = workingDays(dates.created, dates.done);
       html += `<div class="tt-row"><span class="tt-label">완료일</span><span class="tt-val">${fmtDate(dates.done)}</span></div>`;
       html += `<hr class="tt-divider">${segSummary}`;
       if (adjs.length) {
@@ -531,9 +553,9 @@ function renderChart(rawTasks) {
         });
       }
       html += `<hr class="tt-divider">`;
-      html += `<div class="tt-row"><span class="tt-label">실 작업 기간</span><span class="tt-val tt-leadtime">${activeDays}일</span></div>`;
+      html += `<div class="tt-row"><span class="tt-label">실 작업 영업일</span><span class="tt-val tt-leadtime">${activeDays}영업일</span></div>`;
       if (totalDays !== activeDays) {
-        html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays}일 (공백 ${totalDays - activeDays}일 포함)</span></div>`;
+        html += `<div class="tt-row"><span class="tt-label">전체 영업일</span><span class="tt-val" style="color:#6e7681">${totalDays}일 (공백 ${totalDays - activeDays}일)</span></div>`;
       }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
