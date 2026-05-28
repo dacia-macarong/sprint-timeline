@@ -365,9 +365,15 @@ function renderChart(rawTasks) {
   document.getElementById('chart-wrapper').style.display = 'block';
 
   const canvas = document.getElementById('chart');
-  canvas.width  = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
-  canvas.height = HEADER_H + rawTasks.length * ROW_H + 12;
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
+  const cssH = HEADER_H + rawTasks.length * ROW_H + 12;
+  canvas.width  = cssW * dpr;
+  canvas.height = cssH * dpr;
+  canvas.style.width  = cssW + 'px';
+  canvas.style.height = cssH + 'px';
   const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
 
   function roundRect(x, y, w, h, r) {
     if (w < 1) w = 1;
