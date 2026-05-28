@@ -205,11 +205,10 @@ function parseTasks(csvText) {
   const hi = rows.findIndex(r => r[0]?.trim() === '태스크');
   if (hi === -1) throw new Error('헤더 행을 찾을 수 없습니다');
   const tasks = [];
-  let section = 0;
   for (let i = hi + 1; i < rows.length; i++) {
     const r = rows[i];
-    if (!r[0]?.trim()) { section++; continue; } // 빈 행 = 섹션 구분
-    tasks.push({ section,
+    if (!r[0]?.trim()) continue;
+    tasks.push({
       name:         r[0]?.trim() || '',
       owner:        r[1]?.trim() || '',
       created:      r[2]?.trim() || '',
@@ -364,21 +363,8 @@ function renderChart(rawTasks) {
   document.getElementById('chart-wrapper').style.display = 'block';
 
   const canvas = document.getElementById('chart');
-  // 섹션 구분선 포함한 renderItems 구성
-  const DIVIDER_H = 36;
-  const renderItems = [];
-  let curSection = -1;
-  rawTasks.forEach(task => {
-    if (task.section !== curSection) {
-      if (curSection >= 0) renderItems.push({ type: 'divider' });
-      curSection = task.section;
-    }
-    renderItems.push({ type: 'task', task });
-  });
-  const numDividers = renderItems.filter(r => r.type === 'divider').length;
-
   canvas.width  = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
-  canvas.height = HEADER_H + rawTasks.length * ROW_H + numDividers * DIVIDER_H + 12;
+  canvas.height = HEADER_H + rawTasks.length * ROW_H + 12;
   const ctx = canvas.getContext('2d');
 
   function roundRect(x, y, w, h, r) {
@@ -460,42 +446,15 @@ function renderChart(rawTasks) {
   const taskMeta = [];
   const ownerColors = { Dacia:'#1f4e8c', Ken:'#1a4731', Mike:'#4a1942',
                         Harry:'#5c2e00', Shunie:'#1e3a4a' };
-  const sectionBg = ['transparent', 'rgba(99,102,241,0.04)']; // 섹션별 배경
 
-  let currentY = HEADER_H;
-  let taskIdx  = 0; // 얼룩무늬용 인덱스
-
-  renderItems.forEach(item => {
-    if (item.type === 'divider') {
-      // ── 섹션 구분선 ────────────────────────────────────────
-      const midY = currentY + DIVIDER_H / 2;
-      // 구분선
-      ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
-      ctx.setLineDash([6, 4]);
-      ctx.beginPath(); ctx.moveTo(12, midY); ctx.lineTo(canvas.width - PAD_R, midY); ctx.stroke();
-      ctx.setLineDash([]);
-      // 레이블 배경
-      ctx.fillStyle = '#0d1117';
-      ctx.fillRect(0, currentY, LABEL_W, DIVIDER_H);
-      // 레이블 텍스트
-      ctx.font = '600 11px -apple-system, sans-serif';
-      ctx.fillStyle = '#484f58';
-      ctx.fillText('───── 경량 태스크 ─────', 12, midY + 4);
-      currentY += DIVIDER_H;
-      return;
-    }
-
-    const { task } = item;
+  rawTasks.forEach((task, i) => {
     const { segments, dates } = getSegments(task);
     const inProgress = !dates.done;
-    const y      = currentY;
+    const y      = HEADER_H + i * ROW_H;
     const rowMid = y + ROW_H / 2;
     const barY   = rowMid - BAR_H / 2;
 
-    // 섹션별 배경 + 얼룩무늬
-    const secIdx = (task.section ?? 0) % sectionBg.length;
-    const secBg  = sectionBg[secIdx] || 'transparent';
-    ctx.fillStyle = taskIdx % 2 === 0 ? secBg : 'rgba(255,255,255,0.015)';
+    ctx.fillStyle = i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)';
     ctx.fillRect(0, y, canvas.width, ROW_H);
     ctx.strokeStyle = '#161b22'; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(0, y+ROW_H); ctx.lineTo(canvas.width, y+ROW_H); ctx.stroke();
@@ -617,8 +576,6 @@ function renderChart(rawTasks) {
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
-    currentY += ROW_H;
-    taskIdx++;
   });
 
   // 툴팁
