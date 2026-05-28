@@ -79,5 +79,6 @@ jobs:
             echo "변경 없음 — 커밋 스킵"
           else
             git commit -m "chore: sync data from Google Sheets"
+            git pull --rebase origin main
             git push
           fi
