@@ -82,7 +82,8 @@
     <div class="legend-item"><div class="legend-chip" style="background:#ea580c"></div>개발</div>
     <div class="legend-item"><div class="legend-chip" style="background:#16a34a"></div>QA</div>
     <div class="legend-item"><div class="legend-chip" style="background:#0891b2"></div>배포</div>
-    <div class="legend-item" style="margin-left:8px; color:#6e7681; font-size:11px;">● 마일스톤</div>
+    <div class="legend-item"><div style="width:8px;height:8px;border-radius:50%;background:#c4b5fd;border:1.5px solid #0d1117;flex-shrink:0"></div>시안</div>
+    <div class="legend-item"><div style="width:9px;height:9px;border-radius:50%;background:#7c3aed;border:1.5px solid #0d1117;flex-shrink:0"></div>가이드</div>
   </div>
 
   <div id="loading"><div class="spinner"></div>데이터 불러오는 중...</div>
@@ -370,12 +371,27 @@ function renderChart(rawTasks) {
     }
 
     // 마일스톤 점
-    [dates.design_draft, dates.dev_review, dates.guide, dates.dev_complete, dates.qa_complete, dates.done]
-      .filter(Boolean).forEach(md => {
-        const x = dateToX(md);
-        ctx.fillStyle = '#f0f6fc'; ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.arc(x, rowMid, 3.5, 0, Math.PI*2); ctx.fill(); ctx.stroke();
-      });
+    const milestones = [
+      { d: dates.design_draft, label: '시안',   color: '#c4b5fd', r: 4   },
+      { d: dates.dev_review,   label: null,     color: '#d1d5db', r: 3   },
+      { d: dates.guide,        label: '가이드', color: '#7c3aed', r: 4.5 },
+      { d: dates.dev_complete, label: null,     color: '#f0f6fc', r: 3   },
+      { d: dates.qa_complete,  label: null,     color: '#f0f6fc', r: 3   },
+      { d: dates.done,         label: null,     color: '#f0f6fc', r: 3   },
+    ].filter(m => m.d);
+
+    milestones.forEach(m => {
+      const x = dateToX(m.d);
+      ctx.fillStyle = m.color; ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(x, rowMid, m.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      if (m.label) {
+        ctx.font = '600 9px -apple-system, sans-serif';
+        ctx.fillStyle = m.color;
+        ctx.textAlign = 'center';
+        ctx.fillText(m.label, x, barY - 3);
+        ctx.textAlign = 'left';
+      }
+    });
 
     // 리드타임 레이블
     if (dates.done && dates.created) {
