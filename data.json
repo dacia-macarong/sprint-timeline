@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 03:22 UTC",
+  "updated": "2026-05-28 03:28 UTC",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -17,7 +17,7 @@
     {
       "name": "홈 개선 -> 양호해요 ATF",
       "owner": "Dacia",
-      "created": "2026. 2. 19",
+      "created": "2026. 3. 30",
       "planning": "2026. 3. 30",
       "design_draft": "2026. 4. 3",
       "dev_review": "2026. 4. 6",
