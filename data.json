@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 14:46 KST",
+  "updated": "2026-05-28 14:48 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -265,7 +265,7 @@
       "name": "내차 관리 점수 카드",
       "owner": "Ken, Dacia",
       "created": "2026. 5. 4",
-      "planning": "2026. 5. 12",
+      "planning": "2026. 5. 14",
       "design_draft": "2026. 5. 22",
       "dev_review": "2026. 5. 27",
       "guide": "2026. 5. 27",
