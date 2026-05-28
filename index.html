@@ -342,8 +342,8 @@ function calcActiveDays(segs, taskName) {
 
 // ── 렌더링 ────────────────────────────────────────────────────
 const LABEL_W  = 188;
-const ROW_H    = 42;
-const BAR_H    = 20;
+const ROW_H    = 50;
+const BAR_H    = 22;
 const HEADER_H = 54;
 const PPD      = 7.8;  // 픽셀/일
 const PAD_R    = 32;
@@ -394,8 +394,8 @@ function renderChart(rawTasks) {
 
     // 월 이름 (굵게, 상단)
     ctx.fillStyle = '#58a6ff';
-    ctx.font = '700 12px -apple-system, sans-serif';
-    ctx.fillText(monthNames[m-1], x + 5, 18);
+    ctx.font = '700 14px -apple-system, sans-serif';
+    ctx.fillText(monthNames[m-1], x + 5, 20);
 
     // 주 단위 격자선 + 날짜 레이블
     const dim = new Date(2026, m, 0).getDate();
@@ -412,8 +412,8 @@ function renderChart(rawTasks) {
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(wx, HEADER_H - 8); ctx.lineTo(wx, canvas.height); ctx.stroke();
         ctx.fillStyle = '#484f58';
-        ctx.font = '10px -apple-system, sans-serif';
-        ctx.fillText(`${day}`, wx + 2, 34);
+        ctx.font = '11px -apple-system, sans-serif';
+        ctx.fillText(`${day}`, wx + 2, 38);
       } else if (dow === 6 || dow === 0) {
         // 주말: 아주 연한 배경
         const nextX = wx + PPD;
@@ -436,8 +436,8 @@ function renderChart(rawTasks) {
   ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(LABEL_W,0); ctx.lineTo(LABEL_W, canvas.height); ctx.stroke();
   ctx.fillStyle = '#6e7681';
-  ctx.font = '700 11px -apple-system, sans-serif';
-  ctx.fillText('태스크', 12, 22);
+  ctx.font = '700 13px -apple-system, sans-serif';
+  ctx.fillText('태스크', 12, 24);
 
   // 태스크 렌더링
   const taskMeta = [];
@@ -457,7 +457,7 @@ function renderChart(rawTasks) {
     ctx.beginPath(); ctx.moveTo(0, y+ROW_H); ctx.lineTo(canvas.width, y+ROW_H); ctx.stroke();
 
     // 태스크명
-    ctx.font = '12px -apple-system, sans-serif';
+    ctx.font = '15px -apple-system, sans-serif';
     ctx.fillStyle = inProgress ? '#8b949e' : '#c9d1d9';
     let name = task.name;
     while (ctx.measureText(name + '…').width > LABEL_W - 16 && name.length > 2) name = name.slice(0,-1);
@@ -555,7 +555,7 @@ function renderChart(rawTasks) {
       ctx.fillStyle = m.color; ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5;
       ctx.beginPath(); ctx.arc(x, rowMid, m.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
       if (m.label) {
-        ctx.font = '600 9px -apple-system, sans-serif';
+        ctx.font = '600 11px -apple-system, sans-serif';
         ctx.fillStyle = m.color;
         ctx.textAlign = 'center';
         ctx.fillText(m.label, x, barY - 3);
@@ -566,9 +566,9 @@ function renderChart(rawTasks) {
     // 실 작업 일수 레이블 (빈 기간 + 수동 조정 반영)
     if (dates.done) {
       const activeDays = calcActiveDays(segments, task.name);
-      ctx.font = '600 10px -apple-system, sans-serif';
+      ctx.font = '600 13px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`${activeDays}WD`, dateToX(dates.done)+6, rowMid+4);
+      ctx.fillText(`${activeDays}WD`, dateToX(dates.done)+6, rowMid+5);
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
