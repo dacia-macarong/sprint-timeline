@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 12:29 KST",
+  "updated": "2026-05-28 14:14 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -43,7 +43,7 @@
     {
       "name": "영수증 촬영",
       "owner": "Dacia",
-      "created": "2026. 3. 10",
+      "created": "2026. 3. 24",
       "planning": "2026. 3. 31",
       "design_draft": "2026. 4. 14",
       "dev_review": "2026. 4. 15",
@@ -76,7 +76,7 @@
       "guide": "2026. 3. 13",
       "dev_complete": "2026. 3. 25",
       "qa_complete": "2026. 3. 31",
-      "done": "2026. 4. 21",
+      "done": "2026. 4. 2",
       "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
     },
     {
@@ -273,6 +273,45 @@
       "qa_complete": "",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
+    },
+    {
+      "name": "정비목록 - 정비리포트 점검내역 반영",
+      "owner": "Ken",
+      "created": "",
+      "planning": "",
+      "design_draft": "",
+      "dev_review": "",
+      "guide": "",
+      "dev_complete": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
+    },
+    {
+      "name": "정비목록 상세 - 점검내역 반영",
+      "owner": "Ken",
+      "created": "",
+      "planning": "",
+      "design_draft": "",
+      "dev_review": "",
+      "guide": "",
+      "dev_complete": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
+    },
+    {
+      "name": "푸시 동의율 높이기",
+      "owner": "Ken",
+      "created": "",
+      "planning": "",
+      "design_draft": "",
+      "dev_review": "",
+      "guide": "",
+      "dev_complete": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
     }
   ]
 }
