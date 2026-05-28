@@ -1,7 +1,8 @@
 {
-  "updated": "2026-05-28 15:16 KST",
+  "updated": "2026-05-28 15:20 KST",
   "tasks": [
     {
+      "section": 0,
       "name": "동적정보 T2 (내차정보)",
       "owner": "Dacia",
       "created": "2026. 2. 6",
@@ -16,6 +17,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213145806394041"
     },
     {
+      "section": 0,
       "name": "신규 유저 내차할일",
       "owner": "Dacia",
       "created": "2026. 3. 17",
@@ -30,6 +32,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213698204116242"
     },
     {
+      "section": 0,
       "name": "양호해요 ATF",
       "owner": "Dacia",
       "created": "2026. 3. 23",
@@ -44,6 +47,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213351600399060"
     },
     {
+      "section": 0,
       "name": "영수증 촬영",
       "owner": "Dacia",
       "created": "2026. 3. 24",
@@ -58,6 +62,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213594049662564"
     },
     {
+      "section": 0,
       "name": "온보딩 개인화 정보 1차 개선",
       "owner": "Dacia",
       "created": "2026. 4. 15",
@@ -72,6 +77,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214068267270244?focus=true"
     },
     {
+      "section": 0,
       "name": "온보딩 세그먼트 나누기 + 위젯개선 1차",
       "owner": "Dacia, Ken",
       "created": "2026. 4. 10",
@@ -86,6 +92,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1214027026280803"
     },
     {
+      "section": 0,
       "name": "주간 미션",
       "owner": "Ken",
       "created": "2026. 2. 27",
@@ -100,6 +107,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
     },
     {
+      "section": 0,
       "name": "내차 관리 점수 카드",
       "owner": "Ken, Dacia",
       "created": "2026. 5. 4",
@@ -114,6 +122,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
     },
     {
+      "section": 0,
       "name": "정비목록 - 정비리포트 점검내역 반영",
       "owner": "Ken",
       "created": "2026. 1. 19",
@@ -128,6 +137,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
     },
     {
+      "section": 0,
       "name": "정비목록 상세 - 점검내역 반영",
       "owner": "Ken",
       "created": "2026. 5. 4",
@@ -142,6 +152,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
     },
     {
+      "section": 0,
       "name": "푸시 동의율 높이기",
       "owner": "Ken",
       "created": "2026. 4. 30",
@@ -156,6 +167,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
     },
     {
+      "section": 1,
       "name": "추가상품 쿠폰 반영",
       "owner": "Ken",
       "created": "2026. 4. 1",
@@ -170,6 +182,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213893508541397"
     },
     {
+      "section": 1,
       "name": "옵션상품 문구 추가",
       "owner": "Ken",
       "created": "2026. 4. 9",
@@ -184,6 +197,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213989148399593"
     },
     {
+      "section": 1,
       "name": "현장결제 3차개선",
       "owner": "Harry",
       "created": "2026. 4. 7",
@@ -198,6 +212,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213949804942058"
     },
     {
+      "section": 1,
       "name": "내차 판매 페이지",
       "owner": "Ken",
       "created": "2026. 4. 13",
@@ -212,6 +227,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1214033388210396"
     },
     {
+      "section": 1,
       "name": "기록증명서 개선 1차",
       "owner": "Ken",
       "created": "2026. 3. 17",
@@ -226,6 +242,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213698197523196"
     },
     {
+      "section": 1,
       "name": "중고차 Phase1",
       "owner": "Ken",
       "created": "2026. 3. 10",
@@ -240,10 +257,11 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1213588114869461?focus=true"
     },
     {
+      "section": 1,
       "name": "정비알림 알림톡 자동화",
       "owner": "Dacia",
       "created": "2026. 3. 12",
-      "planning": "",
+      "planning": "2026. 3. 13",
       "design_start": "",
       "design_draft": "",
       "dev_review": "2026. 4. 7",
@@ -254,6 +272,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1213612364034585"
     },
     {
+      "section": 1,
       "name": "iOS 푸시 수신 1차 개선",
       "owner": "Shunie",
       "created": "2026. 4. 30",
@@ -268,6 +287,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214411248519038?focus=true"
     },
     {
+      "section": 1,
       "name": "segment-phase2 (기존유저 적용)",
       "owner": "Mike",
       "created": "2026. 5. 11",
@@ -282,6 +302,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1214686598893471"
     },
     {
+      "section": 1,
       "name": "segment 배치 개선 (null 없도록)",
       "owner": "Mike",
       "created": "2026. 5. 21",
@@ -296,6 +317,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1214987200405712"
     },
     {
+      "section": 1,
       "name": "노출영역 세그먼트 필터",
       "owner": "Dacia",
       "created": "2026. 5. 15",
@@ -310,6 +332,7 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214792347002951?focus=true"
     },
     {
+      "section": 1,
       "name": "내차 팔기 플로우",
       "owner": "Ken",
       "created": "2026. 5. 18",
@@ -324,6 +347,7 @@
       "link": "https://app.asana.com/0/1213968584562495/1214879592868445"
     },
     {
+      "section": 1,
       "name": "주간 미션에 마수동 미션 추가",
       "owner": "Ken",
       "created": "2026. 5. 11",
