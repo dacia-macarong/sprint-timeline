@@ -107,6 +107,17 @@ const PHASES = {
   release:  { color: '#0891b2', label: '배포' },
 };
 
+// ── 수동 조정 ─────────────────────────────────────────────────
+// 스프레드시트에 담기 어려운 예외 처리 (날짜 보정)
+// 형식: { '태스크명': [{ phase, days, note }] }
+// phase: 'planning' | 'design' | 'dev' | 'qa' | 'release'
+// days: 양수(추가) 또는 음수(차감)
+const ADJUSTMENTS = {
+  '영수증 촬영': [
+    { phase: 'dev', days: -1, note: '개발 중 타 태스크 우선 처리로 1일 중단' },
+  ],
+};
+
 // ── CSV 파싱 ──────────────────────────────────────────────────
 function parseCSV(text) {
   const rows = [];
@@ -226,8 +237,8 @@ function getSegments(task) {
   return { segments: segs, dates };
 }
 
-// ── 실 작업 일수 계산 (겹치는 구간 병합 후 합산) ─────────────
-function calcActiveDays(segs) {
+// ── 실 작업 일수 계산 (겹치는 구간 병합 + 수동 조정 반영) ────
+function calcActiveDays(segs, taskName) {
   if (!segs.length) return 0;
   const sorted = [...segs].sort((a, b) => a.start - b.start);
   const merged = [{ start: sorted[0].start, end: sorted[0].end }];
@@ -239,7 +250,13 @@ function calcActiveDays(segs) {
       merged.push({ start: sorted[i].start, end: sorted[i].end });
     }
   }
-  return merged.reduce((sum, s) => sum + Math.round((s.end - s.start) / 86400000), 0);
+  let total = merged.reduce((sum, s) => sum + Math.round((s.end - s.start) / 86400000), 0);
+
+  // 수동 조정 적용
+  const adjs = taskName ? (ADJUSTMENTS[taskName] || []) : [];
+  adjs.forEach(a => { total += a.days; });
+
+  return Math.max(0, total);
 }
 
 // ── 렌더링 ────────────────────────────────────────────────────
@@ -432,9 +449,9 @@ function renderChart(rawTasks) {
       }
     });
 
-    // 실 작업 일수 레이블 (빈 기간 제외)
+    // 실 작업 일수 레이블 (빈 기간 + 수동 조정 반영)
     if (dates.done) {
-      const activeDays = calcActiveDays(segments);
+      const activeDays = calcActiveDays(segments, task.name);
       ctx.font = '600 10px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
       ctx.fillText(`${activeDays}d`, dateToX(dates.done)+6, rowMid+4);
@@ -463,10 +480,19 @@ function renderChart(rawTasks) {
     html += `<div class="tt-row"><span class="tt-label">담당</span><span class="tt-val">${task.owner}</span></div>`;
     html += `<div class="tt-row"><span class="tt-label">생성일</span><span class="tt-val">${fmtDate(dates.created)}</span></div>`;
     if (dates.done) {
-      const activeDays = calcActiveDays(found.segments);
+      const adjs      = ADJUSTMENTS[task.name] || [];
+      const activeDays = calcActiveDays(found.segments, task.name);
       const totalDays  = Math.round((dates.done - dates.created) / 86400000);
       html += `<div class="tt-row"><span class="tt-label">완료일</span><span class="tt-val">${fmtDate(dates.done)}</span></div>`;
-      html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
+      html += `<hr class="tt-divider">${segSummary}`;
+      if (adjs.length) {
+        const phaseLabel = { planning:'기획', design:'디자인', dev:'개발', qa:'QA', release:'배포' };
+        adjs.forEach(a => {
+          const sign = a.days > 0 ? `+${a.days}` : `${a.days}`;
+          html += `<div class="tt-row" style="color:#f0883e"><span class="tt-label">조정 (${phaseLabel[a.phase]})</span><span class="tt-val">${sign}일 — ${a.note}</span></div>`;
+        });
+      }
+      html += `<hr class="tt-divider">`;
       html += `<div class="tt-row"><span class="tt-label">실 작업 기간</span><span class="tt-val tt-leadtime">${activeDays}일</span></div>`;
       if (totalDays !== activeDays) {
         html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays}일 (공백 ${totalDays - activeDays}일 포함)</span></div>`;
