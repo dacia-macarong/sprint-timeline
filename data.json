@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 19:09 KST",
+  "updated": "2026-05-28 19:16 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -90,7 +90,7 @@
       "owner": "Ken",
       "created": "2026. 2. 27",
       "planning": "2026. 2. 27",
-      "design_start": "",
+      "design_start": "2026. 2. 27",
       "design_draft": "2026. 3. 6",
       "dev_review": "2026. 3. 13",
       "guide": "2026. 3. 13",
