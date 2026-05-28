@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 14:25 KST",
+  "updated": "2026-05-28 14:30 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -59,12 +59,12 @@
       "created": "2026. 4. 15",
       "planning": "",
       "design_draft": "2026. 4. 20",
-      "dev_review": "2026. 4. 20",
+      "dev_review": "2026. 4. 22",
       "guide": "2026. 4. 20",
-      "dev_complete": "",
-      "qa_complete": "",
-      "done": "",
-      "link": ""
+      "dev_complete": "2026. 4. 23",
+      "qa_complete": "2026. 4. 24",
+      "done": "2026. 4. 29",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214068267270244?focus=true"
     },
     {
       "name": "온보딩 세그먼트 나누기 + 위젯개선 1차",
@@ -91,19 +91,6 @@
       "qa_complete": "2026. 3. 31",
       "done": "2026. 4. 2",
       "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
-    },
-    {
-      "name": "온보딩 개인화 개선 1차",
-      "owner": "Dacia",
-      "created": "2026. 4. 15",
-      "planning": "",
-      "design_draft": "2026. 4. 20",
-      "dev_review": "2026. 4. 20",
-      "guide": "2026. 4. 20",
-      "dev_complete": "2026. 4. 22",
-      "qa_complete": "2026. 4. 24",
-      "done": "2026. 4. 30",
-      "link": "https://app.asana.com/0/1213968584562495/1214068267270244"
     },
     {
       "name": "추가상품 쿠폰 반영",
