@@ -599,7 +599,21 @@ function renderChart(rawTasks) {
     const { task, dates, inProgress } = found;
     const segSummary = found.segments.map(s => {
       const wdays = workingDays(s.start, s.end);
-      return `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}WD)</span></div>`;
+      let row = `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}WD)</span></div>`;
+
+      // 디자인 단계: 시안 / 가이드 분리 표시
+      if (s.phase === 'design') {
+        const sub = (lbl, a, b, color) => {
+          if (!a || !b || b <= a) return '';
+          const wd = workingDays(a, b);
+          return `<div class="tt-row" style="margin-left:14px">` +
+            `<span class="tt-label" style="color:${color}">└ ${lbl}</span>` +
+            `<span class="tt-val" style="color:#8b949e">${fmtDate(a)} – ${fmtDate(b)} (${wd}WD)</span></div>`;
+        };
+        row += sub('시안',   s.start,           dates.design_draft, '#c4b5fd');
+        row += sub('가이드', dates.design_draft, s.end,              '#7c3aed');
+      }
+      return row;
     }).join('');
 
     let html = `<div class="tt-title">${task.name}</div>`;
