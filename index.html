@@ -72,11 +72,8 @@
   <div class="page-header">
     <h1>플랫폼혁신팀 스프린트 타임라인 2026</h1>
     <div class="subtitle">
-      데이터 소스:
-      <a href="https://docs.google.com/spreadsheets/d/1XTE_X-NEkVE6A2FrCDmbUg9qjNsbOXO1WUGUZ16wN1k" target="_blank">
-        Google Sheets
-      </a>
-      · 페이지 열 때마다 최신 데이터 자동 반영 · 행 클릭 시 Asana 이동
+      <a href="https://docs.google.com/spreadsheets/d/1XTE_X-NEkVE6A2FrCDmbUg9qjNsbOXO1WUGUZ16wN1k" target="_blank">Google Sheets</a>
+      에서 15분마다 자동 동기화 · 행 클릭 시 Asana 이동 · <span id="updated-at"></span>
     </div>
   </div>
   <div class="legend">
@@ -88,7 +85,7 @@
     <div class="legend-item" style="margin-left:8px; color:#6e7681; font-size:11px;">● 마일스톤</div>
   </div>
 
-  <div id="loading"><div class="spinner"></div>구글 시트에서 데이터 불러오는 중...</div>
+  <div id="loading"><div class="spinner"></div>데이터 불러오는 중...</div>
   <div id="error"></div>
   <div id="chart-wrapper" style="display:none">
     <canvas id="chart"></canvas>
@@ -96,9 +93,9 @@
   <div id="tooltip"></div>
 
 <script>
-// ── 구글 시트 설정 ────────────────────────────────────────────
-const SHEET_ID  = '1XTE_X-NEkVE6A2FrCDmbUg9qjNsbOXO1WUGUZ16wN1k';
-const SHEET_GID = '0';
+// ── 데이터 소스 ───────────────────────────────────────────────
+// GitHub Actions가 15분마다 구글 시트를 읽어 data.json으로 저장
+const DATA_URL = './data.json';
 
 // ── 색상/단계 ─────────────────────────────────────────────────
 const PHASES = {
@@ -440,23 +437,23 @@ function renderChart(rawTasks) {
 
 // ── 데이터 로드 ───────────────────────────────────────────────
 async function loadAndRender() {
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${SHEET_GID}`;
   try {
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const csv = await resp.text();
-    const tasks = parseTasks(csv);
-    if (tasks.length === 0) throw new Error('태스크 데이터가 없습니다');
-    renderChart(tasks);
+    const resp = await fetch(DATA_URL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status} — data.json을 읽을 수 없습니다`);
+    const json = await resp.json();
+    if (!json.tasks?.length) throw new Error('태스크 데이터가 없습니다');
+
+    const updatedEl = document.getElementById('updated-at');
+    if (updatedEl && json.updated) updatedEl.textContent = `최종 동기화: ${json.updated}`;
+
+    renderChart(json.tasks);
   } catch (err) {
     document.getElementById('loading').style.display = 'none';
     const errEl = document.getElementById('error');
     errEl.style.display = 'block';
     errEl.innerHTML = `
       <strong>데이터를 불러오지 못했습니다.</strong><br>
-      ${err.message}<br><br>
-      구글 시트 공유 설정을 확인하세요:
-      <em>공유 → 링크가 있는 모든 사용자 → 뷰어</em>
+      ${err.message}
     `;
   }
 }
