@@ -150,7 +150,7 @@
 <script>
 // ── 데이터 소스 ───────────────────────────────────────────────
 // GitHub Actions가 15분마다 구글 시트를 읽어 data.json으로 저장
-const DATA_URL = './data.json';
+const DATA_URL = `./data.json?t=${Date.now()}`;
 
 // ── 색상/단계 ─────────────────────────────────────────────────
 const PHASES = {
