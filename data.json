@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 11:55 KST",
+  "updated": "2026-05-29 12:20 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -117,13 +117,13 @@
       "name": "정비목록 - 점검내역 반영",
       "owner": "Ken",
       "created": "2026. 1. 19",
-      "planning": "",
+      "planning": "2026. 4. 29",
       "design_start": "",
       "design_draft": "",
-      "dev_review": "",
+      "dev_review": "2026. 4. 22",
       "guide": "",
-      "dev_complete": "",
-      "qa_complete": "",
+      "dev_complete": "2026. 5. 20",
+      "qa_complete": "2026. 5. 29",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
     },
@@ -313,9 +313,9 @@
       "name": "내차 팔기 플로우",
       "owner": "Ken",
       "created": "2026. 5. 18",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "2026. 5. 22",
+      "planning": "2026. 5. 19",
+      "design_start": "2026. 5. 19",
+      "design_draft": "2026. 5. 21",
       "dev_review": "",
       "guide": "",
       "dev_complete": "",
