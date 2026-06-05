@@ -21,7 +21,8 @@
     .legend { display: flex; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
     .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #8b949e; }
     .legend-chip { width: 24px; height: 10px; border-radius: 5px; }
-    #chart-wrapper { overflow-x: auto; padding-bottom: 8px; }
+    #chart-wrapper { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 240px); padding-bottom: 8px; }
+    #chart-header-wrapper { position: sticky; top: 0; z-index: 10; background: #0d1117; }
     canvas { display: block; }
     #tooltip {
       position: fixed;
@@ -157,6 +158,9 @@
   <div id="loading"><div class="spinner"></div>데이터 불러오는 중...</div>
   <div id="error"></div>
   <div id="chart-wrapper" style="display:none">
+    <div id="chart-header-wrapper">
+      <canvas id="chart-header"></canvas>
+    </div>
     <canvas id="chart"></canvas>
   </div>
   <div id="tooltip"></div>
@@ -274,7 +278,7 @@ function getSegments(task) {
   if (!c) return { segments: [], dates };
 
   const segs = [];
-  const endOfChart = new Date(2026, 5, 15);
+  const endOfChart = new Date(2026, 8, 1);
 
   // ── 기획: 생성일 → 기획완료 ────────────────────────────────
   // 기획완료(기획서 작성)가 생성일보다 이후면 그 날짜까지
@@ -367,7 +371,7 @@ const HEADER_H = 54;
 const PPD      = 7.8;  // 픽셀/일
 const PAD_R    = 32;
 const CHART_START = new Date(2026, 1, 1);   // 2월 1일
-const CHART_END   = new Date(2026, 5, 1);   // 6월 1일 (5월 말까지)
+const CHART_END   = new Date(2026, 8, 1);   // 9월 1일 (7월 말까지)
 const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
 
 function dateToX(d) {
@@ -378,10 +382,64 @@ function renderChart(rawTasks) {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('chart-wrapper').style.display = 'block';
 
-  const canvas = document.getElementById('chart');
-  const dpr = window.devicePixelRatio || 1;
+  const dpr  = window.devicePixelRatio || 1;
   const cssW = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
-  const cssH = HEADER_H + rawTasks.length * ROW_H + 12;
+  const cssH = rawTasks.length * ROW_H + 12;
+
+  // ── 헤더 캔버스 ───────────────────────────────────────────────
+  const headerCanvas = document.getElementById('chart-header');
+  headerCanvas.width  = cssW * dpr;
+  headerCanvas.height = HEADER_H * dpr;
+  headerCanvas.style.width  = cssW + 'px';
+  headerCanvas.style.height = HEADER_H + 'px';
+  const hctx = headerCanvas.getContext('2d');
+  hctx.scale(dpr, dpr);
+
+  hctx.fillStyle = '#0d1117';
+  hctx.fillRect(0, 0, cssW, HEADER_H);
+
+  const monthNames = ['1월','2월','3월','4월','5월','6월','7월','8월'];
+  for (let m = 2; m <= 8; m++) {
+    const d  = new Date(2026, m-1, 1);
+    const x  = dateToX(d);
+
+    hctx.fillStyle = '#58a6ff';
+    hctx.font = '700 14px -apple-system, sans-serif';
+    hctx.fillText(monthNames[m-1], x + 5, 20);
+
+    const dim = new Date(2026, m, 0).getDate();
+    for (let day = 1; day <= dim; day++) {
+      const dd = new Date(2026, m-1, day);
+      if (dd >= CHART_END) break;
+      if (day === 1) continue;
+      const wx  = dateToX(dd);
+      const dow = dd.getDay();
+      if (dow === 1) {
+        hctx.strokeStyle = '#21262d'; hctx.lineWidth = 1;
+        hctx.beginPath(); hctx.moveTo(wx, HEADER_H - 26); hctx.lineTo(wx, HEADER_H); hctx.stroke();
+        hctx.fillStyle = '#484f58';
+        hctx.font = '11px -apple-system, sans-serif';
+        hctx.fillText(`${day}`, wx + 2, 38);
+      }
+    }
+  }
+  for (let m = 2; m <= 8; m++) {
+    const x = dateToX(new Date(2026, m-1, 1));
+    hctx.strokeStyle = '#30363d'; hctx.lineWidth = 1;
+    hctx.beginPath(); hctx.moveTo(x, 0); hctx.lineTo(x, HEADER_H); hctx.stroke();
+  }
+  hctx.strokeStyle = '#30363d'; hctx.lineWidth = 1;
+  hctx.beginPath(); hctx.moveTo(0, HEADER_H - 0.5); hctx.lineTo(cssW, HEADER_H - 0.5); hctx.stroke();
+  hctx.fillStyle = '#0d1117';
+  hctx.fillRect(0, 0, LABEL_W, HEADER_H);
+  hctx.strokeStyle = '#21262d'; hctx.lineWidth = 1;
+  hctx.beginPath(); hctx.moveTo(LABEL_W, 0); hctx.lineTo(LABEL_W, HEADER_H); hctx.stroke();
+  hctx.fillStyle = '#6e7681';
+  hctx.font = '700 13px -apple-system, sans-serif';
+  hctx.fillText('태스크', 12, 24);
+
+  // ── 메인 캔버스 (태스크 행) ───────────────────────────────────
+  const canvas = document.getElementById('chart');
   canvas.width  = cssW * dpr;
   canvas.height = cssH * dpr;
   canvas.style.width  = cssW + 'px';
@@ -400,69 +458,45 @@ function renderChart(rawTasks) {
     ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
   }
 
-  // 배경
   ctx.fillStyle = '#0d1117';
   ctx.fillRect(0, 0, cssW, cssH);
 
-  // 월 컬럼 + 주/일 격자
-  const monthNames = ['1월','2월','3월','4월','5월','6월'];
-  for (let m = 2; m <= 5; m++) {
+  for (let m = 2; m <= 8; m++) {
     const d  = new Date(2026, m-1, 1);
     const x  = dateToX(d);
     const nx = dateToX(new Date(2026, m, 1));
 
-    // 짝수 월 배경 음영
     if (m % 2 === 0) {
       ctx.fillStyle = 'rgba(255,255,255,0.018)';
-      ctx.fillRect(x, HEADER_H, nx - x, cssH - HEADER_H);
+      ctx.fillRect(x, 0, nx - x, cssH);
     }
 
-    // 월 이름 (굵게, 상단)
-    ctx.fillStyle = '#58a6ff';
-    ctx.font = '700 14px -apple-system, sans-serif';
-    ctx.fillText(monthNames[m-1], x + 5, 20);
-
-    // 주 단위 격자선 + 날짜 레이블
     const dim = new Date(2026, m, 0).getDate();
     for (let day = 1; day <= dim; day++) {
       const dd = new Date(2026, m-1, day);
       if (dd >= CHART_END) break;
-      const wx = dateToX(dd);
-      const dow = dd.getDay(); // 0=일, 6=토
-
-      if (day === 1) continue; // 월 경계는 별도 처리
-
+      if (day === 1) continue;
+      const wx  = dateToX(dd);
+      const dow = dd.getDay();
       if (dow === 1) {
-        // 월요일 = 주 시작: 격자선 + 날짜 레이블
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(wx, HEADER_H - 8); ctx.lineTo(wx, cssH); ctx.stroke();
-        ctx.fillStyle = '#484f58';
-        ctx.font = '11px -apple-system, sans-serif';
-        ctx.fillText(`${day}`, wx + 2, 38);
+        ctx.beginPath(); ctx.moveTo(wx, 0); ctx.lineTo(wx, cssH); ctx.stroke();
       } else if (dow === 6 || dow === 0) {
-        // 주말: 아주 연한 배경
-        const nextX = wx + PPD;
         ctx.fillStyle = 'rgba(255,255,255,0.008)';
-        ctx.fillRect(wx, HEADER_H, PPD, cssH - HEADER_H);
+        ctx.fillRect(wx, 0, PPD, cssH);
       }
     }
   }
-  for (let m = 2; m <= 5; m++) {
+  for (let m = 2; m <= 8; m++) {
     const x = dateToX(new Date(2026, m-1, 1));
     ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, cssH); ctx.stroke();
   }
-  ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, HEADER_H); ctx.lineTo(cssW, HEADER_H); ctx.stroke();
 
-  // 레이블 영역
   ctx.fillStyle = '#0d1117';
   ctx.fillRect(0, 0, LABEL_W, cssH);
   ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(LABEL_W,0); ctx.lineTo(LABEL_W, cssH); ctx.stroke();
-  ctx.fillStyle = '#6e7681';
-  ctx.font = '700 13px -apple-system, sans-serif';
-  ctx.fillText('태스크', 12, 24);
+  ctx.beginPath(); ctx.moveTo(LABEL_W, 0); ctx.lineTo(LABEL_W, cssH); ctx.stroke();
 
   // 태스크 렌더링
   const taskMeta = [];
@@ -472,7 +506,7 @@ function renderChart(rawTasks) {
   rawTasks.forEach((task, i) => {
     const { segments, dates } = getSegments(task);
     const inProgress = !dates.done;
-    const y      = HEADER_H + i * ROW_H;
+    const y      = i * ROW_H;
     const rowMid = y + ROW_H / 2;
     const barY   = rowMid - BAR_H / 2;
 
