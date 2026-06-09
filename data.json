@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09 13:17 KST",
+  "updated": "2026-06-09 17:37 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -360,9 +360,9 @@
       "design_draft": "",
       "dev_review": "2026. 6. 4",
       "guide": "",
-      "dev_complete": "",
-      "qa_complete": "",
-      "done": "",
+      "dev_complete": "2026. 6. 5",
+      "qa_complete": "2026. 6. 5",
+      "done": "2026. 6. 9",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true"
     }
   ]
