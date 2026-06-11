@@ -481,9 +481,9 @@ function renderChart(rawTasks) {
       } else if (dow === 6 || dow === 0) {
         hctx.save();
         hctx.beginPath(); hctx.rect(wx, 0, PPD, HEADER_H); hctx.clip();
-        hctx.fillStyle = 'rgba(0,0,0,0.43)';
+        hctx.fillStyle = 'rgba(0,0,0,0.38)';
         hctx.fillRect(wx, 0, PPD, HEADER_H);
-        hctx.strokeStyle = 'rgba(255,255,255,0.14)'; hctx.lineWidth = 1;
+        hctx.strokeStyle = 'rgba(255,255,255,0.08)'; hctx.lineWidth = 1;
         for (let yo = -PPD; yo < HEADER_H + PPD; yo += 4) {
           hctx.beginPath(); hctx.moveTo(wx, yo); hctx.lineTo(wx + PPD, yo + PPD); hctx.stroke();
         }
@@ -556,7 +556,7 @@ function renderChart(rawTasks) {
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(wx, 0); ctx.lineTo(wx, cssH); ctx.stroke();
       } else if (dow === 6 || dow === 0) {
-        ctx.fillStyle = 'rgba(0,0,0,0.17)';
+        ctx.fillStyle = 'rgba(0,0,0,0.12)';
         ctx.fillRect(wx, 0, PPD, cssH);
       }
     }
@@ -715,9 +715,9 @@ function renderChart(rawTasks) {
     if (h <= 0) return;
     ctx.save();
     ctx.beginPath(); ctx.rect(x, top, PPD, h); ctx.clip();
-    ctx.fillStyle = 'rgba(0,0,0,0.43)';
+    ctx.fillStyle = 'rgba(0,0,0,0.38)';
     ctx.fillRect(x, top, PPD, h);
-    ctx.strokeStyle = 'rgba(255,255,255,0.14)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
     for (let yo = top - PPD; yo < top + h + PPD; yo += 4) {
       ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x + PPD, yo + PPD); ctx.stroke();
     }
