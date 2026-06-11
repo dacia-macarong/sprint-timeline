@@ -627,10 +627,17 @@ function renderChart(rawTasks) {
 
     // 실 작업 일수 레이블 (빈 기간 + 수동 조정 반영)
     if (dates.done) {
-      const activeDays = calcActiveDays(segments, task.name);
-      ctx.font = '600 13px -apple-system, sans-serif';
+      const totalDays = workingDays(dates.created, dates.done);
+      const xLabel = dateToX(dates.done) + 6;
+      ctx.font = '600 12px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`${activeDays}WD`, dateToX(dates.done)+6, rowMid+5);
+      ctx.fillText(`총 ${totalDays}WD`, xLabel, rowMid);
+      if (dates.planning && dates.qa_complete) {
+        const postPlanDays = workingDays(dates.planning, dates.qa_complete);
+        ctx.font = '500 11px -apple-system, sans-serif';
+        ctx.fillStyle = '#f0883e';
+        ctx.fillText(`기획후 ${postPlanDays}WD`, xLabel, rowMid + 12);
+      }
     }
 
     taskMeta.push({ task, dates, segments, y, inProgress });
@@ -686,6 +693,10 @@ function renderChart(rawTasks) {
       html += `<div class="tt-row"><span class="tt-label">실 작업</span><span class="tt-val tt-leadtime">${activeDays} WD</span></div>`;
       if (totalDays !== activeDays) {
         html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays} WD (공백 ${totalDays - activeDays} WD 포함)</span></div>`;
+      }
+      if (dates.planning && dates.qa_complete) {
+        const postPlanDays = workingDays(dates.planning, dates.qa_complete);
+        html += `<div class="tt-row"><span class="tt-label">기획완료~QA</span><span class="tt-val" style="color:#f0883e">${postPlanDays} WD</span></div>`;
       }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
@@ -847,3 +858,4 @@ document.addEventListener('DOMContentLoaded', loadAndRender);
 </script>
 </body>
 </html>
+
