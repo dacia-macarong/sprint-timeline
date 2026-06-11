@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11 23:11 KST",
+  "updated": "2026-06-11 23:18 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -98,48 +98,6 @@
       "qa_complete": "2026. 3. 31",
       "done": "2026. 4. 2",
       "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
-    },
-    {
-      "name": "내차 관리 점수 카드",
-      "owner": "Ken, Dacia",
-      "created": "2026. 5. 4",
-      "planning": "2026. 5. 14",
-      "design_start": "2026. 5. 14",
-      "design_draft": "2026. 5. 22",
-      "dev_review": "2026. 5. 27",
-      "guide": "2026. 5. 27",
-      "dev_complete": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
-    },
-    {
-      "name": "정비목록 - 점검내역 반영",
-      "owner": "Ken",
-      "created": "2026. 1. 19",
-      "planning": "2026. 4. 29",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review": "2026. 4. 22",
-      "guide": "",
-      "dev_complete": "2026. 5. 20",
-      "qa_complete": "2026. 5. 29",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
-    },
-    {
-      "name": "정비목록 상세 - 점검내역 반영",
-      "owner": "Ken",
-      "created": "2026. 5. 4",
-      "planning": "",
-      "design_start": "2026. 5. 6",
-      "design_draft": "2026. 5. 8",
-      "dev_review": "2026. 5. 8",
-      "guide": "2026. 5. 11",
-      "dev_complete": "2026. 5. 28",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
     },
     {
       "name": "푸시 동의율 높이기",
@@ -366,8 +324,36 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true"
     },
     {
+      "name": "정비목록 - 점검내역 반영",
+      "owner": "Ken",
+      "created": "2026. 1. 19",
+      "planning": "2026. 4. 28",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review": "2026. 4. 28",
+      "guide": "",
+      "dev_complete": "2026. 5. 20",
+      "qa_complete": "2026. 6. 5",
+      "done": "2026. 6. 8",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
+    },
+    {
+      "name": "정비목록 상세 - 점검내역 반영",
+      "owner": "Ken",
+      "created": "2026. 5. 4",
+      "planning": "",
+      "design_start": "2026. 5. 6",
+      "design_draft": "2026. 5. 8",
+      "dev_review": "2026. 5. 8",
+      "guide": "2026. 5. 11",
+      "dev_complete": "2026. 5. 28",
+      "qa_complete": "2026. 6. 5",
+      "done": "2026. 6. 8",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
+    },
+    {
       "name": "내차 관리 점수 카드",
-      "owner": "Dacia",
+      "owner": "Ken, Dacia",
       "created": "2026. 4. 30",
       "planning": "2026. 5. 12",
       "design_start": "2026. 5. 15",
@@ -378,6 +364,20 @@
       "qa_complete": "2026. 6. 10",
       "done": "2026. 6. 11",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
+    },
+    {
+      "name": "정비기록 항목 선택 화면 앱스킴 동작 변경",
+      "owner": "Dacia",
+      "created": "2026. 6. 8",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review": "2026. 6. 10",
+      "guide": "",
+      "dev_complete": "2026. 6. 10",
+      "qa_complete": "2026. 6. 10",
+      "done": "2026. 6. 11",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215480544924403?focus=true"
     }
   ]
 }
