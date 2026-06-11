@@ -401,30 +401,15 @@ const LABEL_W  = 280;
 const ROW_H    = 50;
 const BAR_H    = 22;
 const HEADER_H = 54;
-const PPD_WD   = 10;   // 평일 픽셀/일
-const PPD_WE   = 2;    // 주말 픽셀/일 (좁게 압축 — 금→월 연속 단계가 붙어 보임)
+const PPD      = 7.8;  // 픽셀/일
 const PAD_R    = 32;
 const CHART_START = new Date(2026, 1, 1);   // 2월 1일
 const _kst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
 const CHART_END   = new Date(_kst.getFullYear(), _kst.getMonth(), _kst.getDate() + 5); // 오늘(KST) + 5일
+const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
 
-// 주말 압축 좌표 변환 — 평일 10px, 주말 2px
 function dateToX(d) {
-  const days = Math.round((d - CHART_START) / 86400000);
-  if (days <= 0) return LABEL_W;
-  const startDow  = CHART_START.getDay(); // 2026-02-01 = 일(0)
-  const fullWeeks = Math.floor(days / 7);
-  let extra = 0;
-  for (let i = 0; i < days % 7; i++) {
-    const dow = (startDow + i) % 7;
-    extra += (dow === 0 || dow === 6) ? PPD_WE : PPD_WD;
-  }
-  return LABEL_W + fullWeeks * (5 * PPD_WD + 2 * PPD_WE) + extra;
-}
-
-function dayWidth(d) {
-  const dow = d.getDay();
-  return (dow === 0 || dow === 6) ? PPD_WE : PPD_WD;
+  return LABEL_W + (d - CHART_START) / 86400000 * PPD;
 }
 
 function renderChart(rawTasks) {
@@ -432,7 +417,7 @@ function renderChart(rawTasks) {
   document.getElementById('chart-wrapper').style.display = 'block';
 
   const dpr  = window.devicePixelRatio || 1;
-  const cssW = Math.ceil(dateToX(CHART_END)) + PAD_R;
+  const cssW = LABEL_W + Math.ceil(TOTAL_DAYS * PPD) + PAD_R;
   const cssH = rawTasks.length * ROW_H + 12;
 
   // ── 헤더 캔버스 ───────────────────────────────────────────────
@@ -470,6 +455,16 @@ function renderChart(rawTasks) {
         hctx.fillStyle = '#484f58';
         hctx.font = '11px -apple-system, sans-serif';
         hctx.fillText(`${day}`, wx + 2, 38);
+      } else if (dow === 6 || dow === 0) {
+        hctx.save();
+        hctx.beginPath(); hctx.rect(wx, 0, PPD, HEADER_H); hctx.clip();
+        hctx.fillStyle = 'rgba(0,0,0,0.45)';
+        hctx.fillRect(wx, 0, PPD, HEADER_H);
+        hctx.strokeStyle = 'rgba(255,255,255,0.07)'; hctx.lineWidth = 1;
+        for (let yo = -HEADER_H; yo < HEADER_H * 2; yo += 4) {
+          hctx.beginPath(); hctx.moveTo(wx, yo); hctx.lineTo(wx + PPD, yo + PPD); hctx.stroke();
+        }
+        hctx.restore();
       }
     }
   }
@@ -532,8 +527,15 @@ function renderChart(rawTasks) {
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(wx, 0); ctx.lineTo(wx, cssH); ctx.stroke();
       } else if (dow === 6 || dow === 0) {
-        ctx.fillStyle = 'rgba(255,255,255,0.025)';
-        ctx.fillRect(wx, 0, PPD_WE, cssH);
+        ctx.save();
+        ctx.beginPath(); ctx.rect(wx, 0, PPD, cssH); ctx.clip();
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.fillRect(wx, 0, PPD, cssH);
+        ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
+        for (let yo = -PPD; yo < cssH + PPD; yo += 4) {
+          ctx.beginPath(); ctx.moveTo(wx, yo); ctx.lineTo(wx + PPD, yo + PPD); ctx.stroke();
+        }
+        ctx.restore();
       }
     }
   }
