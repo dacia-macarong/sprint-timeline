@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11 19:56 KST",
+  "updated": "2026-06-11 23:11 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -364,6 +364,20 @@
       "qa_complete": "2026. 6. 5",
       "done": "2026. 6. 9",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true"
+    },
+    {
+      "name": "내차 관리 점수 카드",
+      "owner": "Dacia",
+      "created": "2026. 4. 30",
+      "planning": "2026. 5. 12",
+      "design_start": "2026. 5. 15",
+      "design_draft": "2026. 5. 22",
+      "dev_review": "2026. 5. 27",
+      "guide": "2026. 5. 27",
+      "dev_complete": "2026. 6. 5",
+      "qa_complete": "2026. 6. 10",
+      "done": "2026. 6. 11",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
     }
   ]
 }
