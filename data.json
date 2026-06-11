@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12 00:31 KST",
+  "updated": "2026-06-12 00:33 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -182,24 +182,6 @@
       "link": "https://app.asana.com/0/1213968584562495/1213949804942058"
     },
     {
-      "name": "내차 판매 페이지",
-      "owner": "Ken",
-      "created": "2026. 4. 13",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "2026. 4. 20",
-      "link": "https://app.asana.com/0/1213968584562495/1214033388210396"
-    },
-    {
       "name": "기록증명서 개선 1차",
       "owner": "Ken",
       "created": "2026. 3. 17",
@@ -216,24 +198,6 @@
       "qa_complete": "2026. 4. 2",
       "done": "2026. 4. 3",
       "link": "https://app.asana.com/0/1213968584562495/1213698197523196"
-    },
-    {
-      "name": "중고차 Phase1",
-      "owner": "Ken",
-      "created": "2026. 3. 10",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "2026. 4. 20",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1213588114869461?focus=true"
     },
     {
       "name": "정비알림 알림톡 자동화",
