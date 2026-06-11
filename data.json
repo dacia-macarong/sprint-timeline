@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11 23:18 KST",
+  "updated": "2026-06-11 23:41 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -282,20 +282,6 @@
       "link": "https://app.asana.com/0/1213968584562495/1214879592868445"
     },
     {
-      "name": "주간 미션에 마수동 미션 추가",
-      "owner": "Ken",
-      "created": "2026. 5. 11",
-      "planning": "",
-      "design_start": "2026. 5. 11",
-      "design_draft": "2026. 5. 11",
-      "dev_review": "",
-      "guide": "2026. 5. 11",
-      "dev_complete": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214722707481670?focus=true"
-    },
-    {
       "name": "온보딩 - 설치 목적 버튼 순서 랜덤 변경",
       "owner": "Dacia",
       "created": "2026. 5. 29",
@@ -356,7 +342,7 @@
       "owner": "Ken, Dacia",
       "created": "2026. 4. 30",
       "planning": "2026. 5. 12",
-      "design_start": "2026. 5. 15",
+      "design_start": "2026. 5. 18",
       "design_draft": "2026. 5. 22",
       "dev_review": "2026. 5. 27",
       "guide": "2026. 5. 27",
