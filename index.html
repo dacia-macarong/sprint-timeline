@@ -405,7 +405,7 @@ const PPD      = 7.8;  // 픽셀/일
 const PAD_R    = 32;
 const CHART_START = new Date(2026, 1, 1);   // 2월 1일
 const _kst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
-const CHART_END   = new Date(_kst.getFullYear(), _kst.getMonth(), _kst.getDate() + 5); // 오늘(KST) + 5일
+const CHART_END   = new Date(_kst.getFullYear(), _kst.getMonth() + 1, _kst.getDate() + 5); // 오늘(KST) + 약 1달
 const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
 
 function dateToX(d) {
