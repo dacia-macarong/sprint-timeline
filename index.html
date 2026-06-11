@@ -384,6 +384,18 @@ function calcActiveDays(segs, taskName) {
   return Math.max(0, total);
 }
 
+// ── 레인 배정 (겹치는 단계 → 위/아래 2레인 분리) ────────────
+function assignLanes(segs) {
+  const sorted = [...segs].sort((a, b) => a.start - b.start);
+  const laneEnd = [null, null];
+  return sorted.map(seg => {
+    let lane = 0;
+    if (laneEnd[0] && laneEnd[0] > seg.start) lane = 1;
+    laneEnd[lane] = (laneEnd[lane] && laneEnd[lane] > seg.end) ? laneEnd[lane] : seg.end;
+    return { ...seg, lane };
+  });
+}
+
 // ── 렌더링 ────────────────────────────────────────────────────
 const LABEL_W  = 280;
 const ROW_H    = 50;
@@ -560,8 +572,16 @@ function renderChart(rawTasks) {
       roundRect(x1, rowMid-2, Math.max(x2-x1,4), 4, 2); ctx.fill();
     }
 
-    // 단계 bar
-    segments.forEach(seg => {
+    // 단계 bar (겹치면 위/아래 2레인으로 분리)
+    const laneSegs   = assignLanes(segments);
+    const hasOverlap = laneSegs.some(s => s.lane === 1);
+    const LANE_H     = 18;
+    laneSegs.forEach(seg => {
+      const segBarH = hasOverlap ? LANE_H : BAR_H;
+      const segBarY = hasOverlap
+        ? (seg.lane === 0 ? y + 5 : y + 27)
+        : barY;
+
       const x1 = dateToX(seg.start);
       const x2 = Math.min(dateToX(seg.end), cssW - PAD_R);
       const w = Math.max(x2-x1, 3);
@@ -569,13 +589,13 @@ function renderChart(rawTasks) {
 
       // bar 그리기
       ctx.fillStyle = inProgress ? base + 'aa' : base;
-      roundRect(x1, barY, w, BAR_H, 4); ctx.fill();
+      roundRect(x1, segBarY, w, segBarH, 4); ctx.fill();
       // 하이라이트
-      const grad = ctx.createLinearGradient(x1, barY, x1, barY+BAR_H);
+      const grad = ctx.createLinearGradient(x1, segBarY, x1, segBarY+segBarH);
       grad.addColorStop(0, 'rgba(255,255,255,0.08)');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = grad;
-      roundRect(x1, barY, w, BAR_H, 4); ctx.fill();
+      roundRect(x1, segBarY, w, segBarH, 4); ctx.fill();
 
       // 중단 구간(break) 오버레이
       const taskAdjs = ADJUSTMENTS[task.name] || [];
@@ -586,25 +606,22 @@ function renderChart(rawTasks) {
           const bx2 = Math.min(dateToX(parseDate(br.to)),   x2);
           if (bx2 <= bx1) return;
           const bw = bx2 - bx1;
-          // 배경으로 덮어 gap 생성
           ctx.fillStyle = i % 2 === 0 ? '#0d1117' : '#111820';
-          ctx.fillRect(bx1, barY, bw, BAR_H);
-          // 사선 해칭 패턴으로 중단 표시
+          ctx.fillRect(bx1, segBarY, bw, segBarH);
           ctx.save();
-          ctx.beginPath(); ctx.rect(bx1, barY, bw, BAR_H); ctx.clip();
+          ctx.beginPath(); ctx.rect(bx1, segBarY, bw, segBarH); ctx.clip();
           ctx.strokeStyle = 'rgba(255,255,255,0.13)';
           ctx.lineWidth = 1;
-          for (let xo = bx1 - BAR_H; xo < bx2 + BAR_H; xo += 4) {
+          for (let xo = bx1 - segBarH; xo < bx2 + segBarH; xo += 4) {
             ctx.beginPath();
-            ctx.moveTo(xo, barY);
-            ctx.lineTo(xo + BAR_H, barY + BAR_H);
+            ctx.moveTo(xo, segBarY);
+            ctx.lineTo(xo + segBarH, segBarY + segBarH);
             ctx.stroke();
           }
           ctx.restore();
-          // 테두리
           ctx.strokeStyle = 'rgba(255,255,255,0.08)';
           ctx.lineWidth = 1;
-          ctx.strokeRect(bx1, barY, bw, BAR_H);
+          ctx.strokeRect(bx1, segBarY, bw, segBarH);
         });
       }
     });
