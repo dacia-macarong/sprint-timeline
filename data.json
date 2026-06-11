@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11 23:44 KST",
+  "updated": "2026-06-11 23:49 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -98,20 +98,6 @@
       "qa_complete": "2026. 3. 31",
       "done": "2026. 4. 2",
       "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
-    },
-    {
-      "name": "푸시 동의율 높이기",
-      "owner": "Ken",
-      "created": "2026. 4. 30",
-      "planning": "",
-      "design_start": "2026. 5. 4",
-      "design_draft": "2026. 5. 11",
-      "dev_review": "2026. 5. 14",
-      "guide": "2026. 5. 15",
-      "dev_complete": "2026. 5. 21",
-      "qa_complete": "2026. 5. 27",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
     },
     {
       "name": "추가상품 쿠폰 반영",
@@ -308,6 +294,20 @@
       "qa_complete": "2026. 6. 5",
       "done": "2026. 6. 9",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true"
+    },
+    {
+      "name": "푸시 동의율 높이기",
+      "owner": "Ken",
+      "created": "2026. 4. 30",
+      "planning": "",
+      "design_start": "2026. 5. 4",
+      "design_draft": "2026. 5. 11",
+      "dev_review": "2026. 5. 13",
+      "guide": "2026. 5. 15",
+      "dev_complete": "2026. 5. 21",
+      "qa_complete": "2026. 5. 26",
+      "done": "2026. 6. 3",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
     },
     {
       "name": "정비목록 - 점검내역 반영",
