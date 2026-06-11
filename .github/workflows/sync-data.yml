@@ -47,18 +47,22 @@ jobs:
               if not row or not row[0].strip():
                   continue
               tasks.append({
-                  'name':         g(row, 0),
-                  'owner':        g(row, 1),
-                  'created':      g(row, 2),
-                  'planning':     g(row, 3),
-                  'design_start': g(row, 4),
-                  'design_draft': g(row, 5),
-                  'dev_review':   g(row, 6),
-                  'guide':        g(row, 7),
-                  'dev_complete': g(row, 8),
-                  'qa_complete':  g(row, 9),
-                  'done':         g(row, 10),
-                  'link':         g(row, 11),
+                  'name':             g(row, 0),   # 태스크
+                  'owner':            g(row, 1),   # 담당
+                  'created':          g(row, 2),   # 생성일
+                  'planning':         g(row, 3),   # 기획 완료
+                  'design_start':     g(row, 4),   # 시안 시작
+                  'design_draft':     g(row, 5),   # 시안 완료
+                  'dev_review_start': g(row, 6),   # 개발검토 시작
+                  'dev_review_end':   g(row, 7),   # 개발검토 완료
+                  'guide_start':      g(row, 8),   # 가이드 시작
+                  'guide':            g(row, 9),   # 가이드 완료
+                  'dev_start':        g(row, 10),  # 앱개발 시작
+                  'dev_complete':     g(row, 11),  # 개발완료
+                  'qa_start':         g(row, 12),  # dev QA 시작
+                  'qa_complete':      g(row, 13),  # dev QA 완료
+                  'done':             g(row, 14),  # 배포 완료
+                  'link':             g(row, 15),  # 링크
               })
 
           result = {
