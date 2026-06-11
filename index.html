@@ -125,12 +125,12 @@
   </div>
   <div class="legend">
     <div class="legend-item"><div class="legend-chip" style="background:#475569"></div>기획</div>
-    <div class="legend-item"><div class="legend-chip" style="background:#7c3aed"></div>디자인</div>
-    <div class="legend-item"><div class="legend-chip" style="background:#ea580c"></div>개발</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#7c3aed"></div>디자인 시안</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#0369a1"></div>개발검토</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#6d28d9"></div>디자인 가이드</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#ea580c"></div>앱개발</div>
     <div class="legend-item"><div class="legend-chip" style="background:#16a34a"></div>QA</div>
     <div class="legend-item"><div class="legend-chip" style="background:#0891b2"></div>배포</div>
-    <div class="legend-item"><div style="width:8px;height:8px;border-radius:50%;background:#c4b5fd;border:1.5px solid #0d1117;flex-shrink:0"></div>시안</div>
-    <div class="legend-item"><div style="width:9px;height:9px;border-radius:50%;background:#7c3aed;border:1.5px solid #0d1117;flex-shrink:0"></div>가이드</div>
   </div>
 
   <div class="criteria-toggle" onclick="toggleCriteria()">
@@ -140,18 +140,19 @@
   <div class="criteria" id="criteria-box">
     <div class="criteria-section">
       <div class="criteria-title">단계 기준</div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#475569"></div><span>기획</span><span class="criteria-arrow">→</span><span>생성일 ~ 기획서 작성일</span></div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#7c3aed"></div><span>디자인</span><span class="criteria-arrow">→</span><span>기획서 작성일 ~ 가이드 완료</span></div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#ea580c"></div><span>개발</span><span class="criteria-arrow">→</span><span>개발검토 ~ 개발 완료 (QA버전 업로드)</span></div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#16a34a"></div><span>QA</span><span class="criteria-arrow">→</span><span>개발 완료 ~ devQA 완료</span></div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#0891b2"></div><span>배포</span><span class="criteria-arrow">→</span><span>devQA 완료 ~ 태스크 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#475569"></div><span>기획</span><span class="criteria-arrow">→</span><span>생성일 ~ 기획 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#7c3aed"></div><span>디자인 시안</span><span class="criteria-arrow">→</span><span>시안 시작 ~ 시안 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#0369a1"></div><span>개발검토</span><span class="criteria-arrow">→</span><span>개발검토 시작 ~ 개발검토 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#6d28d9"></div><span>디자인 가이드</span><span class="criteria-arrow">→</span><span>가이드 시작 ~ 가이드 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#ea580c"></div><span>앱개발</span><span class="criteria-arrow">→</span><span>앱개발 시작 ~ 개발 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#16a34a"></div><span>QA</span><span class="criteria-arrow">→</span><span>QA 시작 ~ dev QA 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#0891b2"></div><span>배포</span><span class="criteria-arrow">→</span><span>dev QA 완료 ~ 배포 완료</span></div>
     </div>
     <div class="criteria-section">
       <div class="criteria-title">일수 계산 기준</div>
       <div class="criteria-row"><span>📅</span><span><b style="color:#c9d1d9">영업일</b> 기준 (주말 제외)</span></div>
-      <div class="criteria-row"><span>⬜</span><span>단계 사이 <b style="color:#c9d1d9">공백 기간</b> 제외 (예: 가이드 완료 → 개발검토 대기)</span></div>
+      <div class="criteria-row"><span>⬜</span><span>시작일 미입력 시 <b style="color:#c9d1d9">직전 단계 완료일 다음 영업일</b>로 자동 계산</span></div>
       <div class="criteria-row"><div class="criteria-hatch"></div><span><b style="color:#c9d1d9">사선 해칭</b> = 타 태스크 우선 처리로 인한 중단 구간 (일수에서 제외)</span></div>
-      <div class="criteria-row"><div class="criteria-dot" style="background:#c4b5fd"></div><span style="margin-left:1px"><b style="color:#c9d1d9">시안</b> / <div class="criteria-dot" style="background:#7c3aed;display:inline-block;margin: 0 2px 0 4px"></div><b style="color:#c9d1d9">가이드</b> = 디자인 마일스톤</span></div>
     </div>
   </div>
 
@@ -172,17 +173,19 @@ const DATA_URL = `./data.json?t=${Date.now()}`;
 
 // ── 색상/단계 ─────────────────────────────────────────────────
 const PHASES = {
-  planning: { color: '#475569', label: '기획' },
-  design:   { color: '#7c3aed', label: '디자인' },
-  dev:      { color: '#ea580c', label: '개발' },
-  qa:       { color: '#16a34a', label: 'QA' },
-  release:  { color: '#0891b2', label: '배포' },
+  planning:      { color: '#475569', label: '기획' },
+  design_draft:  { color: '#7c3aed', label: '디자인 시안' },
+  dev_review:    { color: '#0369a1', label: '개발검토' },
+  design_guide:  { color: '#6d28d9', label: '디자인 가이드' },
+  dev:           { color: '#ea580c', label: '앱개발' },
+  qa:            { color: '#16a34a', label: 'QA' },
+  release:       { color: '#0891b2', label: '배포' },
 };
 
 // ── 수동 조정 ─────────────────────────────────────────────────
 // 스프레드시트에 담기 어려운 예외 처리 (날짜 보정)
 // 형식: { '태스크명': [{ phase, days, note }] }
-// phase: 'planning' | 'design' | 'dev' | 'qa' | 'release'
+// phase: 'planning' | 'design_draft' | 'dev_review' | 'design_guide' | 'dev' | 'qa' | 'release'
 // days: 양수(추가) 또는 음수(차감)
 const ADJUSTMENTS = {
   '영수증 촬영': [
@@ -227,18 +230,22 @@ function parseTasks(csvText) {
     const r = rows[i];
     if (!r[0]?.trim()) continue;
     tasks.push({
-      name:         r[0]?.trim() || '',
-      owner:        r[1]?.trim() || '',
-      created:      r[2]?.trim() || '',
-      planning:     r[3]?.trim() || '',
-      design_start: r[4]?.trim() || '',   // 시안시작 (NEW)
-      design_draft: r[5]?.trim() || '',   // 시안완료
-      dev_review:   r[6]?.trim() || '',   // 개발검토
-      guide:        r[7]?.trim() || '',   // 가이드완료
-      dev_complete: r[8]?.trim() || '',   // 개발완료
-      qa_complete:  r[9]?.trim() || '',   // dev QA완료
-      done:         r[10]?.trim() || '',  // 배포 완료
-      link:         r[11]?.trim() || '',
+      name:             r[0]?.trim() || '',
+      owner:            r[1]?.trim() || '',
+      created:          r[2]?.trim() || '',   // 생성일 (기획 시작)
+      planning:         r[3]?.trim() || '',   // 기획 완료
+      design_start:     r[4]?.trim() || '',   // 시안 시작
+      design_draft:     r[5]?.trim() || '',   // 시안 완료
+      dev_review_start: r[6]?.trim() || '',   // 개발검토 시작
+      dev_review_end:   r[7]?.trim() || '',   // 개발검토 완료
+      guide_start:      r[8]?.trim() || '',   // 가이드 시작
+      guide:            r[9]?.trim() || '',   // 가이드 완료
+      dev_start:        r[10]?.trim() || '',  // 앱개발 시작
+      dev_complete:     r[11]?.trim() || '',  // 개발완료 (QA버전 업로드)
+      qa_start:         r[12]?.trim() || '',  // dev QA 시작
+      qa_complete:      r[13]?.trim() || '',  // dev QA 완료
+      done:             r[14]?.trim() || '',  // 배포 완료
+      link:             r[15]?.trim() || '',
     });
   }
   return tasks;
@@ -257,63 +264,69 @@ function fmtDate(d) {
 }
 
 // ── 단계 계산 ─────────────────────────────────────────────────
-// 기획:  생성일 → 기획서 작성일
-// 디자인: 기획서 작성일 → 가이드 완료 (기획서 없으면 시안완료를 시작점으로)
-// 개발:  개발검토 → 개발 완료
-// QA:   개발 완료 → devQA 완료
-// 배포:  devQA 완료 → 태스크 완료
+// 각 단계 시작일 없으면 직전 단계 완료일의 다음 영업일로 폴백
 function getSegments(task) {
-  const c  = parseDate(task.created);
-  const pl = parseDate(task.planning);      // 기획서 작성
-  const ds = parseDate(task.design_start);  // 시안시작
-  const dd = parseDate(task.design_draft);  // 시안완료
-  const dr = parseDate(task.dev_review);    // 개발검토
-  const g  = parseDate(task.guide);         // 가이드 완료
-  const dc = parseDate(task.dev_complete);
-  const qa = parseDate(task.qa_complete);
-  const dn = parseDate(task.done);
-  const dates = { created:c, planning:pl, design_start:ds, design_draft:dd,
-                  dev_review:dr, guide:g, dev_complete:dc, qa_complete:qa, done:dn };
+  const c   = parseDate(task.created);
+  const pl  = parseDate(task.planning);          // 기획 완료
+  const ds  = parseDate(task.design_start);      // 시안 시작
+  const dd  = parseDate(task.design_draft);      // 시안 완료
+  const drs = parseDate(task.dev_review_start);  // 개발검토 시작
+  const dre = parseDate(task.dev_review_end);    // 개발검토 완료
+  const gs  = parseDate(task.guide_start);       // 가이드 시작
+  const g   = parseDate(task.guide);             // 가이드 완료
+  const dvs = parseDate(task.dev_start);         // 앱개발 시작
+  const dc  = parseDate(task.dev_complete);      // 개발완료
+  const qas = parseDate(task.qa_start);          // QA 시작
+  const qa  = parseDate(task.qa_complete);       // QA 완료
+  const dn  = parseDate(task.done);              // 배포 완료
+
+  const dates = {
+    created: c, planning: pl,
+    design_start: ds, design_draft: dd,
+    dev_review_start: drs, dev_review_end: dre,
+    guide_start: gs, guide: g,
+    dev_start: dvs, dev_complete: dc,
+    qa_start: qas, qa_complete: qa,
+    done: dn,
+  };
 
   if (!c) return { segments: [], dates };
 
   const segs = [];
-  const endOfChart = CHART_END;
 
-  // ── 기획: 생성일 → 기획완료 ────────────────────────────────
-  // 기획완료(기획서 작성)가 생성일보다 이후면 그 날짜까지
-  // 없거나 같은 날이면 시안시작/개발검토 등 이후 단계일까지
-  if (pl && pl > c) {
-    segs.push({ start: c, end: pl, phase: 'planning' });
-  } else {
-    const firstMilestone = [ds, dd, dr, g, dc, dn]
-      .filter(d => d && d > c)
-      .sort((a, b) => a - b)[0];
-    if (firstMilestone) segs.push({ start: c, end: firstMilestone, phase: 'planning' });
+  // 시작일 없으면 직전 완료일의 다음 영업일로 폴백
+  function resolveStart(explicit, prevEnd) {
+    return explicit || (prevEnd ? nextWorkingDay(prevEnd) : null);
   }
 
-  // ── 디자인: 시안시작(또는 시안완료) → 가이드 완료 ───────────
-  // planning > created 이면 시안시작 or planning or 시안완료 순 사용
-  // planning 이 없거나 같은 날이면 pl 제외 (기획과 겹침 방지)
-  const designStart = (pl && pl > c) ? (ds || pl || dd) : (ds || dd);
-  if (designStart && g && g > designStart) {
-    segs.push({ start: designStart, end: g, phase: 'design' });
-  }
+  // 기획: 생성일 → 기획완료
+  if (pl && pl > c) segs.push({ start: c, end: pl, phase: 'planning' });
 
-  // ── 개발: 개발검토 → 개발 완료 ──────────────────────────────
-  if (dr && dc && dc > dr) segs.push({ start: dr, end: dc, phase: 'dev' });
+  // 디자인 시안: 시안시작 → 시안완료
+  const dsR = resolveStart(ds, pl);
+  if (dsR && dd && dd > dsR) segs.push({ start: dsR, end: dd, phase: 'design_draft' });
 
-  // ── QA: 개발 완료 → devQA 완료 ──────────────────────────────
-  if (dc) {
-    const qaEnd = qa || (dn && dn > dc ? dn : null);
-    if (qaEnd && qaEnd > dc) segs.push({ start: dc, end: qaEnd, phase: 'qa' });
-  }
+  // 개발검토: 개발검토 시작 → 개발검토 완료
+  const drsR = resolveStart(drs, dd);
+  if (drsR && dre && dre > drsR) segs.push({ start: drsR, end: dre, phase: 'dev_review' });
 
-  // ── 배포: devQA 완료 → 태스크 완료 ──────────────────────────
+  // 디자인 가이드: 가이드 시작 → 가이드 완료
+  const gsR = resolveStart(gs, dre);
+  if (gsR && g && g > gsR) segs.push({ start: gsR, end: g, phase: 'design_guide' });
+
+  // 앱개발: 앱개발 시작 → 개발완료
+  const dvsR = resolveStart(dvs, g);
+  if (dvsR && dc && dc > dvsR) segs.push({ start: dvsR, end: dc, phase: 'dev' });
+
+  // QA: QA 시작 → QA 완료
+  const qasR = resolveStart(qas, dc);
+  if (qasR && qa && qa > qasR) segs.push({ start: qasR, end: qa, phase: 'qa' });
+
+  // 배포: QA 완료 → 배포완료
   if (qa && dn && dn > qa) segs.push({ start: qa, end: dn, phase: 'release' });
 
-  // ── 순수 폴백: 마일스톤이 전혀 없는 태스크
-  if (segs.length === 0) segs.push({ start: c, end: dn || endOfChart, phase: 'planning' });
+  // 폴백: 마일스톤이 전혀 없는 태스크
+  if (segs.length === 0) segs.push({ start: c, end: dn || CHART_END, phase: 'planning' });
 
   segs.sort((a, b) => a.start - b.start);
   return { segments: segs, dates };
@@ -329,6 +342,14 @@ function workingDays(start, end) {
     d.setDate(d.getDate() + 1);
   }
   return count;
+}
+
+// ── 다음 영업일 ────────────────────────────────────────────────
+function nextWorkingDay(d) {
+  const next = new Date(d);
+  next.setDate(next.getDate() + 1);
+  while (next.getDay() === 0 || next.getDay() === 6) next.setDate(next.getDate() + 1);
+  return next;
 }
 
 // ── 실 작업 영업일 계산 (겹치는 구간 병합 + 브레이크 제거) ──
@@ -590,7 +611,7 @@ function renderChart(rawTasks) {
 
     // 진행중 점선 화살표
     if (inProgress && dates.created) {
-      const lastD = [dates.dev_complete, dates.guide, dates.dev_review, dates.design_draft, dates.planning]
+      const lastD = [dates.dev_complete, dates.guide, dates.dev_review_end, dates.dev_review_start, dates.design_draft, dates.planning]
       .filter(d => d && d >= dates.created)[0] || dates.created;
       const x = Math.min(dateToX(lastD), cssW - PAD_R - 40);
       ctx.strokeStyle = '#3fb95088'; ctx.lineWidth = 2;
@@ -603,13 +624,11 @@ function renderChart(rawTasks) {
 
     // 마일스톤 점
     const milestones = [
-      { d: dates.design_start, label: null,     color: '#c4b5fd', r: 3   },
-      { d: dates.design_draft, label: '시안',   color: '#c4b5fd', r: 4   },
-      { d: dates.dev_review,   label: null,     color: '#d1d5db', r: 3   },
-      { d: dates.guide,        label: '가이드', color: '#7c3aed', r: 4.5 },
-      { d: dates.dev_complete, label: null,     color: '#f0f6fc', r: 3   },
-      { d: dates.qa_complete,  label: null,     color: '#f0f6fc', r: 3   },
-      { d: dates.done,         label: null,     color: '#f0f6fc', r: 3   },
+      { d: dates.dev_review_end, label: null, color: '#7dd3fc', r: 3 },
+      { d: dates.guide,          label: null, color: '#a78bfa', r: 3 },
+      { d: dates.dev_complete,   label: null, color: '#f0f6fc', r: 3 },
+      { d: dates.qa_complete,    label: null, color: '#f0f6fc', r: 3 },
+      { d: dates.done,           label: null, color: '#f0f6fc', r: 3 },
     ].filter(m => m.d);
 
     milestones.forEach(m => {
@@ -645,7 +664,7 @@ function renderChart(rawTasks) {
 
   // 툴팁
   const tooltip = document.getElementById('tooltip');
-  const phaseLabels = { planning:'기획', design:'디자인', dev:'개발', qa:'QA', release:'배포' };
+  const phaseLabels = { planning:'기획', design_draft:'디자인 시안', dev_review:'개발검토', design_guide:'디자인 가이드', dev:'앱개발', qa:'QA', release:'배포' };
 
   canvas.addEventListener('mousemove', e => {
     const r = canvas.getBoundingClientRect();
@@ -658,18 +677,6 @@ function renderChart(rawTasks) {
       const wdays = workingDays(s.start, s.end);
       let row = `<div class="tt-row"><span class="tt-label">${phaseLabels[s.phase]}</span><span class="tt-val">${fmtDate(s.start)} – ${fmtDate(s.end)} (${wdays}WD)</span></div>`;
 
-      // 디자인 단계: 시안 / 가이드 분리 표시
-      if (s.phase === 'design') {
-        const sub = (lbl, a, b, color) => {
-          if (!a || !b || b <= a) return '';
-          const wd = workingDays(a, b);
-          return `<div class="tt-row" style="margin-left:14px">` +
-            `<span class="tt-label" style="color:${color}">└ ${lbl}</span>` +
-            `<span class="tt-val" style="color:#8b949e">${fmtDate(a)} – ${fmtDate(b)} (${wd}WD)</span></div>`;
-        };
-        row += sub('시안',   s.start,           dates.design_draft, '#c4b5fd');
-        row += sub('가이드', dates.design_draft, s.end,              '#7c3aed');
-      }
       return row;
     }).join('');
 
@@ -858,4 +865,5 @@ document.addEventListener('DOMContentLoaded', loadAndRender);
 </script>
 </body>
 </html>
+
 
