@@ -458,10 +458,10 @@ function renderChart(rawTasks) {
       } else if (dow === 6 || dow === 0) {
         hctx.save();
         hctx.beginPath(); hctx.rect(wx, 0, PPD, HEADER_H); hctx.clip();
-        hctx.fillStyle = 'rgba(0,0,0,0.45)';
+        hctx.fillStyle = 'rgba(0,0,0,0.38)';
         hctx.fillRect(wx, 0, PPD, HEADER_H);
-        hctx.strokeStyle = 'rgba(255,255,255,0.07)'; hctx.lineWidth = 1;
-        for (let yo = -HEADER_H; yo < HEADER_H * 2; yo += 4) {
+        hctx.strokeStyle = 'rgba(255,255,255,0.08)'; hctx.lineWidth = 1;
+        for (let yo = -PPD; yo < HEADER_H + PPD; yo += 4) {
           hctx.beginPath(); hctx.moveTo(wx, yo); hctx.lineTo(wx + PPD, yo + PPD); hctx.stroke();
         }
         hctx.restore();
@@ -527,15 +527,8 @@ function renderChart(rawTasks) {
         ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(wx, 0); ctx.lineTo(wx, cssH); ctx.stroke();
       } else if (dow === 6 || dow === 0) {
-        ctx.save();
-        ctx.beginPath(); ctx.rect(wx, 0, PPD, cssH); ctx.clip();
-        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.fillStyle = 'rgba(0,0,0,0.12)';
         ctx.fillRect(wx, 0, PPD, cssH);
-        ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
-        for (let yo = -PPD; yo < cssH + PPD; yo += 4) {
-          ctx.beginPath(); ctx.moveTo(wx, yo); ctx.lineTo(wx + PPD, yo + PPD); ctx.stroke();
-        }
-        ctx.restore();
       }
     }
   }
@@ -695,7 +688,48 @@ function renderChart(rawTasks) {
       }
     }
 
-    taskMeta.push({ task, dates, segments, y, inProgress });
+    taskMeta.push({ task, dates, segments, laneSegs, hasOverlap, barY, y, inProgress });
+  });
+
+  // ── 주말 빗금 — 바가 없는 영역에만 ──────────────────────────
+  const weekendXs = [];
+  { const d = new Date(CHART_START);
+    while (d < CHART_END) {
+      if (d.getDay() === 0 || d.getDay() === 6) weekendXs.push(dateToX(new Date(d)));
+      d.setDate(d.getDate() + 1);
+    }
+  }
+  function drawHatchCol(x, top, h) {
+    if (h <= 0) return;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x, top, PPD, h); ctx.clip();
+    ctx.fillStyle = 'rgba(0,0,0,0.38)';
+    ctx.fillRect(x, top, PPD, h);
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
+    for (let yo = top - PPD; yo < top + h + PPD; yo += 4) {
+      ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x + PPD, yo + PPD); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  const LANE_H_W = 18;
+  taskMeta.forEach(({ y: ty, barY: bY, laneSegs: ls, hasOverlap: ho, segments: segs }) => {
+    weekendXs.forEach(wx => {
+      if (wx < LABEL_W || wx >= cssW - PAD_R) return;
+      if (ho) {
+        const l0 = ls.some(s => s.lane === 0 && dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
+        const l1 = ls.some(s => s.lane === 1 && dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
+        drawHatchCol(wx, ty,            5);
+        if (!l0) drawHatchCol(wx, ty + 5,  LANE_H_W);
+        drawHatchCol(wx, ty + 23,       4);
+        if (!l1) drawHatchCol(wx, ty + 27, LANE_H_W);
+        drawHatchCol(wx, ty + 45,       5);
+      } else {
+        const hasBar = segs.some(s => dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
+        drawHatchCol(wx, ty,           bY - ty);
+        if (!hasBar) drawHatchCol(wx, bY, BAR_H);
+        drawHatchCol(wx, bY + BAR_H,   ty + ROW_H - bY - BAR_H);
+      }
+    });
   });
 
   // 툴팁
