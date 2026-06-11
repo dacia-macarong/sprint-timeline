@@ -577,7 +577,7 @@ function renderChart(rawTasks) {
     if (dates.created) {
       const ed = dates.done || CHART_END;
       const x1 = dateToX(dates.created);
-      const x2 = Math.min(dateToX(ed), cssW - PAD_R);
+      const x2 = Math.min(dateToX(ed) + PPD, cssW - PAD_R);
       ctx.fillStyle = '#21262d';
       roundRect(x1, rowMid-2, Math.max(x2-x1,4), 4, 2); ctx.fill();
     }
@@ -594,7 +594,7 @@ function renderChart(rawTasks) {
         : barY;
 
       const x1 = dateToX(seg.start);
-      const x2 = Math.min(dateToX(seg.end), cssW - PAD_R);
+      const x2 = Math.min(dateToX(seg.end) + PPD, cssW - PAD_R);
       const w = Math.max(x2-x1, 3);
       const base = PHASES[seg.phase].color;
 
@@ -614,7 +614,7 @@ function renderChart(rawTasks) {
       if (phaseAdj) {
         phaseAdj.breaks.forEach(br => {
           const bx1 = Math.max(dateToX(parseDate(br.from)), x1);
-          const bx2 = Math.min(dateToX(parseDate(br.to)),   x2);
+          const bx2 = Math.min(dateToX(parseDate(br.to)) + PPD, x2);
           if (bx2 <= bx1) return;
           const bw = bx2 - bx1;
           ctx.fillStyle = i % 2 === 0 ? '#0d1117' : '#111820';
@@ -672,24 +672,24 @@ function renderChart(rawTasks) {
       }
     });
 
-    // 실 작업 일수 레이블 (빈 기간 + 수동 조정 반영)
+    // 레이블은 빗금 pass 이후에 그림 — taskMeta에 저장
+    let doneLabel = null;
     if (dates.done) {
       const totalDays = workingDays(dates.created, dates.done);
-      const xLabel = dateToX(dates.done) + 6;
-      ctx.font = '600 12px -apple-system, sans-serif';
-      ctx.fillStyle = '#58a6ff';
-      ctx.fillText(`총 ${totalDays}WD`, xLabel, rowMid);
-      const designDevDays = segments
-        .filter(s => ['design_draft','dev_review','design_guide','dev'].includes(s.phase))
-        .reduce((sum, s) => sum + workingDays(s.start, s.end), 0);
-      if (designDevDays > 0) {
-        ctx.font = '500 11px -apple-system, sans-serif';
-        ctx.fillStyle = '#f0883e';
-        ctx.fillText(`디자인+개발 ${designDevDays}WD`, xLabel, rowMid + 12);
+      const xLabel = dateToX(dates.done) + PPD + 6;
+      const ddPhases = ['design_draft','dev_review','design_guide','dev'];
+      const ddSegs = segments.filter(s => ddPhases.includes(s.phase));
+      let labelText = `총 ${totalDays}WD`;
+      if (ddSegs.length > 0 && dates.dev_complete) {
+        const firstStart = ddSegs.reduce((m, s) => s.start < m ? s.start : m, ddSegs[0].start);
+        const devEnd = new Date(dates.dev_complete.getTime() + 86400000);
+        const ddDays = workingDays(firstStart, devEnd);
+        if (ddDays > 0) labelText += ` (작업 ${ddDays}WD)`;
       }
+      doneLabel = { text: labelText, x: xLabel, y: rowMid + 4 };
     }
 
-    taskMeta.push({ task, dates, segments, laneSegs, hasOverlap, barY, y, inProgress });
+    taskMeta.push({ task, dates, segments, laneSegs, hasOverlap, barY, y, inProgress, doneLabel });
   });
 
   // ── 주말 빗금 — 바가 없는 영역에만 ──────────────────────────
@@ -718,19 +718,27 @@ function renderChart(rawTasks) {
     weekendXs.forEach(wx => {
       if (wx < LABEL_W || wx >= cssW - PAD_R) return;
       if (ho) {
-        const l0 = ls.some(s => s.lane === 0 && dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
-        const l1 = ls.some(s => s.lane === 1 && dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
+        const l0 = ls.some(s => s.lane === 0 && dateToX(s.start) < wx + PPD && dateToX(s.end) + PPD > wx);
+        const l1 = ls.some(s => s.lane === 1 && dateToX(s.start) < wx + PPD && dateToX(s.end) + PPD > wx);
         drawHatchCol(wx, ty,                       LANE_TOP_W);
         if (!l0) drawHatchCol(wx, ty + LANE_TOP_W, LANE_H_W);
         if (!l1) drawHatchCol(wx, ty + ROW_H / 2,  LANE_H_W);
         drawHatchCol(wx, ty + LANE_TOP_W + LANE_H_W * 2, ROW_H - LANE_TOP_W - LANE_H_W * 2);
       } else {
-        const hasBar = segs.some(s => dateToX(s.start) < wx + PPD && dateToX(s.end) > wx);
+        const hasBar = segs.some(s => dateToX(s.start) < wx + PPD && dateToX(s.end) + PPD > wx);
         drawHatchCol(wx, ty,           bY - ty);
         if (!hasBar) drawHatchCol(wx, bY, BAR_H);
         drawHatchCol(wx, bY + BAR_H,   ty + ROW_H - bY - BAR_H);
       }
     });
+  });
+
+  // ── 완료 레이블 (빗금 위에 그려야 하므로 hatch pass 이후) ────
+  taskMeta.forEach(({ doneLabel }) => {
+    if (!doneLabel) return;
+    ctx.font = '600 12px -apple-system, sans-serif';
+    ctx.fillStyle = '#58a6ff';
+    ctx.fillText(doneLabel.text, doneLabel.x, doneLabel.y);
   });
 
   // 툴팁
