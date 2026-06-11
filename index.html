@@ -545,11 +545,6 @@ function renderChart(rawTasks) {
     const x  = dateToX(d);
     const nx = dateToX(new Date(2026, m, 1));
 
-    if (m % 2 === 0) {
-      ctx.fillStyle = 'rgba(255,255,255,0.018)';
-      ctx.fillRect(x, 0, nx - x, cssH);
-    }
-
     const dim = new Date(2026, m, 0).getDate();
     for (let day = 1; day <= dim; day++) {
       const dd = new Date(2026, m-1, day);
