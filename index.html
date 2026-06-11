@@ -300,30 +300,30 @@ function getSegments(task) {
   }
 
   // 기획: 생성일 → 기획완료
-  if (pl && pl > c) segs.push({ start: c, end: pl, phase: 'planning' });
+  if (pl && pl >= c) segs.push({ start: c, end: pl, phase: 'planning' });
 
   // 디자인 시안: 시안시작 → 시안완료
   const dsR = resolveStart(ds, pl);
-  if (dsR && dd && dd > dsR) segs.push({ start: dsR, end: dd, phase: 'design_draft' });
+  if (dsR && dd && dd >= dsR) segs.push({ start: dsR, end: dd, phase: 'design_draft' });
 
   // 개발검토: 개발검토 시작 → 개발검토 완료
   const drsR = resolveStart(drs, dd);
-  if (drsR && dre && dre > drsR) segs.push({ start: drsR, end: dre, phase: 'dev_review' });
+  if (drsR && dre && dre >= drsR) segs.push({ start: drsR, end: dre, phase: 'dev_review' });
 
   // 디자인 가이드: 가이드 시작 → 가이드 완료
   const gsR = resolveStart(gs, dre || dd);  // dev_review 없으면 시안완료 다음날로 폴백
-  if (gsR && g && g > gsR) segs.push({ start: gsR, end: g, phase: 'design_guide' });
+  if (gsR && g && g >= gsR) segs.push({ start: gsR, end: g, phase: 'design_guide' });
 
   // 앱개발: 앱개발 시작 → 개발완료
   const dvsR = resolveStart(dvs, g || dre || dd);  // 가이드 없으면 dev_review, 그것도 없으면 시안완료
-  if (dvsR && dc && dc > dvsR) segs.push({ start: dvsR, end: dc, phase: 'dev' });
+  if (dvsR && dc && dc >= dvsR) segs.push({ start: dvsR, end: dc, phase: 'dev' });
 
   // QA: QA 시작 → QA 완료
   const qasR = resolveStart(qas, dc);
-  if (qasR && qa && qa > qasR) segs.push({ start: qasR, end: qa, phase: 'qa' });
+  if (qasR && qa && qa >= qasR) segs.push({ start: qasR, end: qa, phase: 'qa' });
 
   // 배포: QA 완료 → 배포완료
-  if (qa && dn && dn > qa) segs.push({ start: qa, end: dn, phase: 'release' });
+  if (qa && dn && dn >= qa) segs.push({ start: qa, end: dn, phase: 'release' });
 
   // 폴백: 마일스톤이 전혀 없는 태스크
   if (segs.length === 0) segs.push({ start: c, end: dn || CHART_END, phase: 'planning' });
