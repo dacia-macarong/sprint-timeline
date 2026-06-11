@@ -126,7 +126,7 @@
   <div class="legend">
     <div class="legend-item"><div class="legend-chip" style="background:#475569"></div>기획</div>
     <div class="legend-item"><div class="legend-chip" style="background:#7c3aed"></div>디자인 시안</div>
-    <div class="legend-item"><div class="legend-chip" style="background:#0369a1"></div>개발검토</div>
+    <div class="legend-item"><div class="legend-chip" style="background:#e11d48"></div>개발검토</div>
     <div class="legend-item"><div class="legend-chip" style="background:#6d28d9"></div>디자인 가이드</div>
     <div class="legend-item"><div class="legend-chip" style="background:#ea580c"></div>앱개발</div>
     <div class="legend-item"><div class="legend-chip" style="background:#16a34a"></div>QA</div>
@@ -142,7 +142,7 @@
       <div class="criteria-title">단계 기준</div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#475569"></div><span>기획</span><span class="criteria-arrow">→</span><span>생성일 ~ 기획 완료</span></div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#7c3aed"></div><span>디자인 시안</span><span class="criteria-arrow">→</span><span>시안 시작 ~ 시안 완료</span></div>
-      <div class="criteria-row"><div class="criteria-chip" style="background:#0369a1"></div><span>개발검토</span><span class="criteria-arrow">→</span><span>개발검토 시작 ~ 개발검토 완료</span></div>
+      <div class="criteria-row"><div class="criteria-chip" style="background:#e11d48"></div><span>개발검토</span><span class="criteria-arrow">→</span><span>개발검토 시작 ~ 개발검토 완료</span></div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#6d28d9"></div><span>디자인 가이드</span><span class="criteria-arrow">→</span><span>가이드 시작 ~ 가이드 완료</span></div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#ea580c"></div><span>앱개발</span><span class="criteria-arrow">→</span><span>앱개발 시작 ~ 개발 완료</span></div>
       <div class="criteria-row"><div class="criteria-chip" style="background:#16a34a"></div><span>QA</span><span class="criteria-arrow">→</span><span>QA 시작 ~ dev QA 완료</span></div>
@@ -175,7 +175,7 @@ const DATA_URL = `./data.json?t=${Date.now()}`;
 const PHASES = {
   planning:      { color: '#475569', label: '기획' },
   design_draft:  { color: '#7c3aed', label: '디자인 시안' },
-  dev_review:    { color: '#0369a1', label: '개발검토' },
+  dev_review:    { color: '#e11d48', label: '개발검토' },
   design_guide:  { color: '#6d28d9', label: '디자인 가이드' },
   dev:           { color: '#ea580c', label: '앱개발' },
   qa:            { color: '#16a34a', label: 'QA' },
@@ -311,11 +311,11 @@ function getSegments(task) {
   if (drsR && dre && dre > drsR) segs.push({ start: drsR, end: dre, phase: 'dev_review' });
 
   // 디자인 가이드: 가이드 시작 → 가이드 완료
-  const gsR = resolveStart(gs, dre);
+  const gsR = resolveStart(gs, dre || dd);  // dev_review 없으면 시안완료 다음날로 폴백
   if (gsR && g && g > gsR) segs.push({ start: gsR, end: g, phase: 'design_guide' });
 
   // 앱개발: 앱개발 시작 → 개발완료
-  const dvsR = resolveStart(dvs, g);
+  const dvsR = resolveStart(dvs, g || dre || dd);  // 가이드 없으면 dev_review, 그것도 없으면 시안완료
   if (dvsR && dc && dc > dvsR) segs.push({ start: dvsR, end: dc, phase: 'dev' });
 
   // QA: QA 시작 → QA 완료
@@ -865,6 +865,7 @@ document.addEventListener('DOMContentLoaded', loadAndRender);
 </script>
 </body>
 </html>
+
 
 
 
