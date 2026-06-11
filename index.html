@@ -650,27 +650,6 @@ function renderChart(rawTasks) {
       ctx.beginPath(); ctx.moveTo(x+52, rowMid); ctx.lineTo(x+45, rowMid-5); ctx.lineTo(x+45, rowMid+5); ctx.closePath(); ctx.fill();
     }
 
-    // 마일스톤 점
-    const milestones = [
-      { d: dates.dev_review_end, label: null, color: '#7dd3fc', r: 3 },
-      { d: dates.guide,          label: null, color: '#a78bfa', r: 3 },
-      { d: dates.dev_complete,   label: null, color: '#f0f6fc', r: 3 },
-      { d: dates.qa_complete,    label: null, color: '#f0f6fc', r: 3 },
-      { d: dates.done,           label: null, color: '#f0f6fc', r: 3 },
-    ].filter(m => m.d);
-
-    milestones.forEach(m => {
-      const x = dateToX(m.d);
-      ctx.fillStyle = m.color; ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(x, rowMid, m.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-      if (m.label) {
-        ctx.font = '600 11px -apple-system, sans-serif';
-        ctx.fillStyle = m.color;
-        ctx.textAlign = 'center';
-        ctx.fillText(m.label, x, barY - 3);
-        ctx.textAlign = 'left';
-      }
-    });
 
     // 레이블은 빗금 pass 이후에 그림 — taskMeta에 저장
     let doneLabel = null;
