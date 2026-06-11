@@ -651,11 +651,13 @@ function renderChart(rawTasks) {
       ctx.font = '600 12px -apple-system, sans-serif';
       ctx.fillStyle = '#58a6ff';
       ctx.fillText(`총 ${totalDays}WD`, xLabel, rowMid);
-      if (dates.planning && dates.qa_complete) {
-        const postPlanDays = workingDays(dates.planning, dates.qa_complete);
+      const designDevDays = segments
+        .filter(s => ['design_draft','dev_review','design_guide','dev'].includes(s.phase))
+        .reduce((sum, s) => sum + workingDays(s.start, s.end), 0);
+      if (designDevDays > 0) {
         ctx.font = '500 11px -apple-system, sans-serif';
         ctx.fillStyle = '#f0883e';
-        ctx.fillText(`디자인+개발 ${postPlanDays}WD`, xLabel, rowMid + 12);
+        ctx.fillText(`디자인+개발 ${designDevDays}WD`, xLabel, rowMid + 12);
       }
     }
 
@@ -701,9 +703,11 @@ function renderChart(rawTasks) {
       if (totalDays !== activeDays) {
         html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays} WD (공백 ${totalDays - activeDays} WD 포함)</span></div>`;
       }
-      if (dates.planning && dates.qa_complete) {
-        const postPlanDays = workingDays(dates.planning, dates.qa_complete);
-        html += `<div class="tt-row"><span class="tt-label">디자인+개발</span><span class="tt-val" style="color:#f0883e">${postPlanDays} WD</span></div>`;
+      const designDevDays = found.segments
+        .filter(s => ['design_draft','dev_review','design_guide','dev'].includes(s.phase))
+        .reduce((sum, s) => sum + workingDays(s.start, s.end), 0);
+      if (designDevDays > 0) {
+        html += `<div class="tt-row"><span class="tt-label">디자인+개발</span><span class="tt-val" style="color:#f0883e">${designDevDays} WD</span></div>`;
       }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
