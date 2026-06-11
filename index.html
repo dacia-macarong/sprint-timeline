@@ -655,7 +655,7 @@ function renderChart(rawTasks) {
         const postPlanDays = workingDays(dates.planning, dates.qa_complete);
         ctx.font = '500 11px -apple-system, sans-serif';
         ctx.fillStyle = '#f0883e';
-        ctx.fillText(`기획후 ${postPlanDays}WD`, xLabel, rowMid + 12);
+        ctx.fillText(`디자인+개발 ${postPlanDays}WD`, xLabel, rowMid + 12);
       }
     }
 
@@ -703,7 +703,7 @@ function renderChart(rawTasks) {
       }
       if (dates.planning && dates.qa_complete) {
         const postPlanDays = workingDays(dates.planning, dates.qa_complete);
-        html += `<div class="tt-row"><span class="tt-label">기획완료~QA</span><span class="tt-val" style="color:#f0883e">${postPlanDays} WD</span></div>`;
+        html += `<div class="tt-row"><span class="tt-label">디자인+개발</span><span class="tt-val" style="color:#f0883e">${postPlanDays} WD</span></div>`;
       }
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
@@ -865,5 +865,6 @@ document.addEventListener('DOMContentLoaded', loadAndRender);
 </script>
 </body>
 </html>
+
 
 
