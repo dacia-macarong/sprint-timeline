@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19 10:50 KST",
+  "updated": "2026-06-19 12:07 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -432,6 +432,24 @@
       "qa_complete": "2026. 6. 10",
       "done": "2026. 6. 11",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215480544924403?focus=true"
+    },
+    {
+      "name": "자동차 검사일 안내 푸시 자동화",
+      "owner": "Dacia",
+      "created": "2026. 6. 1",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 6. 11",
+      "dev_review_end": "2026. 6. 11",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026. 6. 11",
+      "dev_complete": "2026. 6. 12",
+      "qa_start": "2026. 6. 15",
+      "qa_complete": "2026. 6. 15",
+      "done": "2026. 6. 16",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215266735237177?focus=true"
     }
   ]
 }
