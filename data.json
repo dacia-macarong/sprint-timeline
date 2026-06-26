@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26 10:30 KST",
+  "updated": "2026-06-26 10:32 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -468,6 +468,24 @@
       "qa_complete": "2026. 6. 17",
       "done": "2026. 6. 18",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214471320295813?focus=true"
+    },
+    {
+      "name": "결제수단 제한",
+      "owner": "Ken",
+      "created": "2026. 4. 7",
+      "planning": "",
+      "design_start": "2026. 6. 16",
+      "design_draft": "2026. 6. 16",
+      "dev_review_start": "2026. 6. 17",
+      "dev_review_end": "2026. 6. 17",
+      "guide_start": "2026. 6. 16",
+      "guide": "2026. 6. 16",
+      "dev_start": "2026. 6. 17",
+      "dev_complete": "2026. 6. 19",
+      "qa_start": "2026. 6. 22",
+      "qa_complete": "2026. 6. 23",
+      "done": "2026. 6. 24",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
     }
   ]
 }
