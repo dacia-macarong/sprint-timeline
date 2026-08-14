@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14 11:21 KST",
+  "updated": "2026-08-14 11:28 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -488,9 +488,27 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
     },
     {
+      "name": "피드형 홈 커스터마이징",
+      "owner": "Dacia",
+      "created": "2026. 7. 13",
+      "planning": "2026. 7. 20",
+      "design_start": "2026. 7. 17",
+      "design_draft": "2026. 7. 21",
+      "dev_review_start": "2026. 7. 21",
+      "dev_review_end": "2026. 7. 21",
+      "guide_start": "2026. 7. 21",
+      "guide": "2026. 7. 21",
+      "dev_start": "2026. 7. 22",
+      "dev_complete": "2026. 7. 24",
+      "qa_start": "2026. 7. 27",
+      "qa_complete": "2026. 7. 29",
+      "done": "2026. 7. 30",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216497938763091?focus=true"
+    },
+    {
       "name": "맞춤진단 상품 개발",
       "owner": "Harry",
-      "created": "",
+      "created": "2026.6.29",
       "planning": "",
       "design_start": "",
       "design_draft": "",
