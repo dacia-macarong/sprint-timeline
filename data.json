@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14 08:50 KST",
+  "updated": "2026-08-14 11:21 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -486,6 +486,24 @@
       "qa_complete": "2026. 6. 23",
       "done": "2026. 6. 24",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
+    },
+    {
+      "name": "맞춤진단 상품 개발",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true"
     }
   ]
 }
