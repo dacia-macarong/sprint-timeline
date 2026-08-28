@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28 11:34 KST",
+  "updated": "2026-08-28 11:37 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -540,6 +540,24 @@
       "qa_complete": "2026. 8. 26",
       "done": "2026. 8. 27",
       "link": "https://app.asana.com/1/1118180141018033/project/1212651861925647/task/1216343119636962?focus=true"
+    },
+    {
+      "name": "리콜 추가",
+      "owner": "Dacia",
+      "created": "2026. 8. 4",
+      "planning": "2026. 8. 11",
+      "design_start": "2026. 8. 12",
+      "design_draft": "2026. 8. 12",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 8. 12",
+      "guide": "2026. 8. 12",
+      "dev_start": "2026. 8. 14",
+      "dev_complete": "2026. 8. 14",
+      "qa_start": "2026. 8. 19",
+      "qa_complete": "2026. 8. 21",
+      "done": "2026. 8. 25",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1217136587487366?focus=true"
     }
   ]
 }
