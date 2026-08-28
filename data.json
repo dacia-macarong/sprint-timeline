@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28 05:16 KST",
+  "updated": "2026-08-28 11:34 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -509,19 +509,37 @@
       "name": "맞춤진단 상품 개발",
       "owner": "Harry",
       "created": "2026.6.29",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
+      "planning": "2026.7.22",
+      "design_start": "2026.7.23",
+      "design_draft": "2026.7.28",
+      "dev_review_start": "2026.7.29",
+      "dev_review_end": "2026.7.29",
+      "guide_start": "2026.7.28",
+      "guide": "2026.7.31",
+      "dev_start": "2026.8.3",
+      "dev_complete": "2026.8.5",
+      "qa_start": "2026.8.7",
+      "qa_complete": "2026.8.13",
+      "done": "2026.8.14",
+      "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true"
+    },
+    {
+      "name": "정비소 추가 결제",
+      "owner": "Cecily",
+      "created": "2026. 7. 7",
+      "planning": "2026. 7. 27",
+      "design_start": "2026. 7. 30",
+      "design_draft": "2026. 8. 10",
       "dev_review_start": "",
       "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true"
+      "guide_start": "2026. 8. 11",
+      "guide": "2026. 8. 13",
+      "dev_start": "2026. 8. 18",
+      "dev_complete": "2026. 8. 21",
+      "qa_start": "2026. 8. 21",
+      "qa_complete": "2026. 8. 26",
+      "done": "2026. 8. 27",
+      "link": "https://app.asana.com/1/1118180141018033/project/1212651861925647/task/1216343119636962?focus=true"
     }
   ]
 }
