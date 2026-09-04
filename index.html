@@ -25,6 +25,8 @@
     #chart-label-col { flex-shrink: 0; overflow: hidden; background: #0d1117; z-index: 5; border-right: 1px solid #21262d; }
     #chart-scroll { flex: 1; overflow-x: auto; overflow-y: auto; padding-bottom: 8px; }
     #chart-header-wrapper { position: sticky; top: 0; z-index: 10; background: #0d1117; }
+    #chart-label-header-wrapper { position: relative; z-index: 2; background: #0d1117; }
+    #chart-label { position: relative; z-index: 1; will-change: transform; }
     canvas { display: block; }
     #tooltip {
       position: fixed;
@@ -162,7 +164,9 @@
   <div id="error"></div>
   <div id="chart-split" style="display:none">
     <div id="chart-label-col">
-      <canvas id="chart-label-header" style="display:block"></canvas>
+      <div id="chart-label-header-wrapper">
+        <canvas id="chart-label-header" style="display:block"></canvas>
+      </div>
       <canvas id="chart-label" style="display:block"></canvas>
     </div>
     <div id="chart-scroll">
@@ -946,12 +950,15 @@ async function loadAndRender() {
 
 // ── 세로 스크롤 동기화 ───────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  const scrollEl = document.getElementById('chart-scroll');
-  const labelCol = document.getElementById('chart-label-col');
-  if (scrollEl && labelCol) {
+  const scrollEl    = document.getElementById('chart-scroll');
+  const labelCanvas = document.getElementById('chart-label');
+  if (scrollEl && labelCanvas) {
+    // 레이블 컬럼은 자체 스크롤(scrollTop)을 쓰지 않는다.
+    // 두 컨테이너의 스크롤 최대치가 달라(오른쪽만 padding-bottom·가로 스크롤바 보유)
+    // 하단에서 행이 어긋나기 때문에, 캔버스를 직접 같은 양만큼 이동시킨다.
     scrollEl.addEventListener('scroll', () => {
-      labelCol.scrollTop = scrollEl.scrollTop;
-    });
+      labelCanvas.style.transform = `translateY(${-scrollEl.scrollTop}px)`;
+    }, { passive: true });
   }
 });
 
