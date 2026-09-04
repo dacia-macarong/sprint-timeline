@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 12:28 KST",
+  "updated": "2026-09-04 13:55 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -499,7 +499,7 @@
       "guide_start": "2026. 6. 30",
       "guide": "2026. 6. 30",
       "dev_start": "2026. 6. 30",
-      "dev_complete": "2026. 7. 2",
+      "dev_complete": "2026. 7. 1",
       "qa_start": "2026. 7. 2",
       "qa_complete": "2026. 7. 3",
       "done": "2026. 7. 7",
@@ -516,12 +516,12 @@
       "dev_review_end": "2026. 6. 25",
       "guide_start": "2026. 6. 29",
       "guide": "2026. 6. 30",
-      "dev_start": "",
+      "dev_start": "2026. 6. 24",
       "dev_complete": "2026. 7. 2",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": ""
+      "qa_start": "2026. 7. 2",
+      "qa_complete": "2026. 7. 3",
+      "done": "2026. 7. 7",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356369?focus=true"
     },
     {
       "name": "자비스 A (스케줄)",
@@ -562,20 +562,20 @@
     {
       "name": "[파트너스] 맞춤 프로그램 노출영역 추가",
       "owner": "Harry",
-      "created": "",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": ""
+      "created": "2026. 6. 8",
+      "planning": "2026. 6. 15",
+      "design_start": "2026. 7. 2",
+      "design_draft": "2026. 7. 9",
+      "dev_review_start": "2026. 7. 14",
+      "dev_review_end": "2026. 7. 22",
+      "guide_start": "2026. 7. 14",
+      "guide": "2026. 7. 14",
+      "dev_start": "2026. 7. 22",
+      "dev_complete": "2026. 7. 24",
+      "qa_start": "2026. 7. 23",
+      "qa_complete": "2026. 7. 30",
+      "done": "2026. 8. 4",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215476353257064?focus=true"
     },
     {
       "name": "피드형 홈 커스터마이징",
