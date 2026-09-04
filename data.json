@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 11:15 KST",
+  "updated": "2026-09-04 12:28 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -488,6 +488,42 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
     },
     {
+      "name": "[파트너스] 차량 정비이력 공유하기",
+      "owner": "Cecily",
+      "created": "2026. 5. 11",
+      "planning": "2026. 6. 1",
+      "design_start": "2026. 6. 26",
+      "design_draft": "2026. 6. 30",
+      "dev_review_start": "2026. 6. 29",
+      "dev_review_end": "2026. 6. 29",
+      "guide_start": "2026. 6. 30",
+      "guide": "2026. 6. 30",
+      "dev_start": "2026. 6. 30",
+      "dev_complete": "2026. 7. 2",
+      "qa_start": "2026. 7. 2",
+      "qa_complete": "2026. 7. 3",
+      "done": "2026. 7. 7",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356366?focus=true"
+    },
+    {
+      "name": "[마이클] 차량 정비이력 제3자 동의",
+      "owner": "Cecily",
+      "created": "2026. 5. 11",
+      "planning": "2026. 6. 19",
+      "design_start": "2026. 6. 24",
+      "design_draft": "2026. 6. 25",
+      "dev_review_start": "2026. 6. 25",
+      "dev_review_end": "2026. 6. 25",
+      "guide_start": "2026. 6. 29",
+      "guide": "2026. 6. 30",
+      "dev_start": "",
+      "dev_complete": "2026. 7. 2",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
+    },
+    {
       "name": "자비스 A (스케줄)",
       "owner": "Dacia",
       "created": "2026. 6. 11",
@@ -522,6 +558,24 @@
       "qa_complete": "2026. 7. 16",
       "done": "2026. 7. 20",
       "link": "https://app.asana.com/1/1118180141018033/project/1200232218270049/task/1215697242186955?focus=true"
+    },
+    {
+      "name": "[파트너스] 맞춤 프로그램 노출영역 추가",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
     },
     {
       "name": "피드형 홈 커스터마이징",
