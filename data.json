@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 09:54 KST",
+  "updated": "2026-09-04 10:51 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -488,6 +488,42 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
     },
     {
+      "name": "자비스 A (스케줄)",
+      "owner": "Dacia",
+      "created": "2026. 6. 11",
+      "planning": "2026. 6. 29",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 6. 17",
+      "dev_review_end": "2026. 6. 19",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026. 6. 22",
+      "dev_complete": "2026. 6. 29",
+      "qa_start": "2026. 6. 29",
+      "qa_complete": "2026. 7. 8",
+      "done": "2026. 7. 20",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215622450661076?focus=true"
+    },
+    {
+      "name": "자비스 B (피드형 홈)",
+      "owner": "Ken",
+      "created": "2026. 6. 11",
+      "planning": "2026. 7. 2",
+      "design_start": "2026. 6. 25",
+      "design_draft": "2026. 7. 3",
+      "dev_review_start": "2026. 7. 3",
+      "dev_review_end": "2026. 7. 6",
+      "guide_start": "2026. 7. 6",
+      "guide": "2026. 7. 7",
+      "dev_start": "2026. 7. 7",
+      "dev_complete": "2026. 7. 10",
+      "qa_start": "2026. 7. 13",
+      "qa_complete": "2026. 7. 16",
+      "done": "2026. 7. 20",
+      "link": "https://app.asana.com/1/1118180141018033/project/1200232218270049/task/1215697242186955?focus=true"
+    },
+    {
       "name": "피드형 홈 커스터마이징",
       "owner": "Dacia",
       "created": "2026. 7. 13",
@@ -506,9 +542,27 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216497938763091?focus=true"
     },
     {
+      "name": "스케줄 - 중고차 성능보증보험 추가",
+      "owner": "Dacia",
+      "created": "2026. 7. 20",
+      "planning": "2026. 7. 24",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 7. 24",
+      "dev_review_end": "2026. 7. 27",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026. 7. 28",
+      "dev_complete": "2026. 7. 29",
+      "qa_start": "2026. 7. 29",
+      "qa_complete": "2026. 7. 29",
+      "done": "2026. 8. 6",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216700560207042?focus=true"
+    },
+    {
       "name": "맞춤진단 상품 개발",
       "owner": "Harry",
-      "created": "2026.6.29",
+      "created": "2026. 6. 29",
       "planning": "2026.7.22",
       "design_start": "2026.7.23",
       "design_draft": "2026.7.28",
@@ -522,6 +576,42 @@
       "qa_complete": "2026.8.13",
       "done": "2026.8.14",
       "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true"
+    },
+    {
+      "name": "홈 피드 템플릿",
+      "owner": "Dacia",
+      "created": "2026. 7. 28",
+      "planning": "2026. 7. 30",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 8. 6",
+      "dev_review_end": "2026. 8. 6",
+      "guide_start": "2026. 7. 31",
+      "guide": "2026. 7. 31",
+      "dev_start": "2026. 8. 7",
+      "dev_complete": "2026. 8. 10",
+      "qa_start": "2026. 8. 12",
+      "qa_complete": "2026. 8. 14",
+      "done": "2026. 8. 18",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216907308075028?focus=true"
+    },
+    {
+      "name": "리콜 추가",
+      "owner": "Dacia",
+      "created": "2026. 8. 4",
+      "planning": "2026. 8. 11",
+      "design_start": "2026. 8. 12",
+      "design_draft": "2026. 8. 12",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 8. 12",
+      "guide": "2026. 8. 12",
+      "dev_start": "2026. 8. 14",
+      "dev_complete": "2026. 8. 14",
+      "qa_start": "2026. 8. 19",
+      "qa_complete": "2026. 8. 21",
+      "done": "2026. 8. 25",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1217136587487366?focus=true"
     },
     {
       "name": "정비소 추가 결제",
@@ -542,22 +632,22 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1212651861925647/task/1216343119636962?focus=true"
     },
     {
-      "name": "리콜 추가",
+      "name": "이미지 배너 템플릿",
       "owner": "Dacia",
-      "created": "2026. 8. 4",
-      "planning": "2026. 8. 11",
-      "design_start": "2026. 8. 12",
-      "design_draft": "2026. 8. 12",
+      "created": "2026. 8. 21",
+      "planning": "2026. 8. 21",
+      "design_start": "",
+      "design_draft": "",
       "dev_review_start": "",
       "dev_review_end": "",
-      "guide_start": "2026. 8. 12",
-      "guide": "2026. 8. 12",
-      "dev_start": "2026. 8. 14",
-      "dev_complete": "2026. 8. 14",
-      "qa_start": "2026. 8. 19",
-      "qa_complete": "2026. 8. 21",
-      "done": "2026. 8. 25",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1217136587487366?focus=true"
+      "guide_start": "2026. 8. 26",
+      "guide": "2026. 8. 26",
+      "dev_start": "2026. 8. 26",
+      "dev_complete": "2026. 8. 26",
+      "qa_start": "2026. 8. 27",
+      "qa_complete": "2026. 8. 28",
+      "done": "2026. 9. 2",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217717261338661?focus=true"
     }
   ]
 }
