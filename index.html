@@ -154,9 +154,11 @@
     </div>
     <div class="criteria-section">
       <div class="criteria-title">일수 계산 기준</div>
-      <div class="criteria-row"><span>📅</span><span><b style="color:#c9d1d9">영업일</b> 기준 (주말 제외)</span></div>
+      <div class="criteria-row"><span>📅</span><span><b style="color:#c9d1d9">영업일</b> 기준 (주말 제외) · 시작일·완료일 모두 포함</span></div>
+      <div class="criteria-row"><span>🟦</span><span><b style="color:#c9d1d9">작업</b> = 디자인+개발 단계 기간의 합 (단계 사이 공백 제외, 겹치는 구간은 1회만)</span></div>
+      <div class="criteria-row"><span>🟧</span><span><b style="color:#c9d1d9">총</b> = 디자인 시안 시작 ~ QA 완료를 통으로 (대기 포함)</span></div>
       <div class="criteria-row"><span>⬜</span><span>시작일 미입력 시 <b style="color:#c9d1d9">직전 단계 완료일 다음 영업일</b>로 자동 계산</span></div>
-      <div class="criteria-row"><div class="criteria-hatch"></div><span><b style="color:#c9d1d9">사선 해칭</b> = 타 태스크 우선 처리로 인한 중단 구간 (일수에서 제외)</span></div>
+      <div class="criteria-row"><div class="criteria-hatch"></div><span><b style="color:#c9d1d9">사선 해칭</b> = 타 태스크 우선 처리로 인한 중단 구간 (작업 일수에서만 제외)</span></div>
     </div>
   </div>
 
@@ -344,11 +346,12 @@ function getSegments(task) {
   return { segments: segs, dates };
 }
 
-// ── 영업일 카운트 (주말 제외) ────────────────────────────────
+// ── 영업일 카운트 (주말 제외, 시작일·완료일 모두 포함) ───────
 function workingDays(start, end) {
+  if (!start || !end || end < start) return 0;
   let count = 0;
   const d = new Date(start);
-  while (d < end) {
+  while (d <= end) {
     const dow = d.getDay();
     if (dow !== 0 && dow !== 6) count++;
     d.setDate(d.getDate() + 1);
@@ -394,6 +397,23 @@ function calcActiveDays(segs, taskName) {
   });
 
   return Math.max(0, total);
+}
+
+// ── 실 작업으로 세는 단계 (기획·QA·배포 제외) ────────────────
+const WORK_PHASES = ['design_draft', 'dev_review', 'design_guide', 'dev'];
+
+// ── 태스크 일수 산출 ──────────────────────────────────────────
+//  실 작업 = 디자인+개발 단계 기간의 합 (단계 사이 공백 제외, 겹치는 구간은 1회만)
+//  총 기간 = 디자인 시안 시작 ~ QA 완료를 통으로 (대기 포함)
+function calcTaskDays(segments, dates, taskName) {
+  const workSegs  = segments.filter(s => WORK_PHASES.includes(s.phase));
+  const workDays  = calcActiveDays(workSegs, taskName);
+  const leadStart = workSegs.length
+    ? workSegs.reduce((m, s) => s.start < m ? s.start : m, workSegs[0].start)
+    : dates.created;
+  const leadEnd   = dates.qa_complete || dates.dev_complete || dates.done;
+  const leadDays  = workingDays(leadStart, leadEnd);
+  return { workSegs, workDays, leadDays };
 }
 
 // ── 레인 배정 (겹치는 단계 → 위/아래 2레인 분리) ────────────
@@ -690,17 +710,10 @@ function renderChart(rawTasks) {
     // 레이블은 빗금 pass 이후에 그림 — taskMeta에 저장
     let doneLabel = null;
     if (dates.done) {
-      const totalDays = workingDays(dates.created, dates.done);
+      const { workDays, leadDays } = calcTaskDays(segments, dates, task.name);
       const xLabel = dateToX(dates.done) + PPD + 6;
-      const ddPhases = ['design_draft','dev_review','design_guide','dev'];
-      const ddSegs = segments.filter(s => ddPhases.includes(s.phase));
-      let labelText = `총 ${totalDays}WD`;
-      if (ddSegs.length > 0 && dates.dev_complete) {
-        const firstStart = ddSegs.reduce((m, s) => s.start < m ? s.start : m, ddSegs[0].start);
-        const devEnd = new Date(dates.dev_complete.getTime() + 86400000);
-        const ddDays = workingDays(firstStart, devEnd);
-        if (ddDays > 0) labelText += ` (작업 ${ddDays}WD)`;
-      }
+      let labelText = `총 ${leadDays}WD`;
+      if (workDays > 0) labelText += ` (작업 ${workDays}WD)`;
       doneLabel = { text: labelText, x: xLabel, y: rowMid + 4 };
     }
 
@@ -778,9 +791,8 @@ function renderChart(rawTasks) {
     html += `<div class="tt-row"><span class="tt-label">담당</span><span class="tt-val">${task.owner}</span></div>`;
     html += `<div class="tt-row"><span class="tt-label">생성일</span><span class="tt-val">${fmtDate(dates.created)}</span></div>`;
     if (dates.done) {
-      const adjs      = ADJUSTMENTS[task.name] || [];
-      const activeDays = calcActiveDays(found.segments, task.name);
-      const totalDays  = workingDays(dates.created, dates.done);
+      const adjs = ADJUSTMENTS[task.name] || [];
+      const { workDays, leadDays } = calcTaskDays(found.segments, dates, task.name);
       html += `<div class="tt-row"><span class="tt-label">완료일</span><span class="tt-val">${fmtDate(dates.done)}</span></div>`;
       html += `<hr class="tt-divider">${segSummary}`;
       if (adjs.length) {
@@ -791,16 +803,11 @@ function renderChart(rawTasks) {
         });
       }
       html += `<hr class="tt-divider">`;
-      html += `<div class="tt-row"><span class="tt-label">실 작업</span><span class="tt-val tt-leadtime">${activeDays} WD</span></div>`;
-      if (totalDays !== activeDays) {
-        html += `<div class="tt-row"><span class="tt-label">전체 기간</span><span class="tt-val" style="color:#6e7681">${totalDays} WD (공백 ${totalDays - activeDays} WD 포함)</span></div>`;
+      if (workDays > 0) {
+        html += `<div class="tt-row"><span class="tt-label">실 작업</span><span class="tt-val tt-leadtime">${workDays} WD</span></div>`;
       }
-      const designDevDays = found.segments
-        .filter(s => ['design_draft','dev_review','design_guide','dev'].includes(s.phase))
-        .reduce((sum, s) => sum + workingDays(s.start, s.end), 0);
-      if (designDevDays > 0) {
-        html += `<div class="tt-row"><span class="tt-label">디자인+개발</span><span class="tt-val" style="color:#f0883e">${designDevDays} WD</span></div>`;
-      }
+      html += `<div class="tt-row"><span class="tt-label">총 기간</span><span class="tt-val" style="color:#f0883e">${leadDays} WD</span></div>`;
+      html += `<div class="tt-row"><span class="tt-label">생성~배포</span><span class="tt-val" style="color:#6e7681">${workingDays(dates.created, dates.done)} WD</span></div>`;
     } else {
       html += `<hr class="tt-divider">${segSummary}<hr class="tt-divider">`;
       html += `<div class="tt-row"><span class="tt-label">상태</span><span class="tt-val tt-inprogress">진행중</span></div>`;
