@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11 08:57 KST",
+  "updated": "2026-09-11 13:27 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -702,6 +702,24 @@
       "qa_complete": "2026. 8. 28",
       "done": "2026. 9. 2",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217717261338661?focus=true"
+    },
+    {
+      "name": "[파트너스] 예약 수락 후 정비소 추가 결제 기능 팝업 노출",
+      "owner": "Cecily",
+      "created": "2026. 9. 2",
+      "planning": "2026. 9. 2",
+      "design_start": "2026. 9. 3",
+      "design_draft": "2026. 9. 3",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 9. 3",
+      "guide": "2026. 9. 3",
+      "dev_start": "2026. 9. 3",
+      "dev_complete": "2026. 9. 7",
+      "qa_start": "2026. 9. 7",
+      "qa_complete": "2026. 9. 7",
+      "done": "2026. 9. 9",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218074691114872"
     }
   ]
 }
