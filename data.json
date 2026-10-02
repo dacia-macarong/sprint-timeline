@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 10:31 KST",
+  "updated": "2026-10-02 11:29 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -816,18 +816,54 @@
       "owner": "Harry",
       "created": "2026. 9. 14",
       "planning": "2026. 9. 14",
+      "design_start": "2026. 9. 21",
+      "design_draft": "2026. 9. 23",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 9. 28",
+      "guide": "2026. 9. 28",
+      "dev_start": "2026. 9. 29",
+      "dev_complete": "2026. 9. 30",
+      "qa_start": "2026. 10. 1",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
+    },
+    {
+      "name": "바이럴 - 마이클 고유가 지원금",
+      "owner": "Ken",
+      "created": "2026. 8. 25",
+      "planning": "",
       "design_start": "",
       "design_draft": "",
       "dev_review_start": "",
       "dev_review_end": "",
       "guide_start": "",
       "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": ""
+      "dev_start": "2026. 9. 7",
+      "dev_complete": "2026. 9. 16",
+      "qa_start": "2026. 9. 17",
+      "qa_complete": "2026. 9. 22",
+      "done": "2026. 9. 23",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218167757868254?focus=true"
+    },
+    {
+      "name": "스케줄 기반 CRM 발송",
+      "owner": "Dacia",
+      "created": "2026. 7. 30",
+      "planning": "2026. 9. 8",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 9. 9",
+      "dev_review_end": "2026. 9. 10",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026. 9. 10",
+      "dev_complete": "2026. 9. 23",
+      "qa_start": "2026. 9. 28",
+      "qa_complete": "2026. 9. 29",
+      "done": "2026. 9. 30",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217009900190761?focus=true"
     }
   ]
 }
