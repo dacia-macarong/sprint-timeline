@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13 12:28 KST",
+  "updated": "2026-10-13 20:38 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -864,6 +864,24 @@
       "qa_complete": "2026. 9. 29",
       "done": "2026. 9. 30",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217009900190761?focus=true"
+    },
+    {
+      "name": "내차관리 퍼널",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 10. 7",
+      "dev_review_end": "2026. 10. 8",
+      "guide_start": "",
+      "guide": "2026. 10. 8",
+      "dev_start": "2026. 10. 9",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
     }
   ]
 }
