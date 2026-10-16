@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 10:12 KST",
+  "updated": "2026-10-16 11:27 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -866,12 +866,48 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217009900190761?focus=true"
     },
     {
-      "name": "내차관리 퍼널",
-      "owner": "Dacia",
+      "name": "브레이크 패드 점검 결과 %로 남기기",
+      "owner": "Cecily",
       "created": "",
       "planning": "",
       "design_start": "",
       "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
+    },
+    {
+      "name": "브레이크 패드 및 디스크 항목 4개로 세분화",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": ""
+    },
+    {
+      "name": "내차관리 퍼널",
+      "owner": "Dacia",
+      "created": "2026. 9. 14",
+      "planning": "2026. 10. 1",
+      "design_start": "2026. 9. 21",
+      "design_draft": "2026. 10. 6",
       "dev_review_start": "2026. 10. 7",
       "dev_review_end": "2026. 10. 8",
       "guide_start": "",
@@ -881,7 +917,7 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "",
-      "link": ""
+      "link": "https://app.asana.com/1/1118180141018033/project/1209417107932432/task/1218427546302189?focus=true"
     }
   ]
 }
