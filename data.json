@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 11:27 KST",
+  "updated": "2026-10-16 11:34 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -826,8 +826,8 @@
       "dev_complete": "2026. 9. 30",
       "qa_start": "2026. 10. 1",
       "qa_complete": "",
-      "done": "",
-      "link": ""
+      "done": "2026. 10. 7",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218501170912023?focus=true"
     },
     {
       "name": "바이럴 - 마이클 고유가 지원금",
@@ -868,7 +868,7 @@
     {
       "name": "브레이크 패드 점검 결과 %로 남기기",
       "owner": "Cecily",
-      "created": "",
+      "created": "2026. 8. 31",
       "planning": "",
       "design_start": "",
       "design_draft": "",
@@ -880,13 +880,13 @@
       "dev_complete": "",
       "qa_start": "",
       "qa_complete": "",
-      "done": "",
+      "done": "2026. 10. 7",
       "link": ""
     },
     {
       "name": "브레이크 패드 및 디스크 항목 4개로 세분화",
       "owner": "Cecily",
-      "created": "",
+      "created": "2026. 6. 15",
       "planning": "",
       "design_start": "",
       "design_draft": "",
@@ -898,7 +898,7 @@
       "dev_complete": "",
       "qa_start": "",
       "qa_complete": "",
-      "done": "",
+      "done": "2026. 10. 7",
       "link": ""
     },
     {
