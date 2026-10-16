@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 11:34 KST",
+  "updated": "2026-10-16 11:48 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -869,8 +869,8 @@
       "name": "브레이크 패드 점검 결과 %로 남기기",
       "owner": "Cecily",
       "created": "2026. 8. 31",
-      "planning": "",
-      "design_start": "",
+      "planning": "2026. 9. 7",
+      "design_start": "2026. 9. 7",
       "design_draft": "",
       "dev_review_start": "",
       "dev_review_end": "",
