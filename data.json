@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23 08:12 KST",
+  "updated": "2026-10-23 13:31 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -881,7 +881,7 @@
       "qa_start": "2026. 10. 1",
       "qa_complete": "2026. 10. 6",
       "done": "2026. 10. 7",
-      "link": ""
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217993154852873?focus=true"
     },
     {
       "name": "브레이크 패드 및 디스크 항목 4개로 세분화",
@@ -899,7 +899,7 @@
       "qa_start": "2026. 10. 1",
       "qa_complete": "2026. 10. 7",
       "done": "2026. 10. 7",
-      "link": ""
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215691653495077?focus=true"
     },
     {
       "name": "내차관리 퍼널",
@@ -918,6 +918,24 @@
       "qa_complete": "",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1209417107932432/task/1218427546302189?focus=true"
+    },
+    {
+      "name": "정비소에서 다음 교체 km 수집",
+      "owner": "Cecily",
+      "created": "2026. 9. 14",
+      "planning": "2026. 9. 22",
+      "design_start": "2026. 9. 23",
+      "design_draft": "2026. 10. 2",
+      "dev_review_start": "2026. 10. 6",
+      "dev_review_end": "2026. 10. 6",
+      "guide_start": "2026. 10. 5",
+      "guide": "2026. 10. 6",
+      "dev_start": "2026. 10. 7",
+      "dev_complete": "2026. 10. 14",
+      "qa_start": "2026. 10. 15",
+      "qa_complete": "2026. 10. 21",
+      "done": "2026. 10. 22",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1218434127550166?focus=true"
     }
   ]
 }
