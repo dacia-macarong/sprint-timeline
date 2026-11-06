@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06 11:12 KST",
+  "updated": "2026-11-06 11:37 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1026,6 +1026,42 @@
       "qa_complete": "2026. 10. 29",
       "done": "2026. 11. 4",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219525602951225?focus=true"
+    },
+    {
+      "name": "[기획] 교체필요+3일 알림톡 자동화",
+      "owner": "Cecily",
+      "created": "2026. 10. 26",
+      "planning": "2026. 10. 28",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 10. 28",
+      "dev_review_end": "2026. 10. 28",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026. 10. 29",
+      "dev_complete": "2026. 10. 30",
+      "qa_start": "2026. 11. 2",
+      "qa_complete": "2026. 11. 4",
+      "done": "2026. 11. 5",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872423858776?focus=true"
+    },
+    {
+      "name": "[개선/파트너스] 점검시 브레이크패드 잔량 디폴트 50% 제거",
+      "owner": "Cecily",
+      "created": "2026. 10. 23",
+      "planning": "2026. 10. 23",
+      "design_start": "2026. 10. 23",
+      "design_draft": "2026. 10. 26",
+      "dev_review_start": "2026. 10. 27",
+      "dev_review_end": "2026. 10. 27",
+      "guide_start": "2026. 10. 26",
+      "guide": "2026. 10. 27",
+      "dev_start": "2026. 10. 27",
+      "dev_complete": "2026. 10. 28",
+      "qa_start": "2026. 10. 30",
+      "qa_complete": "2026. 10. 30",
+      "done": "2026. 11. 3",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1219779300271419"
     }
   ]
 }
