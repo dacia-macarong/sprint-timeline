@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06 06:54 KST",
+  "updated": "2026-11-06 10:59 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -913,10 +913,10 @@
       "guide_start": "",
       "guide": "2026. 10. 8",
       "dev_start": "2026. 10. 9",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
+      "dev_complete": "2026. 10. 15",
+      "qa_start": "2026. 10. 16",
+      "qa_complete": "2026. 10. 20",
+      "done": "2026. 10. 22",
       "link": "https://app.asana.com/1/1118180141018033/project/1209417107932432/task/1218427546302189?focus=true"
     },
     {
@@ -939,7 +939,7 @@
     },
     {
       "name": "[개선] 점검결과 패드 잔량 노출 a/b 테스트",
-      "owner": "",
+      "owner": "Cecily",
       "created": "",
       "planning": "2026. 10. 21",
       "design_start": "",
@@ -954,6 +954,78 @@
       "qa_complete": "2026. 10. 27",
       "done": "2026. 10. 28",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219673671139431"
+    },
+    {
+      "name": "[기획] 주행거리 트래커",
+      "owner": "Ken",
+      "created": "2026. 10. 12",
+      "planning": "",
+      "design_start": "2026. 10. 13",
+      "design_draft": "2026. 10. 16",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 10. 19",
+      "guide": "2026. 10. 19",
+      "dev_start": "2026. 10. 19",
+      "dev_complete": "2026. 10. 23",
+      "qa_start": "2026. 10. 26",
+      "qa_complete": "2026. 10. 27",
+      "done": "2026. 10. 29",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219390484290776?focus=true"
+    },
+    {
+      "name": "[개선] 내차 관리 퍼널 T1 진입율 개선",
+      "owner": "Dacia",
+      "created": "2026. 10. 27",
+      "planning": "",
+      "design_start": "2026. 10. 28",
+      "design_draft": "2026. 10. 28",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 10. 28",
+      "guide": "2026. 10. 28",
+      "dev_start": "2026. 10. 28",
+      "dev_complete": "2026. 10. 28",
+      "qa_start": "2026. 10. 28",
+      "qa_complete": "2026. 10. 28",
+      "done": "2026. 10. 29",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632119384?focus=true"
+    },
+    {
+      "name": "[개선] 내차관리 퍼널 T1 증상 단계 삭제",
+      "owner": "Dacia",
+      "created": "2026. 10. 30",
+      "planning": "",
+      "design_start": "2026. 10. 30",
+      "design_draft": "2026. 10. 30",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 10. 30",
+      "guide": "2026. 10. 30",
+      "dev_start": "2026. 10. 30",
+      "dev_complete": "2026. 11. 2",
+      "qa_start": "2026. 11. 2",
+      "qa_complete": "2026. 11. 3",
+      "done": "2026. 11. 5",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220001810547214?focus=true"
+    },
+    {
+      "name": "[기획] 정비항목 추가/삭제 방식 개선",
+      "owner": "Dacia",
+      "created": "2026. 10. 15",
+      "planning": "",
+      "design_start": "2026. 10. 22",
+      "design_draft": "2026. 10. 23",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "2026. 10. 26",
+      "guide": "2026. 10. 27",
+      "dev_start": "2026. 10. 27",
+      "dev_complete": "2026. 10. 28",
+      "qa_start": "2026. 10. 28",
+      "qa_complete": "2026. 10. 29",
+      "done": "2026. 11. 4",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219525602951225?focus=true"
     }
   ]
 }
