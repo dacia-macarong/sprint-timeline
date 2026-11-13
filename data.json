@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13 09:05 KST",
+  "updated": "2026-11-13 14:13 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1062,6 +1062,60 @@
       "qa_complete": "2026. 10. 30",
       "done": "2026. 11. 3",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1219779300271419"
+    },
+    {
+      "name": "[기획] 파트너 헥사지표 제작",
+      "owner": "Harry",
+      "created": "2026. 10. 26",
+      "planning": "2026. 10. 28",
+      "design_start": "2026.11.02",
+      "design_draft": "2026.11.04",
+      "dev_review_start": "2026.11.04",
+      "dev_review_end": "2026.11.05",
+      "guide_start": "2026.11.05",
+      "guide": "2026.11.06",
+      "dev_start": "2026.11.05",
+      "dev_complete": "2026.11.09",
+      "qa_start": "2026.11.10",
+      "qa_complete": "2026.11.12",
+      "done": "2026.11.12",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632867586?focus=true"
+    },
+    {
+      "name": "[기획] 엔진오일 리드타임 축소, 점유시간 축소",
+      "owner": "Harry",
+      "created": "2026. 10. 28",
+      "planning": "2026.11.02",
+      "design_start": "2026.11.02",
+      "design_draft": "2026.11.03",
+      "dev_review_start": "2026.11.02",
+      "dev_review_end": "2026.11.03",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "2026.11.02",
+      "dev_complete": "2026.11.03",
+      "qa_start": "2026.11.05",
+      "qa_complete": "2026.11.06",
+      "done": "2026. 11. 10",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872436363339?focus=true"
+    },
+    {
+      "name": "[개선] 스케줄 기준값 입력 및 판단 방식 개선",
+      "owner": "Dacia",
+      "created": "2026. 10. 16",
+      "planning": "2026. 10. 29",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "2026. 10. 29",
+      "dev_review_end": "2026. 10. 29",
+      "guide_start": "2026. 10. 29",
+      "guide": "2026. 10. 29",
+      "dev_start": "2026. 10. 30",
+      "dev_complete": "2026. 11. 4",
+      "qa_start": "2026. 11. 4",
+      "qa_complete": "2026. 11. 6",
+      "done": "2026. 11. 10",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219569146308939?focus=true"
     }
   ]
 }
