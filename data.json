@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20 11:57 KST",
+  "updated": "2026-11-20 20:20 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1136,24 +1136,6 @@
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220338244047151"
     },
     {
-      "name": "[기획] 브레이크 패드 점검 결과 전달",
-      "owner": "Cecily",
-      "created": "2026. 8. 31",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217993154950515"
-    },
-    {
       "name": "[기획] 마이데이터 차량 결제이력 연동",
       "owner": "Ken",
       "created": "2026. 8. 31",
@@ -1170,24 +1152,6 @@
       "qa_complete": "2026. 11. 12",
       "done": "2026. 11. 16",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217989338587603"
-    },
-    {
-      "name": "[Android/확인요청] 주행거리 트래킹 설정된 차량 삭제 후 \"주행거리 트래킹\" 진입점 미노출",
-      "owner": "Krystal",
-      "created": "2026. 11. 16",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220565830257014"
     },
     {
       "name": "[기획] 온보딩 - 세그먼트1도 기록받기",
@@ -1224,24 +1188,6 @@
       "qa_complete": "",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219977211811171"
-    },
-    {
-      "name": "[11월 18일 수요일] 장기 미접속자 carinfo 갱신 후 자동차검사일 알림톡 2차",
-      "owner": "Mike",
-      "created": "2026. 11. 13",
-      "planning": "",
-      "design_start": "",
-      "design_draft": "",
-      "dev_review_start": "",
-      "dev_review_end": "",
-      "guide_start": "",
-      "guide": "",
-      "dev_start": "",
-      "dev_complete": "",
-      "qa_start": "",
-      "qa_complete": "",
-      "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220501181206024"
     },
     {
       "name": "[기획] 마이데이터 후속 - 자동차 보험 연결하기",
