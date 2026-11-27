@@ -702,7 +702,8 @@ function renderChart(rawTasks, highlight) {
     const hasOverlap = laneSegs.some(s => s.lane === 1);
     const LANE_H   = Math.round(BAR_H * 0.6); // 13px (60%), 합계 ≈ BAR_H * 1.2
     const LANE_TOP = rowMid - LANE_H;          // 위 레인 시작 y
-    laneSegs.forEach(seg => {
+    // 긴 막대부터 그려서 같은 날 시작·끝나는 짧은(1D) 막대가 가려지지 않게 한다
+    [...laneSegs].sort((p, q) => (q.end - q.start) - (p.end - p.start)).forEach(seg => {
       const segBarH = hasOverlap ? LANE_H : BAR_H;
       const segBarY = hasOverlap
         ? (seg.lane === 0 ? LANE_TOP : rowMid)
