@@ -452,13 +452,20 @@ function calcTaskDays(segments, dates, taskName) {
 }
 
 // ── 레인 배정 (겹치는 단계 → 위/아래 2레인 분리) ────────────
+// 같은 날 시작·끝나는 하루짜리(1D) 단계도 겹침으로 본다 (한 레인에 두면 막대가 가려짐)
 function assignLanes(segs) {
   const sorted = [...segs].sort((a, b) => a.start - b.start);
   const laneEnd = [null, null];
+  const laneLast1D = [false, false];
+  const is1D = seg => +seg.start === +seg.end;
+  const conflicts = (l, seg) => laneEnd[l] && (laneEnd[l] > seg.start ||
+    (+laneEnd[l] === +seg.start && (is1D(seg) || laneLast1D[l])));
   return sorted.map(seg => {
-    let lane = 0;
-    if (laneEnd[0] && laneEnd[0] > seg.start) lane = 1;
-    laneEnd[lane] = (laneEnd[lane] && laneEnd[lane] > seg.end) ? laneEnd[lane] : seg.end;
+    const lane = !conflicts(0, seg) ? 0 : !conflicts(1, seg) ? 1 : 0;
+    if (!laneEnd[lane] || seg.end >= laneEnd[lane]) {
+      laneEnd[lane] = seg.end;
+      laneLast1D[lane] = is1D(seg);
+    }
     return { ...seg, lane };
   });
 }
@@ -702,8 +709,7 @@ function renderChart(rawTasks, highlight) {
     const hasOverlap = laneSegs.some(s => s.lane === 1);
     const LANE_H   = Math.round(BAR_H * 0.6); // 13px (60%), 합계 ≈ BAR_H * 1.2
     const LANE_TOP = rowMid - LANE_H;          // 위 레인 시작 y
-    // 긴 막대부터 그려서 같은 날 시작·끝나는 짧은(1D) 막대가 가려지지 않게 한다
-    [...laneSegs].sort((p, q) => (q.end - q.start) - (p.end - p.start)).forEach(seg => {
+    laneSegs.forEach(seg => {
       const segBarH = hasOverlap ? LANE_H : BAR_H;
       const segBarY = hasOverlap
         ? (seg.lane === 0 ? LANE_TOP : rowMid)
