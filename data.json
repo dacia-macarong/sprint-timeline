@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27 09:55 KST",
+  "updated": "2026-11-27 09:58 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1419,7 +1419,7 @@
       "guide_start": "",
       "guide": "",
       "dev_start": "2026. 11. 18",
-      "dev_complete": "",
+      "dev_complete": "2026. 11. 24",
       "qa_start": "",
       "qa_complete": "",
       "done": "2026. 11. 24",
