@@ -370,8 +370,9 @@ function getSegments(task) {
   const qasR = resolveStart(qas, dc, qa);
   if (qasR && qa && qa >= qasR) segs.push({ start: qasR, end: qa, phase: 'qa' });
 
-  // 배포: QA 완료 → 배포완료
-  if (qa && dn && dn >= qa) segs.push({ start: qa, end: dn, phase: 'release' });
+  // 배포: QA 완료 → 배포완료 (QA가 없으면 개발완료부터 배포 대기로 본다)
+  const relFrom = qa || dc;
+  if (relFrom && dn && dn >= relFrom) segs.push({ start: relFrom, end: dn, phase: 'release' });
 
   // 폴백: 마일스톤이 전혀 없는 태스크
   if (segs.length === 0) segs.push({ start: c, end: dn || CHART_END, phase: 'planning' });
