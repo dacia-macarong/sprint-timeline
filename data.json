@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27 04:29 KST",
+  "updated": "2026-11-27 09:32 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -17,7 +17,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 10",
       "done": "2026. 4. 14",
-      "link": "https://app.asana.com/0/1213968584562495/1213145806394041"
+      "link": "https://app.asana.com/0/1213968584562495/1213145806394041",
+      "sprint": ""
     },
     {
       "name": "신규 유저 내차할일",
@@ -35,7 +36,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 2",
       "done": "2026. 4. 3",
-      "link": "https://app.asana.com/0/1213968584562495/1213698204116242"
+      "link": "https://app.asana.com/0/1213968584562495/1213698204116242",
+      "sprint": ""
     },
     {
       "name": "양호해요 ATF",
@@ -53,7 +55,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 15",
       "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213351600399060"
+      "link": "https://app.asana.com/0/1213968584562495/1213351600399060",
+      "sprint": ""
     },
     {
       "name": "영수증 촬영",
@@ -71,7 +74,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 30",
       "done": "2026. 5. 7",
-      "link": "https://app.asana.com/0/1213968584562495/1213594049662564"
+      "link": "https://app.asana.com/0/1213968584562495/1213594049662564",
+      "sprint": ""
     },
     {
       "name": "온보딩 개인화 정보 1차 개선",
@@ -89,7 +93,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 24",
       "done": "2026. 4. 29",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214068267270244?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214068267270244?focus=true",
+      "sprint": ""
     },
     {
       "name": "온보딩 세그먼트 나누기 + 위젯개선 1차",
@@ -107,7 +112,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 14",
       "done": "2026. 5. 20",
-      "link": "https://app.asana.com/0/1213968584562495/1214027026280803"
+      "link": "https://app.asana.com/0/1213968584562495/1214027026280803",
+      "sprint": ""
     },
     {
       "name": "주간 미션",
@@ -125,7 +131,8 @@
       "qa_start": "",
       "qa_complete": "2026. 3. 31",
       "done": "2026. 4. 2",
-      "link": "https://app.asana.com/0/1213968584562495/1213463401432002"
+      "link": "https://app.asana.com/0/1213968584562495/1213463401432002",
+      "sprint": ""
     },
     {
       "name": "추가상품 쿠폰 반영",
@@ -143,7 +150,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 7",
       "done": "2026. 4. 13",
-      "link": "https://app.asana.com/0/1213968584562495/1213893508541397"
+      "link": "https://app.asana.com/0/1213968584562495/1213893508541397",
+      "sprint": ""
     },
     {
       "name": "옵션상품 문구 추가",
@@ -161,7 +169,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 15",
       "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213989148399593"
+      "link": "https://app.asana.com/0/1213968584562495/1213989148399593",
+      "sprint": ""
     },
     {
       "name": "현장결제 3차개선",
@@ -179,7 +188,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213949804942058"
+      "link": "https://app.asana.com/0/1213968584562495/1213949804942058",
+      "sprint": ""
     },
     {
       "name": "기록증명서 개선 1차",
@@ -197,7 +207,8 @@
       "qa_start": "",
       "qa_complete": "2026. 4. 2",
       "done": "2026. 4. 3",
-      "link": "https://app.asana.com/0/1213968584562495/1213698197523196"
+      "link": "https://app.asana.com/0/1213968584562495/1213698197523196",
+      "sprint": ""
     },
     {
       "name": "정비알림 알림톡 자동화",
@@ -215,7 +226,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "2026. 4. 17",
-      "link": "https://app.asana.com/0/1213968584562495/1213612364034585"
+      "link": "https://app.asana.com/0/1213968584562495/1213612364034585",
+      "sprint": ""
     },
     {
       "name": "iOS 푸시 수신 1차 개선",
@@ -233,7 +245,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 12",
       "done": "2026. 5. 12",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214411248519038?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214411248519038?focus=true",
+      "sprint": ""
     },
     {
       "name": "segment-phase2 (기존유저 적용)",
@@ -251,7 +264,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 20",
       "done": "2026. 5. 21",
-      "link": "https://app.asana.com/0/1213968584562495/1214686598893471"
+      "link": "https://app.asana.com/0/1213968584562495/1214686598893471",
+      "sprint": ""
     },
     {
       "name": "segment 배치 개선 (null 없도록)",
@@ -269,7 +283,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 22",
       "done": "2026. 5. 22",
-      "link": "https://app.asana.com/0/1213968584562495/1214987200405712"
+      "link": "https://app.asana.com/0/1213968584562495/1214987200405712",
+      "sprint": ""
     },
     {
       "name": "노출영역 세그먼트 필터",
@@ -287,7 +302,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 21",
       "done": "2026. 5. 27",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214792347002951?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214792347002951?focus=true",
+      "sprint": ""
     },
     {
       "name": "내차 팔기 플로우",
@@ -305,7 +321,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "2026. 5. 26",
-      "link": "https://app.asana.com/0/1213968584562495/1214879592868445"
+      "link": "https://app.asana.com/0/1213968584562495/1214879592868445",
+      "sprint": ""
     },
     {
       "name": "온보딩 - 설치 목적 버튼 순서 랜덤 변경",
@@ -323,7 +340,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "2026. 6. 4",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215238914417555?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215238914417555?focus=true",
+      "sprint": ""
     },
     {
       "name": "주유 영수증 촬영하기 앱스킴 추가",
@@ -341,7 +359,8 @@
       "qa_start": "2026. 6. 5",
       "qa_complete": "2026. 6. 5",
       "done": "2026. 6. 9",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214722708766679?focus=true",
+      "sprint": ""
     },
     {
       "name": "푸시 동의율 높이기",
@@ -359,7 +378,8 @@
       "qa_start": "",
       "qa_complete": "2026. 5. 26",
       "done": "2026. 6. 3",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409622154381?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비목록 - 점검내역 반영",
@@ -377,7 +397,8 @@
       "qa_start": "",
       "qa_complete": "2026. 6. 5",
       "done": "2026. 6. 8",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1212853802934026?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비목록 상세 - 점검내역 반영",
@@ -395,7 +416,8 @@
       "qa_start": "",
       "qa_complete": "2026. 6. 5",
       "done": "2026. 6. 8",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214489090593197?focus=true",
+      "sprint": ""
     },
     {
       "name": "내차 관리 점수 카드",
@@ -413,7 +435,8 @@
       "qa_start": "2026. 6. 8",
       "qa_complete": "2026. 6. 10",
       "done": "2026. 6. 11",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1214409291289983?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비기록 항목 선택 화면 앱스킴 동작 변경",
@@ -431,7 +454,8 @@
       "qa_start": "2026. 6. 10",
       "qa_complete": "2026. 6. 10",
       "done": "2026. 6. 11",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215480544924403?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215480544924403?focus=true",
+      "sprint": ""
     },
     {
       "name": "자동차 검사일 안내 푸시 자동화",
@@ -449,7 +473,8 @@
       "qa_start": "2026. 6. 15",
       "qa_complete": "2026. 6. 15",
       "done": "2026. 6. 16",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215266735237177?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215266735237177?focus=true",
+      "sprint": ""
     },
     {
       "name": "위젯 클릭률 높이기",
@@ -467,7 +492,8 @@
       "qa_start": "2026. 6. 12",
       "qa_complete": "2026. 6. 17",
       "done": "2026. 6. 18",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214471320295813?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1214471320295813?focus=true",
+      "sprint": ""
     },
     {
       "name": "결제수단 제한",
@@ -485,7 +511,8 @@
       "qa_start": "2026. 6. 22",
       "qa_complete": "2026. 6. 23",
       "done": "2026. 6. 24",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1210998550517038?focus=true",
+      "sprint": ""
     },
     {
       "name": "[파트너스] 차량 정비이력 공유하기",
@@ -503,7 +530,8 @@
       "qa_start": "2026. 7. 2",
       "qa_complete": "2026. 7. 3",
       "done": "2026. 7. 7",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356366?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356366?focus=true",
+      "sprint": ""
     },
     {
       "name": "[마이클] 차량 정비이력 제3자 동의",
@@ -521,7 +549,8 @@
       "qa_start": "2026. 7. 2",
       "qa_complete": "2026. 7. 3",
       "done": "2026. 7. 7",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356369?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215432723356369?focus=true",
+      "sprint": ""
     },
     {
       "name": "자비스 A (스케줄)",
@@ -539,7 +568,8 @@
       "qa_start": "2026. 6. 29",
       "qa_complete": "2026. 7. 8",
       "done": "2026. 7. 20",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215622450661076?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1215622450661076?focus=true",
+      "sprint": ""
     },
     {
       "name": "자비스 B (피드형 홈)",
@@ -557,7 +587,8 @@
       "qa_start": "2026. 7. 13",
       "qa_complete": "2026. 7. 16",
       "done": "2026. 7. 20",
-      "link": "https://app.asana.com/1/1118180141018033/project/1200232218270049/task/1215697242186955?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1200232218270049/task/1215697242186955?focus=true",
+      "sprint": ""
     },
     {
       "name": "[파트너스] 맞춤 프로그램 노출영역 추가",
@@ -575,7 +606,8 @@
       "qa_start": "2026. 7. 23",
       "qa_complete": "2026. 7. 30",
       "done": "2026. 8. 4",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215476353257064?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215476353257064?focus=true",
+      "sprint": ""
     },
     {
       "name": "피드형 홈 커스터마이징",
@@ -593,7 +625,8 @@
       "qa_start": "2026. 7. 27",
       "qa_complete": "2026. 7. 29",
       "done": "2026. 7. 30",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216497938763091?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216497938763091?focus=true",
+      "sprint": ""
     },
     {
       "name": "스케줄 - 중고차 성능보증보험 추가",
@@ -611,7 +644,8 @@
       "qa_start": "2026. 7. 29",
       "qa_complete": "2026. 7. 29",
       "done": "2026. 8. 6",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216700560207042?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216700560207042?focus=true",
+      "sprint": ""
     },
     {
       "name": "맞춤진단 상품 개발",
@@ -629,7 +663,8 @@
       "qa_start": "2026.8.7",
       "qa_complete": "2026.8.13",
       "done": "2026.8.14",
-      "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1216108031239362/task/1216108628296469?focus=true",
+      "sprint": ""
     },
     {
       "name": "홈 피드 템플릿",
@@ -647,7 +682,8 @@
       "qa_start": "2026. 8. 12",
       "qa_complete": "2026. 8. 14",
       "done": "2026. 8. 18",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216907308075028?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216907308075028?focus=true",
+      "sprint": ""
     },
     {
       "name": "리콜 추가",
@@ -665,7 +701,8 @@
       "qa_start": "2026. 8. 19",
       "qa_complete": "2026. 8. 21",
       "done": "2026. 8. 25",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1217136587487366?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1217136587487366?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비소 추가 결제",
@@ -683,7 +720,8 @@
       "qa_start": "2026. 8. 21",
       "qa_complete": "2026. 8. 26",
       "done": "2026. 8. 27",
-      "link": "https://app.asana.com/1/1118180141018033/project/1212651861925647/task/1216343119636962?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1212651861925647/task/1216343119636962?focus=true",
+      "sprint": ""
     },
     {
       "name": "이미지 배너 템플릿",
@@ -701,7 +739,8 @@
       "qa_start": "2026. 8. 27",
       "qa_complete": "2026. 8. 28",
       "done": "2026. 9. 2",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217717261338661?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217717261338661?focus=true",
+      "sprint": ""
     },
     {
       "name": "[파트너스] 예약 수락 후 정비소 추가 결제 기능 팝업 노출",
@@ -719,7 +758,8 @@
       "qa_start": "2026. 9. 7",
       "qa_complete": "2026. 9. 7",
       "done": "2026. 9. 9",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218074691114872"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218074691114872",
+      "sprint": ""
     },
     {
       "name": "기록 화면 개선 - 기록 내역 및 통계",
@@ -737,7 +777,8 @@
       "qa_start": "2026. 8. 31",
       "qa_complete": "2026. 9. 7",
       "done": "2026. 9. 9",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216974328472989?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216974328472989?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비주기 판단 로직 통일",
@@ -755,7 +796,8 @@
       "qa_start": "2026. 9. 8",
       "qa_complete": "2026. 9. 11",
       "done": "2026. 9. 15",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216700560207045?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1216700560207045?focus=true",
+      "sprint": ""
     },
     {
       "name": "홈 피드 기록 - 구간 주행거리 표시",
@@ -773,7 +815,8 @@
       "qa_start": "2026. 9. 11",
       "qa_complete": "2026. 9. 11",
       "done": "2026. 9. 15",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218297163249108?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218297163249108?focus=true",
+      "sprint": ""
     },
     {
       "name": "내차점검 정비리포트 사진 줄이기",
@@ -791,7 +834,8 @@
       "qa_start": "2026. 9. 11",
       "qa_complete": "2026. 9. 14",
       "done": "2026. 9. 16",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218343363450357?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218343363450357?focus=true",
+      "sprint": ""
     },
     {
       "name": "[앰배서더] 현장결제 flow - 수입차 추가",
@@ -809,7 +853,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "",
-      "link": ""
+      "link": "",
+      "sprint": ""
     },
     {
       "name": "[앰배서더] 현장결제 flow - 타이어 추가",
@@ -827,7 +872,8 @@
       "qa_start": "2026. 10. 1",
       "qa_complete": "",
       "done": "2026. 10. 7",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218501170912023?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218501170912023?focus=true",
+      "sprint": ""
     },
     {
       "name": "바이럴 - 마이클 고유가 지원금",
@@ -845,7 +891,8 @@
       "qa_start": "2026. 9. 17",
       "qa_complete": "2026. 9. 22",
       "done": "2026. 9. 23",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218167757868254?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1218167757868254?focus=true",
+      "sprint": ""
     },
     {
       "name": "스케줄 기반 CRM 발송",
@@ -863,7 +910,8 @@
       "qa_start": "2026. 9. 28",
       "qa_complete": "2026. 9. 29",
       "done": "2026. 9. 30",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217009900190761?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217009900190761?focus=true",
+      "sprint": ""
     },
     {
       "name": "브레이크 패드 점검 결과 %로 남기기",
@@ -881,7 +929,8 @@
       "qa_start": "2026. 10. 1",
       "qa_complete": "2026. 10. 6",
       "done": "2026. 10. 7",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217993154852873?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217993154852873?focus=true",
+      "sprint": ""
     },
     {
       "name": "브레이크 패드 및 디스크 항목 4개로 세분화",
@@ -899,7 +948,8 @@
       "qa_start": "2026. 10. 1",
       "qa_complete": "2026. 10. 7",
       "done": "2026. 10. 7",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215691653495077?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1215691653495077?focus=true",
+      "sprint": ""
     },
     {
       "name": "내차관리 퍼널",
@@ -917,7 +967,8 @@
       "qa_start": "2026. 10. 16",
       "qa_complete": "2026. 10. 20",
       "done": "2026. 10. 22",
-      "link": "https://app.asana.com/1/1118180141018033/project/1209417107932432/task/1218427546302189?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1209417107932432/task/1218427546302189?focus=true",
+      "sprint": ""
     },
     {
       "name": "정비소에서 다음 교체 km 수집",
@@ -935,7 +986,8 @@
       "qa_start": "2026. 10. 15",
       "qa_complete": "2026. 10. 21",
       "done": "2026. 10. 22",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1218434127550166?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1218434127550166?focus=true",
+      "sprint": ""
     },
     {
       "name": "[개선] 점검결과 패드 잔량 노출 a/b 테스트",
@@ -953,7 +1005,8 @@
       "qa_start": "2026. 10. 27",
       "qa_complete": "2026. 10. 27",
       "done": "2026. 10. 28",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219673671139431"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219673671139431",
+      "sprint": ""
     },
     {
       "name": "[기획] 주행거리 트래커",
@@ -971,7 +1024,8 @@
       "qa_start": "2026. 10. 26",
       "qa_complete": "2026. 10. 27",
       "done": "2026. 10. 29",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219390484290776?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219390484290776?focus=true",
+      "sprint": ""
     },
     {
       "name": "[개선] 내차 관리 퍼널 T1 진입율 개선",
@@ -989,7 +1043,8 @@
       "qa_start": "2026. 10. 28",
       "qa_complete": "2026. 10. 28",
       "done": "2026. 10. 29",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632119384?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632119384?focus=true",
+      "sprint": ""
     },
     {
       "name": "[개선] 내차관리 퍼널 T1 증상 단계 삭제",
@@ -1007,7 +1062,8 @@
       "qa_start": "2026. 11. 2",
       "qa_complete": "2026. 11. 3",
       "done": "2026. 11. 5",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220001810547214?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220001810547214?focus=true",
+      "sprint": ""
     },
     {
       "name": "[기획] 정비항목 추가/삭제 방식 개선",
@@ -1025,7 +1081,8 @@
       "qa_start": "2026. 10. 28",
       "qa_complete": "2026. 10. 29",
       "done": "2026. 11. 4",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219525602951225?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219525602951225?focus=true",
+      "sprint": ""
     },
     {
       "name": "[기획] 교체필요+3일 알림톡 자동화",
@@ -1043,7 +1100,8 @@
       "qa_start": "2026. 11. 2",
       "qa_complete": "2026. 11. 4",
       "done": "2026. 11. 5",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872423858776?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872423858776?focus=true",
+      "sprint": ""
     },
     {
       "name": "[개선/파트너스] 점검시 브레이크패드 잔량 디폴트 50% 제거",
@@ -1061,7 +1119,8 @@
       "qa_start": "2026. 10. 30",
       "qa_complete": "2026. 10. 30",
       "done": "2026. 11. 3",
-      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1219779300271419"
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1219779300271419",
+      "sprint": ""
     },
     {
       "name": "[기획] 파트너 헥사지표 제작",
@@ -1079,7 +1138,8 @@
       "qa_start": "2026.11.10",
       "qa_complete": "2026.11.12",
       "done": "2026.11.12",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632867586?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219921632867586?focus=true",
+      "sprint": ""
     },
     {
       "name": "[기획] 엔진오일 리드타임 축소, 점유시간 축소",
@@ -1097,7 +1157,8 @@
       "qa_start": "2026.11.05",
       "qa_complete": "2026.11.06",
       "done": "2026. 11. 10",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872436363339?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219872436363339?focus=true",
+      "sprint": ""
     },
     {
       "name": "[개선] 스케줄 기준값 입력 및 판단 방식 개선",
@@ -1115,7 +1176,8 @@
       "qa_start": "2026. 11. 4",
       "qa_complete": "2026. 11. 6",
       "done": "2026. 11. 10",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219569146308939?focus=true"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219569146308939?focus=true",
+      "sprint": ""
     },
     {
       "name": "[iOS/확인요청] 온보딩 이벤트에서 u_user_id 비어있음",
@@ -1133,7 +1195,8 @@
       "qa_start": "",
       "qa_complete": "2026. 11. 10",
       "done": "2026. 11. 16",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220338244047151"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220338244047151",
+      "sprint": "11월 3주차 스프린트"
     },
     {
       "name": "[기획] 마이데이터 차량 결제이력 연동",
@@ -1151,7 +1214,8 @@
       "qa_start": "2026. 11. 5",
       "qa_complete": "2026. 11. 12",
       "done": "2026. 11. 16",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217989338587603"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1217989338587603",
+      "sprint": "11월 3주차 스프린트"
     },
     {
       "name": "[기획] 온보딩 - 세그먼트1도 기록받기",
@@ -1169,7 +1233,8 @@
       "qa_start": "2026. 11. 13",
       "qa_complete": "2026. 11. 13",
       "done": "2026. 11. 18",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220235942064459"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220235942064459",
+      "sprint": "11월 3주차 스프린트"
     },
     {
       "name": "[기획/파트너스] 정비 전 차량 리포트",
@@ -1187,7 +1252,8 @@
       "qa_start": "",
       "qa_complete": "",
       "done": "",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219977211811171"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219977211811171",
+      "sprint": "11월 3주차 스프린트"
     },
     {
       "name": "[기획] 마이데이터 후속 - 자동차 보험 연결하기",
@@ -1205,7 +1271,521 @@
       "qa_start": "2026. 11. 17",
       "qa_complete": "2026. 11. 18",
       "done": "2026. 11. 19",
-      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220007467402449"
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220007467402449",
+      "sprint": "11월 3주차 스프린트"
+    },
+    {
+      "name": "[기획] 주행거리 트래커 개선",
+      "owner": "Jey",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220099882724731",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 자비스 홈 phase2",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220001810547205",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 연말 프로모션(미라클 데이) - 앱, 웹",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220099882724723",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 타이어 리드 확보 1 - 타이어 정보 획득",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220244625961635",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 차량 블루투스 연결시 푸시 보내주기 POC",
+      "owner": "Jey",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1212657049031440/task/1220244625961627",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[앰배서더] 현장결제 웹 화면 이벤트 로그 추가 요청",
+      "owner": "Sean.kang",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220858838953456",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[iOS/이벤트] 마이데이터 누락 이벤트 추가",
+      "owner": "Shunie",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1207490249479417/task/1220728694965933",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[백엔드] 미리구매 환불 알림톡",
+      "owner": "Mike.son",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220507182567437",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 홈 이미지 배너 위치 변경",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220701408517399",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 차량이야기 피드를 타이어 중심으로 변경",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1208632747740340/task/1220725841536353",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[요청] 현장결제 - 와이퍼 상품",
+      "owner": "Bob.kim",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220594598134570",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[확인요청] 파트너스 앱 - 정비완료 화면 불러올 때 오류화면",
+      "owner": "John",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1209045806744460/task/1220725937696771",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선/파트너스] 마이클 예약 알림음 옵션추가",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220697983160410",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 마이클·파트너스 앱 Text Field 숫자 입력 커서/콤마 개선 적용",
+      "owner": "Jey",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220287190613975",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 마이클 무료 서비스 상품",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220458742364035",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 앰배서더 결제고객 앱 다운로드 증대",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220418509352789",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 매출 상승 프로젝트 (20 X10)",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219963198386700",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[테스트] 내차관리 광고 설치자 대상 내차점검 할인 반응 확인",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220242261316734",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 마이데이터 추가 개선 아이디어 아카이빙",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220551501541629",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 기록 입력화면 개선 후속 - 2차 : 주유 기록 입력화면 개선 (앱 리뷰)",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1212657049031440/task/1220592088817244",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[WEB/신규] 웹예약 지도 진입(Plan B) — 지도에서 정비소 먼저 고르고 차량은 나중에 받는다",
+      "owner": "Dacia",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220501365770763",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선]파트너스 - 정비 전 차량 리포트",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220776630558820",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 주행거리 트래커 - 개선 아이디어 수집",
+      "owner": "Ken",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1212657049031440/task/1220594131979797",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 집중점검 점검 불가 항목 및 차종 노출 개선",
+      "owner": "Lana",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220883684268007",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 현장결제 - 얼라인먼트 추가",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220917328073671",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[기획] 파트너스 - 서비스/점검 탭 무료서비스를 부가서비스로 변경",
+      "owner": "Cecily",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220916705897655",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[사후분석] 앰배서더 - 타이어 추가 후",
+      "owner": "Harry",
+      "created": "",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219763388629960",
+      "sprint": "11월 4주차 스프린트"
     }
   ]
 }
