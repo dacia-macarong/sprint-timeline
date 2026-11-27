@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27 10:09 KST",
+  "updated": "2026-11-27 10:11 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1785,6 +1785,25 @@
       "qa_complete": "",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1219763388629960",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[개선] 현장결제 - 유종 - 전기 추가",
+      "owner": "Harry",
+      "created": "2026. 11. 27",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220917328073679",
       "sprint": "11월 4주차 스프린트"
     }
   ]
