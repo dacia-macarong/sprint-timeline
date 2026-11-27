@@ -943,6 +943,46 @@ function buildWeekRows(tasks, win) {
   };
 }
 
+// 스프린트 열(Q) = 태스크가 올라갔던 Asana 스프린트 섹션 이름(쉼표 구분).
+// 회고 주차에 스프린트가 태깅돼 있으면 그 섹션의 태스크 전부를, 없으면 날짜 기준으로 고른다.
+function sprintsOf(task) {
+  return (task.sprint || '').split(',').map(s => s.trim()).filter(Boolean);
+}
+
+function sprintOrderKey(name) {
+  const m = name.match(/(\d+)월\s*(\d+)주/);
+  if (!m) return -1;
+  const month = +m[1], week = +m[2];
+  const year = _kst.getFullYear() - (month > _kst.getMonth() + 2 ? 1 : 0);
+  return year * 1000 + month * 10 + week;
+}
+
+function sprintList(tasks) {
+  const names = new Set();
+  tasks.forEach(t => sprintsOf(t).forEach(n => names.add(n)));
+  return [...names].sort((a, b) => sprintOrderKey(b) - sprintOrderKey(a));
+}
+
+function buildSprintRows(tasks, sprint) {
+  const shipped = [], active = [];
+  tasks.forEach(task => {
+    if (!sprintsOf(task).includes(sprint)) return;
+    const { dates } = getSegments(task);
+    if (dates.done) shipped.push({ task, at: dates.done });
+    else active.push({ task, at: lastActivity(dates, new Date(8640000000000000)) || 0 });
+  });
+  shipped.sort((a, b) => a.at - b.at);
+  active.sort((a, b) => b.at - a.at);
+  return {
+    rows: [
+      { section: `🚀 배포 완료 · ${shipped.length}` }, ...shipped.map(r => r.task),
+      { section: `🔄 진행 중 · ${active.length}` },   ...active.map(r => r.task),
+    ],
+    shipped: shipped.length,
+    active: active.length,
+  };
+}
+
 function setTasks(tasks) {
   allTasks = tasks;
   render();
@@ -972,9 +1012,10 @@ function render() {
   }
 
   const win = retroWindow(weekOffset);
-  const { rows, shipped, active } = buildWeekRows(allTasks, win);
+  const sprint = sprintList(allTasks)[weekOffset];
+  const { rows, shipped, active } = sprint ? buildSprintRows(allTasks, sprint) : buildWeekRows(allTasks, win);
   const day = d => `${d.getMonth() + 1}/${d.getDate()}(${'일월화수목금토'[d.getDay()]})`;
-  document.getElementById('week-label').textContent = `${day(win.start)} ~ ${day(win.end)}`;
+  document.getElementById('week-label').textContent = sprint || `${day(win.start)} ~ ${day(win.end)}`;
   document.getElementById('week-next').disabled = weekOffset === 0;
   document.getElementById('week-summary').textContent = `배포 완료 ${shipped} · 진행 중 ${active}`;
 

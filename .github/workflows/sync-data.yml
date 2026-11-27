@@ -63,6 +63,7 @@ jobs:
                   'qa_complete':      g(row, 13),  # dev QA 완료
                   'done':             g(row, 14),  # 배포 완료
                   'link':             g(row, 15),  # 링크
+                  'sprint':           g(row, 16),  # 스프린트 (Asana 섹션, 쉼표 구분)
               })
 
           result = {
