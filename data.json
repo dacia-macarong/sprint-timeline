@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27 11:44 KST",
+  "updated": "2026-11-27 20:58 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1345,7 +1345,7 @@
       "dev_start": "2026. 11. 23",
       "dev_complete": "2026. 11. 26",
       "qa_start": "2026. 11. 24",
-      "qa_complete": "",
+      "qa_complete": "2026. 11. 27",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1199570530255786/task/1220244625961635",
       "sprint": "11월 4주차 스프린트"
@@ -1804,6 +1804,25 @@
       "qa_complete": "",
       "done": "",
       "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220917328073679",
+      "sprint": "11월 4주차 스프린트"
+    },
+    {
+      "name": "[확인] 추가정비 - 오류. 미르카센터 576378",
+      "owner": "Cecily",
+      "created": "2026. 11. 27",
+      "planning": "",
+      "design_start": "",
+      "design_draft": "",
+      "dev_review_start": "",
+      "dev_review_end": "",
+      "guide_start": "",
+      "guide": "",
+      "dev_start": "",
+      "dev_complete": "",
+      "qa_start": "",
+      "qa_complete": "",
+      "done": "",
+      "link": "https://app.asana.com/1/1118180141018033/project/1213968584562495/task/1220944977150249",
       "sprint": "11월 4주차 스프린트"
     }
   ]
