@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27 10:11 KST",
+  "updated": "2026-11-27 10:15 KST",
   "tasks": [
     {
       "name": "동적정보 T2 (내차정보)",
@@ -1402,7 +1402,7 @@
       "dev_start": "2026. 11. 20",
       "dev_complete": "2026. 11. 20",
       "qa_start": "2026. 11. 20",
-      "qa_complete": "",
+      "qa_complete": "2026. 11. 23",
       "done": "2026. 11. 24",
       "link": "https://app.asana.com/1/1118180141018033/project/1207490249479417/task/1220728694965933",
       "sprint": "11월 4주차 스프린트"
