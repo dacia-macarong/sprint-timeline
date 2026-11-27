@@ -338,32 +338,36 @@ function getSegments(task) {
 
   const segs = [];
 
-  // 시작일 없으면 직전 완료일의 다음 영업일로 폴백
-  function resolveStart(explicit, prevEnd) {
-    return explicit || (prevEnd ? nextWorkingDay(prevEnd) : null);
+  // 시작일 없으면 직전 완료일의 다음 영업일로 폴백.
+  // 폴백 시작일이 완료일보다 늦으면(같은 날 끝난 단계) 완료일 하루짜리로 본다.
+  function resolveStart(explicit, prevEnd, end) {
+    if (explicit) return explicit;
+    if (!prevEnd) return null;
+    const next = nextWorkingDay(prevEnd);
+    return end && next > end && prevEnd <= end ? end : next;
   }
 
   // 기획: 생성일 → 기획완료
   if (pl && pl >= c) segs.push({ start: c, end: pl, phase: 'planning' });
 
   // 디자인 시안: 시안시작 → 시안완료
-  const dsR = resolveStart(ds, pl);
+  const dsR = resolveStart(ds, pl, dd);
   if (dsR && dd && dd >= dsR) segs.push({ start: dsR, end: dd, phase: 'design_draft' });
 
   // 개발검토: 개발검토 시작 → 개발검토 완료
-  const drsR = resolveStart(drs, dd);
+  const drsR = resolveStart(drs, dd, dre);
   if (drsR && dre && dre >= drsR) segs.push({ start: drsR, end: dre, phase: 'dev_review' });
 
   // 디자인 가이드: 가이드 시작 → 가이드 완료
-  const gsR = resolveStart(gs, dre || dd);  // dev_review 없으면 시안완료 다음날로 폴백
+  const gsR = resolveStart(gs, dre || dd, g);  // dev_review 없으면 시안완료 다음날로 폴백
   if (gsR && g && g >= gsR) segs.push({ start: gsR, end: g, phase: 'design_guide' });
 
   // 앱개발: 앱개발 시작 → 개발완료
-  const dvsR = resolveStart(dvs, g || dre || dd);  // 가이드 없으면 dev_review, 그것도 없으면 시안완료
+  const dvsR = resolveStart(dvs, g || dre || dd || pl, dc);  // 가이드 → 개발검토 → 시안완료 → 기획완료 순으로 폴백
   if (dvsR && dc && dc >= dvsR) segs.push({ start: dvsR, end: dc, phase: 'dev' });
 
   // QA: QA 시작 → QA 완료
-  const qasR = resolveStart(qas, dc);
+  const qasR = resolveStart(qas, dc, qa);
   if (qasR && qa && qa >= qasR) segs.push({ start: qasR, end: qa, phase: 'qa' });
 
   // 배포: QA 완료 → 배포완료
